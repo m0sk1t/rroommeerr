@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html ng-app="RROOMMEERR">
+<head>
+	<title></title>
+</head>
+<script type="text/javascript" src="libs/angular/angular.min.js"></script>
+<style type="text/css">
+	article, body {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		position: absolute;
+	}
+	article.splash {
+		z-index: 99;
+		background-color: rgba(33,33,33,.3);
+	}
+	nav>ul>li {
+		margin-right: 1%;
+	}
+	nav>ul>li,
+	.color {
+		float: left;
+		display: inline-block;
+	}
+	.menu {
+		height: 15%;
+	}
+	.display {
+		height: 70%;
+		background-size: contain;
+		background-position-x: center;
+		background-repeat-x: no-repeat;
+	}
+	.color {
+		width: 30px;
+		height: 30px;
+	}
+	.c1 {
+		background-color: #3ae
+	}
+	.c2 {
+		background-color: #3ea
+	}
+</style>
+<body ng-controller="MainCtrl" ng-view>
+	<article class="splash" ng-show="loading"></article>
+	<article>
+		<section class="menu">
+			<nav>
+				<ul>
+					<li>Спальня</li>
+					<li>Гостиная(зал)</li>
+					<li>Кухня(столовая)</li>
+					<li>Детская</li>
+				</ul>
+			</nav>
+		</section>
+		<section class="display" style="background-image: url('/rooms/{{opt.room}}/{{image}}')"></section>
+		<section class="menu">
+			<nav>
+				<ul>
+					<li>
+						Цвет стен
+						<div>
+							<span ng-repeat="c in colors" class="color" style="background-color: rgb({{c.r}},{{c.g}},{{c.b}})" ng-click="set_color(c);"> </span>
+						</div>
+					</li>
+					<li>
+						Ламинат
+						<div>
+							<span class="color c1" ng-click="opt.laminate = 1; make_room();">1</span>
+							<span class="color c2" ng-click="opt.laminate = 2; make_room();">2</span>
+						</div>
+					</li>
+					<li>
+						Модель двери
+						<div>
+							<span class="color c1" ng-click="opt.doortype = 1; make_room();">1</span>
+							<span class="color c2" ng-click="opt.doortype = 2; make_room();">2</span>
+						</div>
+					</li>
+					<li>
+						Плинтус
+						<div>
+							<span class="color c1" ng-click="opt.plinth = 1; make_room();">1</span>
+							<span class="color c2" ng-click="opt.plinth = 2; make_room();">2</span>
+						</div>
+					</li>
+					<li>
+						Интерьер
+						<div>
+							<span class="color c1" ng-click="opt.interior = 1; make_room();">1</span>
+							<span class="color c2" ng-click="opt.interior = 2; make_room();">2</span>
+						</div>
+					</li>
+				</ul>
+			</nav>
+		</section>
+	</article>
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="ctrl/MainCtrl.js"></script>
+</body>
+</html>

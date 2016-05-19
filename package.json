@@ -9,6 +9,7 @@
   "author": "m0sk1t",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.15.1",
     "express": "^4.13.4",
     "gm": "^1.22.0",
     "jimp": "^0.2.24"
