@@ -63,6 +63,8 @@ app.route('/plinth/:id').get((req, res) => {
 });
 
 var Doors = require('mongoose').model('doors', {
+	deco: String,
+	coll: String,
 	name: String,
 	image: String,
 	params: Array

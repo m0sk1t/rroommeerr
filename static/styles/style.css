@@ -20,6 +20,12 @@ nav>ul>li,
 	float: left;
 	display: inline-block;
 }
+.menu {
+	line-height: 300%;
+}
+.menu>nav>ul,.menu>nav>ul>li {
+	height: 100%;
+}
 .menu,
 .bottom {
 	z-index: 10;
