@@ -1,6 +1,8 @@
-var gm = require("gm"),
+var
+/*gm = require("gm"),
 	fs = require("fs"),
 	Jimp = require("jimp"),
+	*/
 	app = require('express')(),
 	bodyParser = require('body-parser'),
 	serveStatic = require('serve-static');
@@ -14,13 +16,32 @@ app.use(bodyParser.json({
 }));
 app.use(serveStatic(__dirname + '/static'));
 
+app.path('/floor/:id').get((req, res) => {
+	Floors.find(req.params.id || {}, {
+		_id: 0
+	}(err, floors) => {
+		res.json(floors);
+	});
+}).post((req, res) => {
+	Floors.create(req.body, (err, floor) => {
+		res.json(floor);
+	});
+}).put((req, res) => {
+	Floors.findByIdAndUpdate(req.params.id, req.body, (err, floor) => {
+		res.json(floor);
+	});
+}).delete((req, res) => {
+	Floors.findByIdAndRemove(req.params.id, (err, floor) => {
+		res.json(floor);
+	});
+})
+
 app.post('/room', function(req, res) {
-	var opt = req.body,
+	/*	var opt = req.body,
 		pic = opt.room +
 		'_wall_r' + opt.r + '_g' + opt.g + '_b' + opt.b +
 		'_doortype' + opt.doortype +
-		/*		'_doorcolor' + opt.doorcolor +
-		 */
+		'_doorcolor' + opt.doorcolor +
 		'_interior' + opt.interior +
 		'_laminate' + opt.laminate +
 		'_plinth' + opt.plinth + '.jpg';
@@ -51,6 +72,7 @@ app.post('/room', function(req, res) {
 			});
 		}
 	});
+*/
 });
 
 app.listen('4321');
