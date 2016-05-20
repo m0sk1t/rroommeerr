@@ -16,6 +16,11 @@ app.use(bodyParser.json({
 }));
 app.use(serveStatic(__dirname + '/static'));
 
+var Floors = require('mongoose').model('Floors', {
+	name: String,
+	image: String,
+	params: Array
+})
 app.path('/floor/:id').get((req, res) => {
 	Floors.find(req.params.id || {}, {
 		_id: 0
