@@ -36,7 +36,8 @@ app.post('/room', function(req, res) {
 						if (err) console.error(err);
 						Jimp.read('static/rooms/' + opt.room + '/interior' + opt.interior + '.png', (err, interior) => {
 							if (err) console.error(err);
-							gm('static/rooms/' + opt.room + '/wall.png').colorize(+opt.r, +opt.g, +opt.b).write('static/rooms/' + opt.room + '/wall_r' + opt.r + '_g' + opt.g + '_b' + opt.b + '.png', function() {
+							//gm composite wall.png -compose multiply  wall_composed.png wall_colored.png
+							gm('static/rooms/' + opt.room + '/wall.png').colorize((2.55 * (+opt.b)) | 0, (2.55 * (+opt.r)) | 0, (2.55 * (+opt.g)) | 0).write('static/rooms/' + opt.room + '/wall_r' + opt.r + '_g' + opt.g + '_b' + opt.b + '.png', function() {
 								Jimp.read('static/rooms/' + opt.room + '/wall_r' + opt.r + '_g' + opt.g + '_b' + opt.b + '.png', function(err, wall) {
 									if (err) throw err;
 									floor.composite(wall, 0, 0).composite(plinth, 0, 0).composite(door, 0, 0).composite(interior, 0, 0).write('static/rooms/' + opt.room + '/' + pic, function() {
