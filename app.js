@@ -17,10 +17,10 @@ var Floors = require('mongoose').model('Floors', {
 	image: String,
 	params: Array
 });
-app.path('/floor/:id').get((req, res) => {
+app.route('/floor/:id').get((req, res) => {
 	Floors.find(req.params.id || {}, {
 		_id: 0
-	}(err, floors) => {
+	}, (err, floors) => {
 		res.json(floors);
 	});
 }).post((req, res) => {
@@ -42,10 +42,10 @@ var Plinths = require('mongoose').model('plinths', {
 	image: String,
 	params: Array
 });
-app.path('/plinth/:id').get((req, res) => {
+app.route('/plinth/:id').get((req, res) => {
 	Plinths.find(req.params.id || {}, {
 		_id: 0
-	}(err, plinths) => {
+	}, (err, plinths) => {
 		res.json(plinths);
 	});
 }).post((req, res) => {
@@ -67,10 +67,10 @@ var Doors = require('mongoose').model('doors', {
 	image: String,
 	params: Array
 });
-app.path('/door/:id').get((req, res) => {
+app.route('/door/:id').get((req, res) => {
 	Doors.find(req.params.id || {}, {
 		_id: 0
-	}(err, doors) => {
+	}, (err, doors) => {
 		res.json(doors);
 	});
 }).post((req, res) => {
@@ -92,10 +92,10 @@ var Interiors = require('mongoose').model('interiors', {
 	image: String,
 	params: Array
 });
-app.path('/interior/:id').get((req, res) => {
+app.route('/interior/:id').get((req, res) => {
 	Interiors.find(req.params.id || {}, {
 		_id: 0
-	}(err, interiors) => {
+	}, (err, interiors) => {
 		res.json(interiors);
 	});
 }).post((req, res) => {
