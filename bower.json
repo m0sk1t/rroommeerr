@@ -1,0 +1,22 @@
+{
+  "name": "rroommeerr",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "m0sk1t"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/m0sk1t/rroommeerr",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/libs/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "^1.5.5",
+    "angular": "^1.5.5"
+  }
+}

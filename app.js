@@ -13,9 +13,9 @@ app.use(bodyParser.json({
 app.use(serveStatic(__dirname + '/static'));
 
 var Floors = require('mongoose').model('Floors', {
-	name: String,
-	image: String,
-	params: Array
+	collection: String,
+	article: String,
+	image: String
 });
 app.route('/floor/:id').get((req, res) => {
 	Floors.find(req.params.id || {}, {
@@ -38,9 +38,8 @@ app.route('/floor/:id').get((req, res) => {
 });
 
 var Plinths = require('mongoose').model('plinths', {
-	name: String,
-	image: String,
-	params: Array
+	article: String,
+	image: String
 });
 app.route('/plinth/:id').get((req, res) => {
 	Plinths.find(req.params.id || {}, {
@@ -63,11 +62,10 @@ app.route('/plinth/:id').get((req, res) => {
 });
 
 var Doors = require('mongoose').model('doors', {
-	deco: String,
-	coll: String,
-	name: String,
-	image: String,
-	params: Array
+	collection: String,
+	article: String,
+	decour: String,
+	image: String
 });
 app.route('/door/:id').get((req, res) => {
 	Doors.find(req.params.id || {}, {
@@ -90,9 +88,8 @@ app.route('/door/:id').get((req, res) => {
 });
 
 var Interiors = require('mongoose').model('interiors', {
-	name: String,
-	image: String,
-	params: Array
+	article: String,
+	image: String
 });
 app.route('/interior/:id').get((req, res) => {
 	Interiors.find(req.params.id || {}, {

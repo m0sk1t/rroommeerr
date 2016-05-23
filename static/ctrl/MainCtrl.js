@@ -42,6 +42,10 @@
 			$scope.set_color = function(color) {
 				$scope.color = color;
 			}
+			$scope.change_bg = function(item) {
+				var layer = angular.element('.' + item);
+				layer.style.backgroundImage = 'url(rooms/' + item + 's/' + item + $scope.opt[item] + '.png)';
+			};
 			$scope.make_room = function() {
 				$scope.loading = true;
 				$http.post('/room', $scope.opt).then(function(res) {
@@ -53,5 +57,11 @@
 				});
 			}
 		}
+	]).controller('AdminCtrl', ['$scope', '$http',
+		function($scope, $http) {
+
+		}
+	]).controller('ItemCtrl', ['$scope', '$http', '$routeParams',
+		function($scope, $http, $routeParams) {}
 	]);
 })();
