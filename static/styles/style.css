@@ -15,6 +15,17 @@ article.splash {
 nav>ul>li {
 	margin-right: 1%;
 }
+nav>ul>li>img {
+	width: 155px;
+	height: 55px;
+}
+nav>ul>li>span {
+	bottom: .8rem;
+	width: 155px;
+	position: absolute;
+	text-transform: uppercase;
+	background-color: rgba(33,33,33,.3);
+}
 nav>ul>li.active {
 	color: #333;
 	background-color: #77e;
@@ -23,9 +34,6 @@ nav>ul>li,
 .color {
 	float: left;
 	display: inline-block;
-}
-.menu {
-	line-height: 300%;
 }
 .menu>nav>ul,.menu>nav>ul>li {
 	height: 100%;

@@ -3,10 +3,22 @@
 	<section class="menu">
 		<nav>
 			<ul>
-				<li ng-class="{active: opt.room === 'bedroom'}" ng-click="opt.room = 'bedroom'">Спальня</li>
-				<li ng-class="{active: opt.room === 'livingroom'}" ng-click="opt.room = 'livingroom'">Гостиная(зал)</li>
-				<li ng-class="{active: opt.room === 'kitchen'}" ng-click="opt.room = 'kitchen'">Кухня(столовая)</li>
-				<li ng-class="{active: opt.room === 'childrenroom'}" ng-click="opt.room = 'childrenroom'">Детская</li>
+				<li ng-class="{active: opt.room === 'bedroom'}" ng-click="opt.room = 'bedroom'">
+					<img src="rooms/interiors/bedroom.jpg">
+					<span>Спальня</span>
+				</li>
+				<li ng-class="{active: opt.room === 'livingroom'}" ng-click="opt.room = 'livingroom'">
+					<img src="rooms/interiors/livingroom.jpg">
+					<span>Гостиная(зал)</span>
+				</li>
+				<li ng-class="{active: opt.room === 'kitchen'}" ng-click="opt.room = 'kitchen'">
+					<img src="rooms/interiors/kitchen.jpg">
+					<span>Кухня(столовая)</span>
+				</li>
+				<li ng-class="{active: opt.room === 'childrenroom'}" ng-click="opt.room = 'childrenroom'">
+					<img src="rooms/interiors/childrenroom.jpg">
+					<span>Детская</span>
+				</li>
 			</ul>
 		</nav>
 	</section>
