@@ -13,7 +13,7 @@ app.use(bodyParser.json({
 app.use(serveStatic(__dirname + '/static'));
 
 var Floors = require('mongoose').model('Floors', {
-	collection: String,
+	assemble: String,
 	article: String,
 	image: String
 });
@@ -62,9 +62,9 @@ app.route('/plinth/:id').get((req, res) => {
 });
 
 var Doors = require('mongoose').model('doors', {
-	collection: String,
+	assemble: String,
 	article: String,
-	decour: String,
+	decor: String,
 	image: String
 });
 app.route('/door/:id').get((req, res) => {
