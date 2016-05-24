@@ -50,6 +50,9 @@ nav>ul>li,
 .bottom {
 	bottom: 0;
 }
+.create {
+	margin-top: 7%;
+}
 .display {
 	top: 10%;
 	width: 100%;
