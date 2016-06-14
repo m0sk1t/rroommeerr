@@ -2,6 +2,7 @@
 	<section class="menu">
 		<nav>
 			<ul>
+				<li><a href="/#/" style="color: #fff;">BACK TO SITE</a></li>
 				<li ng-class="{active: item_type === 'doorcollection'}" ng-click="item_type = 'doorcollection'; load();">
 				Коллекции дверей
 				</li>
@@ -33,7 +34,7 @@
 		<button class="create" ng-show="item_type" ng-click="create();">Add</button>
 		<ul>
 			<li ng-repeat="i in items">
-				<a href="#/item/{{item_type}}/{{i._id}}">{{item_type}}: {{i.article}}</a>
+				<a href="#/item/{{item_type}}/{{i._id}}">{{item_type}}: {{i.article}} <span ng-show="i.r && i.g && i.b" style="background-color:rgb({{i.r}}, {{i.g}}, {{i.b}});">rgb({{i.r}}, {{i.g}}, {{i.b}})</span></a>
 				<button ng-click="delete(i._id)">Delete</button>
 			</li>
 		</ul>

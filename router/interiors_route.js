@@ -11,17 +11,9 @@ module.exports = function(app) {
 			}
 		}),
 		Colors = require('mongoose').model('color', {
-			r: {
-				type: Number,
-				default: 0
-			},
-			g: {
-				type: Number,
-				default: 0
-			},
-			b: {
-				type: Number,
-				default: 0
+			color: {
+				type: String,
+				default: '#000000'
 			}
 		});
 	app.route('/interior/:id').get((req, res) => {

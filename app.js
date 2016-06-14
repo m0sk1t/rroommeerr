@@ -1,10 +1,12 @@
 // ультрамариновый олень носит шапку набекрень
 var
 	app = require('express')(),
+	morgan = require('morgan'),
 	mongoose = require('mongoose'),
 	bodyParser = require('body-parser'),
 	serveStatic = require('serve-static');
 
+app.use(morgan('combined'));
 app.use(bodyParser.urlencoded({
 	limit: '1mb',
 	extended: true

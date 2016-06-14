@@ -3,48 +3,28 @@
 		function($scope, $http) {
 			$scope.loading = false;
 			$scope.color = {};
-			$scope.colors = [{
-				r: 50,
-				g: 200,
-				b: 120,
-			}, {
-				r: 30,
-				g: 100,
-				b: 150,
-			}, {
-				r: 170,
-				g: 100,
-				b: 70,
-			}, {
-				r: 180,
-				g: 100,
-				b: 150,
-			}, {
-				r: 60,
-				g: 150,
-				b: 185,
-			}, {
-				r: 50,
-				g: 110,
-				b: 100,
-			}];
+			$scope.colors = [];
 			$scope.opt = {
-				r: 10,
-				g: 10,
-				b: 10,
 				plinth: 1,
 				floor: 1,
 				door: 1,
 				room: 'bedroom'
 			};
-			$scope.image = $scope.opt.room + '.jpg';
+			$scope.get_colors = function() {
+				$http.get('/color/0').then(function(res) {
+					$scope.colors = res.data;
+				}, function(res) {
+					console.error(res.data);
+				});
+			};
 			$scope.set_color = function(color) {
 				$scope.color = color;
-			}
+			};
 			$scope.change_bg = function(item) {
 				var layer = document.querySelector('.' + item);
 				layer.style.backgroundImage = 'url(rooms/' + item + 's/' + item + $scope.opt[item] + '.png)';
 			};
+			$scope.get_colors();
 		}
 	]).controller('AdminCtrl', ['$scope', '$http', '$location',
 		function($scope, $http, $location) {
