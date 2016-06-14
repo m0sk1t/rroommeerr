@@ -2,15 +2,9 @@
 	angular.module('RROOMMEERR').controller('MainCtrl', ['$scope', '$http',
 		function($scope, $http) {
 			$scope.loading = false;
-<<<<<<< HEAD
-			$scope.color = {};
-			$scope.colors = [];
-			$scope.opt = {
-=======
 			$scope.colors = [];
 			$scope.opt = {
 				color: '#cccccc',
->>>>>>> e48ec6c184639f252dc6b84a4fb580d268ca4148
 				plinth: 1,
 				floor: 1,
 				door: 1,
@@ -24,16 +18,11 @@
 				});
 			};
 			$scope.set_color = function(color) {
-<<<<<<< HEAD
-				$scope.color = color;
-			};
-=======
 				$scope.opt.color = color.color;
 			};
 			$http.get('/color/0').then(function(res) {
 				$scope.colors = res.data;
 			});
->>>>>>> e48ec6c184639f252dc6b84a4fb580d268ca4148
 			$scope.change_bg = function(item) {
 				var layer = document.querySelector('.' + item);
 				layer.style.backgroundImage = 'url(rooms/' + item + 's/' + item + $scope.opt[item] + '.png)';

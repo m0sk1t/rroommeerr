@@ -4,6 +4,7 @@ module.exports = function(app) {
 			crypto = require('crypto'),
 			hash = crypto.createHash('md5'),
 			rdd = fs.createReadStream(req.files.file.path);
+		console.log('req.files.file.path', req.files.file.path);
 		rdd.on('data', function(d) {
 			hash.update(d);
 		});
@@ -12,7 +13,7 @@ module.exports = function(app) {
 			rdd.close();
 			newfilename = hash.digest('hex') + '.jpg';
 			console.log('Uploaded: ', newfilename);
-			fs.rename(req.files.file.path, '../static/rooms/' + newfilename, function() {
+			fs.rename(req.files.file.path, __dirname + '/../static/rooms/' + newfilename, function() {
 				res.send(newfilename);
 			});
 		});

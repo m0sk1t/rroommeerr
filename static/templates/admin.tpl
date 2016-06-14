@@ -33,13 +33,8 @@
 	<section class="items">
 		<button class="create" ng-show="item_type" ng-click="create();">Add</button>
 		<ul>
-<<<<<<< HEAD
-			<li ng-repeat="i in items">
-				<a href="#/item/{{item_type}}/{{i._id}}">{{item_type}}: {{i.article}} <span ng-show="i.r && i.g && i.b" style="background-color:rgb({{i.r}}, {{i.g}}, {{i.b}});">rgb({{i.r}}, {{i.g}}, {{i.b}})</span></a>
-=======
 			<li ng-repeat="i in items" style="background-color: {{i.color}}">
 				<a href="#/item/{{item_type}}/{{i._id}}">{{item_type}}: {{i.article||i.color}}</a>
->>>>>>> e48ec6c184639f252dc6b84a4fb580d268ca4148
 				<button ng-click="delete(i._id)">Delete</button>
 			</li>
 		</ul>

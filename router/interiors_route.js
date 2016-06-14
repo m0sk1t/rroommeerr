@@ -13,11 +13,7 @@ module.exports = function(app) {
 		Colors = require('mongoose').model('color', {
 			color: {
 				type: String,
-<<<<<<< HEAD
-				default: '#000000'
-=======
 				default: "#000000"
->>>>>>> e48ec6c184639f252dc6b84a4fb580d268ca4148
 			}
 		});
 	app.route('/interior/:id').get((req, res) => {
