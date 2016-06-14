@@ -23,7 +23,7 @@
 		</nav>
 	</section>
 	<section class="display">
-		<div class="section-layer wall" style="background-color: rgb({{color.r}},{{color.g}},{{color.b}}); background-image: url(/rooms/wall.png);"></div>
+		<div class="section-layer wall" style="background-color: {{opt.color}}; background-image: url(/rooms/wall.png);"></div>
 		<div class="section-layer floor" style="background-image: url(/rooms/floors/floor{{opt.floor}}.png)"></div>
 		<div class="section-layer plinth" style="background-image: url(/rooms/plinths/plinth{{opt.plinth}}.png)"></div>
 		<div class="section-layer door" style="background-image: url(/rooms/doors/door{{opt.door}}.png)"></div>
@@ -35,7 +35,7 @@
 				<li>
 					Цвет стен
 					<div>
-						<span ng-repeat="c in colors" class="color" style="background-color: rgb({{c.r}},{{c.g}},{{c.b}})" ng-click="set_color(c);"> </span>
+						<span ng-repeat="c in colors" class="color" style="background-color: {{c.color}}" ng-click="set_color(c);"> </span>
 					</div>
 				</li>
 				<li>

@@ -3,17 +3,24 @@ var
 	app = require('express')(),
 	morgan = require('morgan'),
 	mongoose = require('mongoose'),
+	multipart = require('connect-multiparty'),
 	bodyParser = require('body-parser'),
 	serveStatic = require('serve-static');
 
 app.use(morgan('combined'));
 app.use(bodyParser.urlencoded({
-	limit: '1mb',
+	limit: '5mb',
 	extended: true
 }));
-app.use(bodyParser.json({
-	limit: '1mb'
+
+app.use(multipart({
+	uploadDir: __dirname + '/tmp'
 }));
+
+app.use(bodyParser.json({
+	limit: '5mb'
+}));
+
 app.use(serveStatic(__dirname + '/static'));
 
 app.listen('4321', function() {

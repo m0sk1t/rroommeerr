@@ -2,9 +2,15 @@
 	angular.module('RROOMMEERR').controller('MainCtrl', ['$scope', '$http',
 		function($scope, $http) {
 			$scope.loading = false;
+<<<<<<< HEAD
 			$scope.color = {};
 			$scope.colors = [];
 			$scope.opt = {
+=======
+			$scope.colors = [];
+			$scope.opt = {
+				color: '#cccccc',
+>>>>>>> e48ec6c184639f252dc6b84a4fb580d268ca4148
 				plinth: 1,
 				floor: 1,
 				door: 1,
@@ -18,8 +24,16 @@
 				});
 			};
 			$scope.set_color = function(color) {
+<<<<<<< HEAD
 				$scope.color = color;
 			};
+=======
+				$scope.opt.color = color.color;
+			};
+			$http.get('/color/0').then(function(res) {
+				$scope.colors = res.data;
+			});
+>>>>>>> e48ec6c184639f252dc6b84a4fb580d268ca4148
 			$scope.change_bg = function(item) {
 				var layer = document.querySelector('.' + item);
 				layer.style.backgroundImage = 'url(rooms/' + item + 's/' + item + $scope.opt[item] + '.png)';
@@ -55,8 +69,8 @@
 			};
 			$scope.load();
 		}
-	]).controller('ItemCtrl', ['$scope', '$http', '$routeParams',
-		function($scope, $http, $routeParams) {
+	]).controller('ItemCtrl', ['$scope', '$http', '$location', '$routeParams',
+		function($scope, $http, $location, $routeParams) {
 			$scope.item = {};
 			$scope.type = $routeParams.type;
 			$scope.load = function() {
@@ -66,11 +80,28 @@
 					console.error(res.data);
 				});
 			};
+			$scope.image = function() {
+				var file = document.querySelector('input[type=file]').files[0],
+					data = new FormData();
+				if (!file) return;
+				data.append('file', file);
+				$http.post('/image', data, {
+					transformRequest: angular.identity,
+					headers: {
+						'Content-Type': undefined
+					}
+				}).then(function(res) {
+					$scope.item.image = res.data;
+					$scope.save();
+				}, function(res) {
+					console.error(res.data.msg);
+				});
+			}
 			$scope.save = function() {
 				var id = $scope.item._id;
 				delete $scope.item._id;
 				$http.put('/' + $scope.type + '/' + $routeParams.id, $scope.item).then(function(res) {
-					$scope.item._id = id;
+					$location.path('/admin');
 				}, function(res) {
 					console.error(res.data);
 				});
