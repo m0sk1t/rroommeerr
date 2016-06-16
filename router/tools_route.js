@@ -1,5 +1,5 @@
 module.exports = function(app) {
-	app.post('/image', function(req, res) {
+	app.put('/image/:item', function(req, res) {
 		var fs = require('fs'),
 			crypto = require('crypto'),
 			hash = crypto.createHash('md5'),
@@ -9,11 +9,12 @@ module.exports = function(app) {
 			hash.update(d);
 		});
 		rdd.on('end', function() {
-			var newfilename = '';
+			var fileext = req.files.file.path.split('.').pop(),
+				newfilename = '';
 			rdd.close();
-			newfilename = hash.digest('hex') + '.jpg';
+			newfilename = hash.digest('hex') + '.' + fileext;
 			console.log('Uploaded: ', newfilename);
-			fs.rename(req.files.file.path, __dirname + '/../static/rooms/' + newfilename, function() {
+			fs.rename(req.files.file.path, __dirname + '/../static/rooms/' + req.params.item + 's/' + newfilename, function() {
 				res.send(newfilename);
 			});
 		});

@@ -8,10 +8,17 @@ module.exports = function(app) {
 			image: {
 				type: String,
 				default: ''
+			},
+			bg: {
+				type: String,
+				default: ''
 			}
 		});
 	app.route('/plinth/:id').get((req, res) => {
-		Plinths.find(+req.params.id || {}, {
+		var find = isNaN(req.params.id) ? {
+			_id: req.params.id
+		} : {};
+		Plinths.find(find, {
 			__v: 0
 		}, (err, plinths) => {
 			res.json(plinths);

@@ -1,11 +1,19 @@
 module.exports = function(app) {
 	var mongoose = require('mongoose'),
 		Interiors = require('mongoose').model('interior', {
-			article: {
+			bg: {
 				type: String,
 				default: ''
 			},
 			image: {
+				type: String,
+				default: ''
+			},
+			alias: {
+				type: String,
+				default: ''
+			},
+			article: {
 				type: String,
 				default: ''
 			}
@@ -17,7 +25,10 @@ module.exports = function(app) {
 			}
 		});
 	app.route('/interior/:id').get((req, res) => {
-		Interiors.find(+req.params.id || {}, {
+		var find = isNaN(req.params.id) ? {
+			_id: req.params.id
+		} : {};
+		Interiors.find(find, {
 			__v: 0
 		}, (err, interiors) => {
 			res.json(interiors);
@@ -36,7 +47,10 @@ module.exports = function(app) {
 		});
 	});
 	app.route('/color/:id').get((req, res) => {
-		Colors.find(+req.params.id || {}, {
+		var find = isNaN(req.params.id) ? {
+			_id: req.params.id
+		} : {};
+		Colors.find(find, {
 			__v: 0
 		}, (err, colors) => {
 			res.json(colors);

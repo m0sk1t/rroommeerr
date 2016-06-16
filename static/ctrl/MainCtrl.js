@@ -4,30 +4,39 @@
 			$scope.loading = false;
 			$scope.colors = [];
 			$scope.opt = {
-				color: '#cccccc',
-				plinth: 1,
-				floor: 1,
-				door: 1,
-				room: 'bedroom'
+				interior: 'bedroom',
+				color: null,
+				plinth: null,
+				floor: null,
+				door: null,
 			};
-			$scope.get_colors = function() {
-				$http.get('/color/0').then(function(res) {
-					$scope.colors = res.data;
-				}, function(res) {
-					console.error(res.data);
-				});
-			};
+			$http.get('/interior/0').then(function(res) {
+				$scope.interiors = res.data;
+				$scope.opt.interior = res.data[0];
+			});
+			$http.get('/color/0').then(function(res) {
+				$scope.colors = res.data;
+				$scope.opt.color = res.data[0];
+			});
+			$http.get('/door/0').then(function(res) {
+				$scope.doors = res.data;
+				$scope.opt.door = res.data[0];
+			});
+			$http.get('/floor/0').then(function(res) {
+				$scope.floors = res.data;
+				$scope.opt.floor = res.data[0];
+			});
+			$http.get('/plinth/0').then(function(res) {
+				$scope.plinths = res.data;
+				$scope.opt.plinth = res.data[0];
+			});
 			$scope.set_color = function(color) {
 				$scope.opt.color = color.color;
 			};
-			$http.get('/color/0').then(function(res) {
-				$scope.colors = res.data;
-			});
 			$scope.change_bg = function(item) {
 				var layer = document.querySelector('.' + item);
-				layer.style.backgroundImage = 'url(rooms/' + item + 's/' + item + $scope.opt[item] + '.png)';
+				layer.style.backgroundImage = 'url(rooms/' + item + 's/' + $scope.opt[item].image + ')';
 			};
-			$scope.get_colors();
 		}
 	]).controller('AdminCtrl', ['$scope', '$http', '$location',
 		function($scope, $http, $location) {
@@ -69,12 +78,29 @@
 					console.error(res.data);
 				});
 			};
-			$scope.image = function() {
-				var file = document.querySelector('input[type=file]').files[0],
+			$scope.bg = function() {
+				var file = document.querySelector('input#bg').files[0],
 					data = new FormData();
 				if (!file) return;
 				data.append('file', file);
-				$http.post('/image', data, {
+				$http.put('/image/' + $scope.type, data, {
+					transformRequest: angular.identity,
+					headers: {
+						'Content-Type': undefined
+					}
+				}).then(function(res) {
+					$scope.item.bg = res.data;
+					$scope.save();
+				}, function(res) {
+					console.error(res.data.msg);
+				});
+			};
+			$scope.image = function() {
+				var file = document.querySelector('input#image').files[0],
+					data = new FormData();
+				if (!file) return;
+				data.append('file', file);
+				$http.put('/image/' + $scope.type, data, {
 					transformRequest: angular.identity,
 					headers: {
 						'Content-Type': undefined
@@ -85,7 +111,7 @@
 				}, function(res) {
 					console.error(res.data.msg);
 				});
-			}
+			};
 			$scope.save = function() {
 				var id = $scope.item._id;
 				delete $scope.item._id;

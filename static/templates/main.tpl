@@ -3,33 +3,21 @@
 	<section class="menu">
 		<nav>
 			<ul>
-				<li ng-class="{active: opt.room === 'bedroom'}" ng-click="opt.room = 'bedroom'">
-					<img src="rooms/interiors/bedroom.jpg">
-					<span>Спальня</span>
-				</li>
-				<li ng-class="{active: opt.room === 'livingroom'}" ng-click="opt.room = 'livingroom'">
-					<img src="rooms/interiors/livingroom.jpg">
-					<span>Гостиная(зал)</span>
-				</li>
-				<li ng-class="{active: opt.room === 'kitchen'}" ng-click="opt.room = 'kitchen'">
-					<img src="rooms/interiors/kitchen.jpg">
-					<span>Кухня(столовая)</span>
-				</li>
-				<li ng-class="{active: opt.room === 'childrenroom'}" ng-click="opt.room = 'childrenroom'">
-					<img src="rooms/interiors/childrenroom.jpg">
-					<span>Детская</span>
+				<li ng-repeat="i in interiors" ng-class="{active: opt.interior.alias === i.alias}" ng-click="opt.interior = i; change_bg('interior');">
+					<img src="rooms/interiors/{{i.bg}}">
+					<span>{{i.article}}</span>
 				</li>
 			</ul>
 		</nav>
 	</section>
 	<section class="display">
 		<div class="section-layer wall" style="background-color: {{opt.color}}; background-image: url(/rooms/wall.png);"></div>
-		<div class="section-layer floor" style="background-image: url(/rooms/floors/floor{{opt.floor}}.png)"></div>
-		<div class="section-layer plinth" style="background-image: url(/rooms/plinths/plinth{{opt.plinth}}.png)"></div>
-		<div class="section-layer door" style="background-image: url(/rooms/doors/door{{opt.door}}.png)"></div>
-		<div class="section-layer interior" style="background-image: url(/rooms/interiors/{{opt.room}}.png)"></div>
+		<div class="section-layer floor"></div>
+		<div class="section-layer plinth"></div>
+		<div class="section-layer door"></div>
+		<div class="section-layer interior"></div>
 	</section>
-	<section class="bottom">
+	<section class="actions">
 		<nav>
 			<ul>
 				<li>
@@ -41,22 +29,19 @@
 				<li>
 					Ламинат
 					<div>
-						<span class="color c1" ng-click="opt.floor = 1; change_bg('floor');">1</span>
-						<span class="color c2" ng-click="opt.floor = 2; change_bg('floor');">2</span>
+						<span ng-repeat="f in floors" class="color" ng-click="opt.floor = f; change_bg('floor');">{{f.article}}</span>
 					</div>
 				</li>
 				<li>
 					Модель двери
 					<div>
-						<span class="color c1" ng-click="opt.door = 1; change_bg('door');">1</span>
-						<span class="color c2" ng-click="opt.door = 2; change_bg('door');">2</span>
+						<span ng-repeat="d in doors" class="color" ng-click="opt.door = d; change_bg('door');">{{d.article}}</span>
 					</div>
 				</li>
 				<li>
 					Плинтус
 					<div>
-						<span class="color c1" ng-click="opt.plinth = 1; change_bg('plinth');">1</span>
-						<span class="color c2" ng-click="opt.plinth = 2; change_bg('plinth');">2</span>
+						<span ng-repeat="p in plinths" class="color" ng-click="opt.plinth = p; change_bg('plinth');">{{p.article}}</span>
 					</div>
 				</li>
 			</ul>

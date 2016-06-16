@@ -1,7 +1,7 @@
 module.exports = function(app) {
 	var mongoose = require('mongoose'),
 		Floors = mongoose.model('floor', {
-			assemble: {
+			collection: {
 				type: String,
 				default: ''
 			},
@@ -10,6 +10,10 @@ module.exports = function(app) {
 				default: ''
 			},
 			image: {
+				type: String,
+				default: ''
+			},
+			bg: {
 				type: String,
 				default: ''
 			}
@@ -18,14 +22,13 @@ module.exports = function(app) {
 			article: {
 				type: String,
 				default: ''
-			},
-			image: {
-				type: String,
-				default: ''
 			}
 		});
 	app.route('/floor/:id').get((req, res) => {
-		Floors.find(+req.params.id || {}, {
+		var find = isNaN(req.params.id) ? {
+			_id: req.params.id
+		} : {};
+		Floors.find(find, {
 			__v: 0
 		}, (err, floors) => {
 			res.json(floors);
@@ -45,7 +48,10 @@ module.exports = function(app) {
 	});
 
 	app.route('/floorcollection/:id').get((req, res) => {
-		FloorCollections.find(+req.params.id || {}, {
+		var find = isNaN(req.params.id) ? {
+			_id: req.params.id
+		} : {};
+		FloorCollections.find(find, {
 			__v: 0
 		}, (err, floors) => {
 			res.json(floors);
