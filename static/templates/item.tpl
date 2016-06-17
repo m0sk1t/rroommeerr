@@ -1,9 +1,11 @@
 <article>
 	<form ng-submit="save();">
+		<select ng-show="item.coll !== undefined" ng-model="item.coll">
+			<option ng-repeat="c in coll" value="{{c._id}}">{{c.article}}</option>
+		</select><br>
 		<input type="color" ng-show="item.color !== undefined" placeholder="Цвет" ng-model="item.color"><br>
 		<input type="text" ng-show="item.alias !== undefined" placeholder="alias" ng-model="item.alias"><br>
 		<input type="text" ng-show="item.article !== undefined" placeholder="Наименование" ng-model="item.article"><br>
-		<input type="text" ng-show="item.collection !== undefined" placeholder="Коллекция" ng-model="item.collection"><br>
 		Фон:<input type="file" id="bg" accept="jpg" ng-show="item.bg !== undefined" onchange="angular.element(this).scope().bg()"><br>
 		Картинка:<input type="file" id="image" accept="png" ng-show="item.image !== undefined" onchange="angular.element(this).scope().image()"><br>
 		<input type="submit" value="Save">

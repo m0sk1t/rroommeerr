@@ -8,49 +8,56 @@ article, body {
 	overflow: hidden;
 	position: absolute;
 }
-article.splash {
-	z-index: 99;
-	background-color: rgba(33,33,33,.3);
-}
 nav>ul>li {
+	height: 100px;
 	margin-right: 1%;
 	position: relative;
+	display: inline-block;
+	list-style-type: none;
 }
 nav>ul>li>img {
-	width: 155px;
-	height: 55px;
+	height: 100px;
 }
 nav>ul>li>span {
 	left: 0;
 	bottom: 0;
 	width: 155px;
 	position: absolute;
+	text-align: center;
 	text-transform: uppercase;
 	background-color: rgba(33,33,33,.3);
 }
 nav>ul>li.active {
 	color: #aaa;
-	background-color: #77e;
+	background-color: #369;
 }
-nav>ul>li,
 .color {
 	float: left;
 	display: inline-block;
 }
-.menu>nav>ul,.menu>nav>ul>li {
+.menu>nav,.menu>nav>ul,.menu>nav>ul>li,.actions>nav,.actions>nav>ul,.actions>nav>ul>li {
 	height: 100%;
+	margin: 0 1% 0 0;
 }
 .menu,
 .actions {
 	z-index: 10;
 	color: #eee;
-	height: 10%;
+	height: 100px;
 	width: 100%;
 	position: absolute;
-	background-color: rgba(3,3,3,.7);
+	background-color: #333;
+}
+li>div {
+	max-height: 80px;
+	overflow-y: auto;
 }
 .actions {
 	bottom: 0;
+}
+.actions>nav>ul>li {
+	width: 22%;
+	float: left;
 }
 .create {
 	margin-top: 7%;
@@ -85,7 +92,24 @@ nav>ul>li,
 .interior {
 	z-index: 5;
 }
+.collection_items {
+	z-index: 9;
+	width: 70%;
+	height: 50%;
+	bottom: 100px;
+	margin: 0 15%;
+	position: absolute;
+	background-color: #333;
+}
+.model_item, .model_item>img {
+	width: 20%;
+	display: inline-block;
+}
+.model {
+	background-color: #666;
+}
 .color {
-	width: 30px;
-	height: 30px;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ccc;
 }

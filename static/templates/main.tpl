@@ -1,4 +1,3 @@
-<article class="splash" ng-show="loading"></article>
 <article>
 	<section class="menu">
 		<nav>
@@ -17,6 +16,17 @@
 		<div class="section-layer door"></div>
 		<div class="section-layer interior"></div>
 	</section>
+	<section class="collection_items" ng-show="opt.collection_opened">
+		<div><span ng-click="opt.collection_opened = false;">Close (x)</span></div>
+		<div
+			class="model_item"
+			ng-repeat="i in opt.model_items"
+			ng-click="opt[opt.selected_item] = i; change_bg(opt.selected_item)"
+		>
+			<img ng-src="rooms/{{opt.selected_item}}s/{{i.image}}">
+			{{i.article}}
+		</div>
+	</section>
 	<section class="actions">
 		<nav>
 			<ul>
@@ -27,21 +37,33 @@
 					</div>
 				</li>
 				<li>
-					Ламинат
+					Модели ламината
 					<div>
-						<span ng-repeat="f in floors" class="color" ng-click="opt.floor = f; change_bg('floor');">{{f.article}}</span>
+						<div
+							class="model"
+							ng-repeat="fc in floorcolls"
+							ng-click="opt.floorcoll = fc._id; opt.selected_item = 'floor'; select_items(); opt.collection_opened = true;"
+						>
+							{{fc.article}}
+						</div>
 					</div>
 				</li>
 				<li>
-					Модель двери
+					Модели дверей
 					<div>
-						<span ng-repeat="d in doors" class="color" ng-click="opt.door = d; change_bg('door');">{{d.article}}</span>
+						<div
+							class="model"
+							ng-repeat="dc in doorcolls"
+							ng-click="opt.doorcoll = dc._id; opt.selected_item = 'door'; select_items(); opt.collection_opened = true;"
+						>
+							{{dc.article}}
+						</div>
 					</div>
 				</li>
 				<li>
 					Плинтус
 					<div>
-						<span ng-repeat="p in plinths" class="color" ng-click="opt.plinth = p; change_bg('plinth');">{{p.article}}</span>
+						<div ng-repeat="p in plinths" class="model" ng-click="opt.plinth = p; change_bg('plinth')">{{p.article}}</div>
 					</div>
 				</li>
 			</ul>

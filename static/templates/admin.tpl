@@ -3,14 +3,11 @@
 		<nav>
 			<ul>
 				<li><a href="/#/" style="color: #fff;">BACK TO SITE</a></li>
-				<li ng-class="{active: item_type === 'doorcollection'}" ng-click="item_type = 'doorcollection'; load();">
+				<li ng-class="{active: item_type === 'doorcoll'}" ng-click="item_type = 'doorcoll'; load();">
 				Коллекции дверей
 				</li>
-				<li ng-class="{active: item_type === 'floorcollection'}" ng-click="item_type = 'floorcollection'; load();">
+				<li ng-class="{active: item_type === 'floorcoll'}" ng-click="item_type = 'floorcoll'; load();">
 				Коллекции ламината
-				</li>
-				<li ng-class="{active: item_type === 'doordecor'}" ng-click="item_type = 'doordecor'; load();">
-				Декор дверей
 				</li>
 				<li ng-class="{active: item_type === 'door'}" ng-click="item_type = 'door'; load();">
 				Двери
