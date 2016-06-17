@@ -56,16 +56,16 @@ nav>ul>li,
 	margin-top: 7%;
 }
 .display {
-	top: 10%;
+	top: 0;
 	width: 100%;
-	height: 80%;
+	height: 90%;
 	position: relative;
 }
 .section-layer {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	background-size: contain;
+	background-size: cover;
 	background-repeat: no-repeat;
 	background-blend-mode: multiply;
 	transition: all .3s ease;

@@ -1,7 +1,7 @@
 module.exports = function(app) {
 	var mongoose = require('mongoose'),
 		Floors = mongoose.model('floor', {
-			collection: {
+			coll: {
 				type: String,
 				default: ''
 			},
@@ -18,7 +18,7 @@ module.exports = function(app) {
 				default: ''
 			}
 		}),
-		FloorCollections = mongoose.model('floorcollection', {
+		FloorColls = mongoose.model('floorcoll', {
 			article: {
 				type: String,
 				default: ''
@@ -47,25 +47,25 @@ module.exports = function(app) {
 		});
 	});
 
-	app.route('/floorcollection/:id').get((req, res) => {
+	app.route('/floorcoll/:id').get((req, res) => {
 		var find = isNaN(req.params.id) ? {
 			_id: req.params.id
 		} : {};
-		FloorCollections.find(find, {
+		FloorColls.find(find, {
 			__v: 0
 		}, (err, floors) => {
 			res.json(floors);
 		});
 	}).post((req, res) => {
-		FloorCollections.create(req.body, (err, floor) => {
+		FloorColls.create(req.body, (err, floor) => {
 			res.json(floor);
 		});
 	}).put((req, res) => {
-		FloorCollections.findByIdAndUpdate(req.params.id, req.body, (err, floor) => {
+		FloorColls.findByIdAndUpdate(req.params.id, req.body, (err, floor) => {
 			res.json(floor);
 		});
 	}).delete((req, res) => {
-		FloorCollections.findByIdAndRemove(req.params.id, (err, floor) => {
+		FloorColls.findByIdAndRemove(req.params.id, (err, floor) => {
 			res.json(floor);
 		});
 	});

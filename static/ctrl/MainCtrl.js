@@ -10,9 +10,17 @@
 				floor: null,
 				door: null,
 			};
+			$scope.set_color = function(color) {
+				$scope.opt.color = color.color;
+			};
+			$scope.change_bg = function(item) {
+				var layer = document.querySelector('.' + item);
+				layer.style.backgroundImage = 'url(rooms/' + item + 's/' + $scope.opt[item].image + ')';
+			};
 			$http.get('/interior/0').then(function(res) {
 				$scope.interiors = res.data;
 				$scope.opt.interior = res.data[0];
+				$scope.change_bg('interior');
 			});
 			$http.get('/color/0').then(function(res) {
 				$scope.colors = res.data;
@@ -30,18 +38,11 @@
 				$scope.plinths = res.data;
 				$scope.opt.plinth = res.data[0];
 			});
-			$scope.set_color = function(color) {
-				$scope.opt.color = color.color;
-			};
-			$scope.change_bg = function(item) {
-				var layer = document.querySelector('.' + item);
-				layer.style.backgroundImage = 'url(rooms/' + item + 's/' + $scope.opt[item].image + ')';
-			};
 		}
 	]).controller('AdminCtrl', ['$scope', '$http', '$location',
 		function($scope, $http, $location) {
 			$scope.items = [];
-			$scope.item_type = 'doorcollection';
+			$scope.item_type = 'doorcoll';
 			$scope.load = function() {
 				$http.get('/' + $scope.item_type + '/0').then(function(res) {
 					$scope.items = res.data;

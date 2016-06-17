@@ -1,7 +1,7 @@
 module.exports = function(app) {
 	var mongoose = require('mongoose'),
 		Doors = mongoose.model('door', {
-			collection: {
+			coll: {
 				type: String,
 				default: ''
 			},
@@ -18,7 +18,7 @@ module.exports = function(app) {
 				default: ''
 			}
 		}),
-		DoorCollections = mongoose.model('doorcollection', {
+		DoorColls = mongoose.model('doorcoll', {
 			article: {
 				type: String,
 				default: ''
@@ -47,25 +47,25 @@ module.exports = function(app) {
 		});
 	});
 
-	app.route('/doorcollection/:id').get((req, res) => {
+	app.route('/doorcoll/:id').get((req, res) => {
 		var find = isNaN(req.params.id) ? {
 			_id: req.params.id
 		} : {};
-		DoorCollections.find(find, {
+		DoorColls.find(find, {
 			__v: 0
 		}, (err, doors) => {
 			res.json(doors);
 		});
 	}).post((req, res) => {
-		DoorCollections.create(req.body, (err, door) => {
+		DoorColls.create(req.body, (err, door) => {
 			res.json(door);
 		});
 	}).put((req, res) => {
-		DoorCollections.findByIdAndUpdate(req.params.id, req.body, (err, door) => {
+		DoorColls.findByIdAndUpdate(req.params.id, req.body, (err, door) => {
 			res.json(door);
 		});
 	}).delete((req, res) => {
-		DoorCollections.findByIdAndRemove(req.params.id, (err, door) => {
+		DoorColls.findByIdAndRemove(req.params.id, (err, door) => {
 			res.json(door);
 		});
 	});
