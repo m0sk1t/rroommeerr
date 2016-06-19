@@ -9,19 +9,19 @@ article, body {
 	position: absolute;
 }
 nav>ul>li {
-	height: 100px;
+	height: 70px;
 	margin-right: 1%;
 	position: relative;
 	display: inline-block;
 	list-style-type: none;
 }
 nav>ul>li>img {
-	height: 100px;
+	height: 70px;
 }
-nav>ul>li>span {
+nav>ul>li>span, .model-item>span {
 	left: 0;
 	bottom: 0;
-	width: 155px;
+	width: 100%;
 	position: absolute;
 	text-align: center;
 	text-transform: uppercase;
@@ -43,17 +43,21 @@ nav>ul>li.active {
 .actions {
 	z-index: 10;
 	color: #eee;
-	height: 100px;
 	width: 100%;
 	position: absolute;
 	background-color: #333;
 }
 li>div {
-	max-height: 80px;
+	max-height: 50px;
 	overflow-y: auto;
+}
+.menu {
+	top: 0;
+	height: 70px;
 }
 .actions {
 	bottom: 0;
+	height: 70px;
 }
 .actions>nav>ul>li {
 	width: 22%;
@@ -63,9 +67,9 @@ li>div {
 	margin-top: 7%;
 }
 .display {
-	top: 0;
+	top: -70px;
 	width: 100%;
-	height: 90%;
+	height: 100%;
 	position: relative;
 }
 .section-layer {
@@ -92,17 +96,24 @@ li>div {
 .interior {
 	z-index: 5;
 }
-.collection_items {
+.collection-items {
 	z-index: 9;
 	width: 70%;
 	height: 50%;
-	bottom: 100px;
+	color: #ccc;
+	bottom: 70px;
 	margin: 0 15%;
 	position: absolute;
 	background-color: #333;
 }
-.model_item, .model_item>img {
-	width: 20%;
+.collection-items>div:first-child {
+	text-align: right;
+}
+.model-item {
+	position: relative;
+}
+.model-item,.model-item>img {
+	width: 100px;
 	display: inline-block;
 }
 .model {

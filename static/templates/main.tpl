@@ -16,15 +16,17 @@
 		<div class="section-layer door"></div>
 		<div class="section-layer interior"></div>
 	</section>
-	<section class="collection_items" ng-show="opt.collection_opened">
+	<section class="collection-items" ng-show="opt.collection_opened">
 		<div><span ng-click="opt.collection_opened = false;">Close (x)</span></div>
 		<div
-			class="model_item"
+			class="model-item"
 			ng-repeat="i in opt.model_items"
 			ng-click="opt[opt.selected_item] = i; change_bg(opt.selected_item)"
 		>
 			<img ng-src="rooms/{{opt.selected_item}}s/{{i.image}}">
-			{{i.article}}
+			<span>
+				{{i.article}}
+			</span>
 		</div>
 	</section>
 	<section class="actions">

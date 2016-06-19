@@ -43,7 +43,7 @@
 			$http.get('/floor/0').then(function(res) {
 				$scope.floors = res.data;
 				$scope.opt.floor = res.data[0];
-				//				$scope.change_bg('floor');
+				$scope.change_bg('floor');
 			});
 			$http.get('/plinth/0').then(function(res) {
 				$scope.plinths = res.data;
@@ -138,7 +138,7 @@
 				var id = $scope.item._id;
 				delete $scope.item._id;
 				$http.put('/' + $scope.type + '/' + $routeParams.id, $scope.item).then(function(res) {
-					$location.path('/admin');
+					//$location.path('/admin');
 				}, function(res) {
 					console.error(res.data);
 				});
