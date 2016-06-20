@@ -5,6 +5,14 @@ module.exports = function(app) {
 				type: String,
 				default: ''
 			},
+			model: {
+				type: String,
+				default: ''
+			},
+			gamma: {
+				type: String,
+				default: ''
+			},
 			article: {
 				type: String,
 				default: ''
@@ -12,14 +20,34 @@ module.exports = function(app) {
 			image: {
 				type: String,
 				default: ''
-			},
-			bg: {
-				type: String,
-				default: ''
 			}
 		}),
 		FloorColls = mongoose.model('floorcoll', {
 			article: {
+				type: String,
+				default: ''
+			}
+		}),
+		FloorModels = mongoose.model('floormodel', {
+			article: {
+				type: String,
+				default: ''
+			},
+			coll: {
+				type: String,
+				default: ''
+			},
+			image: {
+				type: String,
+				default: ''
+			}
+		}),
+		FloorGammas = mongoose.model('floorgamma', {
+			article: {
+				type: String,
+				default: ''
+			},
+			image: {
 				type: String,
 				default: ''
 			}
@@ -66,6 +94,52 @@ module.exports = function(app) {
 		});
 	}).delete((req, res) => {
 		FloorColls.findByIdAndRemove(req.params.id, (err, floor) => {
+			res.json(floor);
+		});
+	});
+
+	app.route('/floormodel/:id').get((req, res) => {
+		var find = isNaN(req.params.id) ? {
+			_id: req.params.id
+		} : {};
+		FloorModels.find(find, {
+			__v: 0
+		}, (err, floors) => {
+			res.json(floors);
+		});
+	}).post((req, res) => {
+		FloorModels.create(req.body, (err, floor) => {
+			res.json(floor);
+		});
+	}).put((req, res) => {
+		FloorModels.findByIdAndUpdate(req.params.id, req.body, (err, floor) => {
+			res.json(floor);
+		});
+	}).delete((req, res) => {
+		FloorModels.findByIdAndRemove(req.params.id, (err, floor) => {
+			res.json(floor);
+		});
+	});
+
+	app.route('/floorgamma/:id').get((req, res) => {
+		var find = isNaN(req.params.id) ? {
+			_id: req.params.id
+		} : {};
+		FloorGammas.find(find, {
+			__v: 0
+		}, (err, floors) => {
+			res.json(floors);
+		});
+	}).post((req, res) => {
+		FloorGammas.create(req.body, (err, floor) => {
+			res.json(floor);
+		});
+	}).put((req, res) => {
+		FloorGammas.findByIdAndUpdate(req.params.id, req.body, (err, floor) => {
+			res.json(floor);
+		});
+	}).delete((req, res) => {
+		FloorGammas.findByIdAndRemove(req.params.id, (err, floor) => {
 			res.json(floor);
 		});
 	});

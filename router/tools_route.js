@@ -19,4 +19,15 @@ module.exports = function(app) {
 			});
 		});
 	});
+	app.delete('/image/:path/:image', function(req, res) {
+		var fs = require('fs');
+		fs.unlink(__dirname + '/../static/rooms/' + req.params.path + 's/' + image, function(err) {
+			if (err) {
+				console.error(err);
+				res.status(500).json(err);
+			} else {
+				res.send('OK!');
+			}
+		})
+	});
 };
