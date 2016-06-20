@@ -32,7 +32,7 @@
 			};
 			$scope.select_gamma = function() {
 				$scope.opt.gamma_items = $scope[$scope.opt.selected_item + 'gammas'].filter(function(el) {
-					return el.coll === $scope.opt[$scope.opt.selected_item + 'coll'];
+					return (el.coll === $scope.opt[$scope.opt.selected_item + 'coll'] && el.gamma === $scope.opt[$scope.opt.selected_item + 'gamma'] && el.gamma === $scope.opt[$scope.opt.selected_item + 'gamma']);
 				});
 			};
 			$http.get('/color/0').then(function(res) {
@@ -139,12 +139,13 @@
 						'Content-Type': undefined
 					}
 				}).then(function(res) {
-					$http.delete('/image/' + $scope.type + '/' + $scope.item.bg).then(function(res) {
+					$scope.item.bg && $scope.item.bg !== res.data && $http.delete('/image/' + $scope.type + '/' + $scope.item.bg).then(function(r) {
 						$scope.item.bg = res.data;
 						$scope.save();
-					}, function(res) {
-						console.error(res.data);
+					}, function(r) {
+						console.error(r.data);
 					});
+					$scope.item.bg = res.data;
 				}, function(res) {
 					console.error(res.data.msg);
 				});
@@ -160,12 +161,13 @@
 						'Content-Type': undefined
 					}
 				}).then(function(res) {
-					$http.delete('/image/' + $scope.type + '/' + $scope.item.image).then(function(res) {
+					$scope.item.image && $scope.item.image !== res.data && $http.delete('/image/' + $scope.type + '/' + $scope.item.image).then(function(r) {
 						$scope.item.image = res.data;
 						$scope.save();
-					}, function(res) {
+					}, function(r) {
 						console.error(res.data);
 					});
+					$scope.item.image = res.data;
 				}, function(res) {
 					console.error(res.data.msg);
 				});

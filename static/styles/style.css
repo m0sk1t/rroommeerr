@@ -8,6 +8,9 @@ article, body {
 	overflow: hidden;
 	position: absolute;
 }
+nav>ul{
+	padding-left: 0;
+}
 nav>ul>li {
 	height: 70px;
 	margin-right: 1%;
@@ -28,7 +31,7 @@ nav>ul>li>span, .model-item>span {
 	background-color: rgba(33,33,33,.3);
 }
 nav>ul>li.active {
-	color: #aaa;
+	color: #fff;
 	background-color: #369;
 }
 .color {
@@ -42,7 +45,7 @@ nav>ul>li.active {
 .menu,
 .actions {
 	z-index: 10;
-	color: #eee;
+	color: #ddd;
 	width: 100%;
 	position: absolute;
 	background-color: #222;
@@ -50,6 +53,9 @@ nav>ul>li.active {
 li>div {
 	max-height: 50px;
 	overflow-y: auto;
+}
+.admin-menu {
+	width: 7%;
 }
 .menu {
 	top: 0;
@@ -100,7 +106,7 @@ li>div {
 	z-index: 9;
 	width: 70%;
 	height: 50%;
-	color: #ccc;
+	color: #ddd;
 	bottom: 70px;
 	margin: 0 15%;
 	position: absolute;

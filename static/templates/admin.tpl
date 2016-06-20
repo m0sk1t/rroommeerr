@@ -1,39 +1,39 @@
 <article>
 	<section class="menu">
 		<nav>
-			<ul>
-				<li><a href="/#/" style="color: #fff;">&lt;НАЗАД</a></li>
-				<li ng-class="{active: item_type === 'doorcoll'}" ng-click="item_type = 'doorcoll'; load();">
+			<ul style="padding-left: 0;">
+				<li class="admin-menu"><a href="/#/" style="color: #fff;">&lt;НАЗАД</a></li>
+				<li class="admin-menu" ng-class="{active: item_type === 'doorcoll'}" ng-click="item_type = 'doorcoll'; load();">
 				Коллекции дверей
 				</li>
-				<li ng-class="{active: item_type === 'doormodel'}" ng-click="item_type = 'doormodel'; load();">
+				<li class="admin-menu" ng-class="{active: item_type === 'doormodel'}" ng-click="item_type = 'doormodel'; load();">
 				Модели дверей
 				</li>
-				<li ng-class="{active: item_type === 'doorgamma'}" ng-click="item_type = 'doorgamma'; load();">
+				<li class="admin-menu" ng-class="{active: item_type === 'doorgamma'}" ng-click="item_type = 'doorgamma'; load();">
 				Гаммы дверей
 				</li>
-				<li ng-class="{active: item_type === 'floorcoll'}" ng-click="item_type = 'floorcoll'; load();">
+				<li class="admin-menu" ng-class="{active: item_type === 'floorcoll'}" ng-click="item_type = 'floorcoll'; load();">
 				Коллекции ламината
 				</li>
-				<li ng-class="{active: item_type === 'floormodel'}" ng-click="item_type = 'floormodel'; load();">
+				<li class="admin-menu" ng-class="{active: item_type === 'floormodel'}" ng-click="item_type = 'floormodel'; load();">
 				Модели ламината
 				</li>
-				<li ng-class="{active: item_type === 'floorgamma'}" ng-click="item_type = 'floorgamma'; load();">
+				<li class="admin-menu" ng-class="{active: item_type === 'floorgamma'}" ng-click="item_type = 'floorgamma'; load();">
 				Гаммы ламината
 				</li>
-				<li ng-class="{active: item_type === 'door'}" ng-click="item_type = 'door'; load();">
+				<li class="admin-menu" ng-class="{active: item_type === 'door'}" ng-click="item_type = 'door'; load();">
 				Двери
 				</li>
-				<li ng-class="{active: item_type === 'floor'}" ng-click="item_type = 'floor'; load();">
+				<li class="admin-menu" ng-class="{active: item_type === 'floor'}" ng-click="item_type = 'floor'; load();">
 				Ламинат
 				</li>
-				<li ng-class="{active: item_type === 'plinth'}" ng-click="item_type = 'plinth'; load();">
+				<li class="admin-menu" ng-class="{active: item_type === 'plinth'}" ng-click="item_type = 'plinth'; load();">
 				Плинтус
 				</li>
-				<li ng-class="{active: item_type === 'interior'}" ng-click="item_type = 'interior'; load();">
+				<li class="admin-menu" ng-class="{active: item_type === 'interior'}" ng-click="item_type = 'interior'; load();">
 				Интерьер
 				</li>
-				<li ng-class="{active: item_type === 'color'}" ng-click="item_type = 'color'; load();">
+				<li class="admin-menu" ng-class="{active: item_type === 'color'}" ng-click="item_type = 'color'; load();">
 				Цвета стен
 				</li>
 			</ul>

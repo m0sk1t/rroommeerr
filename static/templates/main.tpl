@@ -65,7 +65,9 @@
 				<li>
 					Плинтус
 					<div>
-						<div ng-repeat="p in plinths" class="model" ng-click="opt.plinth = p; change_bg('plinth')">{{p.article}}</div>
+						<div ng-repeat="p in plinths" class="color" ng-click="opt.plinth = p; change_bg('plinth')">
+							<img class="color" ng-src="p.bg" alt="{{p.article}}">
+						</div>
 					</div>
 				</li>
 			</ul>
