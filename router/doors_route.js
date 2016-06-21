@@ -82,20 +82,20 @@ module.exports = function(app) {
 		} : {};
 		DoorColls.find(find, {
 			__v: 0
-		}, (err, doors) => {
-			res.json(doors);
+		}, (err, doorcolls) => {
+			res.json(doorcolls);
 		});
 	}).post((req, res) => {
-		DoorColls.create(req.body, (err, door) => {
-			res.json(door);
+		DoorColls.create(req.body, (err, doorcoll) => {
+			res.json(doorcoll);
 		});
 	}).put((req, res) => {
-		DoorColls.findByIdAndUpdate(req.params.id, req.body, (err, door) => {
-			res.json(door);
+		DoorColls.findByIdAndUpdate(req.params.id, req.body, (err, doorcoll) => {
+			res.json(doorcoll);
 		});
 	}).delete((req, res) => {
-		DoorColls.findByIdAndRemove(req.params.id, (err, door) => {
-			res.json(door);
+		DoorColls.findByIdAndRemove(req.params.id, (err, doorcoll) => {
+			res.json(doorcoll);
 		});
 	});
 
@@ -105,20 +105,20 @@ module.exports = function(app) {
 		} : {};
 		DoorModels.find(find, {
 			__v: 0
-		}, (err, doors) => {
-			res.json(doors);
+		}, (err, doormodels) => {
+			res.json(doormodels);
 		});
 	}).post((req, res) => {
-		DoorModels.create(req.body, (err, door) => {
-			res.json(door);
+		DoorModels.create(req.body, (err, doormodel) => {
+			res.json(doormodel);
 		});
 	}).put((req, res) => {
-		DoorModels.findByIdAndUpdate(req.params.id, req.body, (err, door) => {
-			res.json(door);
+		DoorModels.findByIdAndUpdate(req.params.id, req.body, (err, doormodel) => {
+			res.json(doormodel);
 		});
 	}).delete((req, res) => {
-		DoorModels.findByIdAndRemove(req.params.id, (err, door) => {
-			res.json(door);
+		DoorModels.findByIdAndRemove(req.params.id, (err, doormodel) => {
+			res.json(doormodel);
 		});
 	});
 
@@ -128,20 +128,20 @@ module.exports = function(app) {
 		} : {};
 		DoorGammas.find(find, {
 			__v: 0
-		}, (err, doors) => {
-			res.json(doors);
+		}, (err, doorgammas) => {
+			res.json(doorgammas);
 		});
 	}).post((req, res) => {
-		DoorGammas.create(req.body, (err, door) => {
-			res.json(door);
+		DoorGammas.create(req.body, (err, doorgamma) => {
+			res.json(doorgamma);
 		});
 	}).put((req, res) => {
-		DoorGammas.findByIdAndUpdate(req.params.id, req.body, (err, door) => {
-			res.json(door);
+		DoorGammas.findByIdAndUpdate(req.params.id, req.body, (err, doorgamma) => {
+			res.json(doorgamma);
 		});
 	}).delete((req, res) => {
-		DoorGammas.findByIdAndRemove(req.params.id, (err, door) => {
-			res.json(door);
+		DoorGammas.findByIdAndRemove(req.params.id, (err, doorgamma) => {
+			res.json(doorgamma);
 		});
 	});
 };

@@ -14,8 +14,11 @@
 				floormodel: null,
 				doorcolor: null,
 				floorcolor: null,
+				gamma_items: [],
 				model_items: [],
 				selected_item: null,
+				selected_model: null,
+				selected_gamma: null,
 				collection_opened: false
 			};
 			$scope.set_color = function(color) {
@@ -30,10 +33,25 @@
 					return el.coll === $scope.opt[$scope.opt.selected_item + 'coll'];
 				});
 			};
-			$scope.select_gamma = function() {
-				$scope.opt.gamma_items = $scope[$scope.opt.selected_item + 'gammas'].filter(function(el) {
-					return (el.coll === $scope.opt[$scope.opt.selected_item + 'coll'] && el.gamma === $scope.opt[$scope.opt.selected_item + 'gamma'] && el.gamma === $scope.opt[$scope.opt.selected_item + 'gamma']);
+			$scope.model_item = function() {
+				var gamma = $scope[$scope.opt.selected_item + 'gammas'][0];
+				return $scope[$scope.opt.selected_item + 's'].filter(function(el) {
+					return (el.model === $scope.opt.selected_model._id && el.gamma === gamma._id);
+				})[0];
+			};
+			$scope.select_gammas = function(model) {
+				$scope.opt.selected_gamma = $scope[$scope.opt.selected_item + 's'].map(function(el) {
+					if (el.model === model._id) {
+						return $scope[$scope.opt.selected_item + 'gammas'].filter(function(gamma) {
+							el.gamma === gamma._id
+						})[0];
+					}
 				});
+			};
+			$scope.select_gamma = function(gamma) {
+				$scope.opt[$scope.opt.selected_item] = $scope[$scope.opt.selected_item + 's'].filter(function(el) {
+					return (el.gamma === gamma._id && el._id === $scope.opt[$scope.opt.selected_item]._id && el.coll === $scope.opt[$scope.opt.selected_item].coll && el.model === $scope.opt[$scope.opt.selected_item].model);
+				})[0];
 			};
 			$http.get('/color/0').then(function(res) {
 				$scope.colors = res.data;
@@ -60,13 +78,13 @@
 				$scope.floormodels = res.data;
 				$scope.opt.floormodel = res.data[0];
 			});
-			$http.get('/doorcolor/0').then(function(res) {
-				$scope.doorcolors = res.data;
-				$scope.opt.doorcolor = res.data[0];
+			$http.get('/doorgamma/0').then(function(res) {
+				$scope.doorgammas = res.data;
+				$scope.opt.doorgamma = res.data[0];
 			});
-			$http.get('/floorcolor/0').then(function(res) {
-				$scope.floorcolors = res.data;
-				$scope.opt.floorcolor = res.data[0];
+			$http.get('/floorgamma/0').then(function(res) {
+				$scope.floorgammas = res.data;
+				$scope.opt.floorgamma = res.data[0];
 			});
 			$http.get('/plinth/0').then(function(res) {
 				$scope.plinths = res.data;
