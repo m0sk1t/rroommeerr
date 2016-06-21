@@ -40,6 +40,6 @@
 		</label>
 		<input type="submit" value="Save">
 	</form>
-	<img ng-show="item.bg" ng-src="rooms/{{type}}s/{{item.bg}}" width="320px">
-	<img ng-show="item.image" ng-src="rooms/{{type}}s/{{item.image}}" width="320px">
+	<img ng-show="item.bg" ng-src="rooms/{{img}}s/{{item.bg}}" width="320px">
+	<img ng-show="item.image" ng-src="rooms/{{img}}s/{{item.image}}" width="320px">
 </article>

@@ -29,6 +29,7 @@
 				layer.style.backgroundImage = 'url(rooms/' + item + 's/' + $scope.opt[item].image + ')';
 			};
 			$scope.select_models = function() {
+				$scope.opt.gamma_items = [];
 				$scope.opt.model_items = $scope[$scope.opt.selected_item + 'models'].filter(function(el) {
 					return el.coll === $scope.opt[$scope.opt.selected_item + 'coll'];
 				});
@@ -36,14 +37,14 @@
 			$scope.model_item = function() {
 				var gamma = $scope[$scope.opt.selected_item + 'gammas'][0];
 				return $scope[$scope.opt.selected_item + 's'].filter(function(el) {
-					return (el.model === $scope.opt.selected_model._id && el.gamma === gamma._id);
+					return el.model === $scope.opt.selected_model._id;
 				})[0];
 			};
 			$scope.select_gammas = function(model) {
-				$scope.opt.selected_gamma = $scope[$scope.opt.selected_item + 's'].map(function(el) {
+				$scope.opt.gamma_items = $scope[$scope.opt.selected_item + 's'].map(function(el) {
 					if (el.model === model._id) {
 						return $scope[$scope.opt.selected_item + 'gammas'].filter(function(gamma) {
-							el.gamma === gamma._id
+							return el.gamma === gamma._id
 						})[0];
 					}
 				});
@@ -130,16 +131,31 @@
 		function($scope, $http, $location, $routeParams) {
 			$scope.item = {};
 			$scope.type = $routeParams.type;
+			switch (true) {
+				case $scope.type.split('coll').length === 2:
+					$scope.img = $scope.type.split('coll')[0];
+					break;
+				case $scope.type.split('model').length === 2:
+					$scope.img = $scope.type.split('model')[0];
+					break;
+				case $scope.type.split('gamma').length === 2:
+					$scope.img = $scope.type.split('gamma')[0];
+					break;
+				default:
+					$scope.img = $scope.type;
+					// statements_def
+					break;
+			}
 			$scope.load = function() {
 				$http.get('/' + $scope.type + '/' + $routeParams.id).then(function(res) {
 					$scope.item = res.data[0];
-					$scope.item.coll !== undefined && $http.get('/' + $routeParams.type.split('model')[0] + 'coll/0').then(function(res) {
+					$scope.item.coll !== undefined && $http.get('/' + $scope.img + 'coll/0').then(function(res) {
 						$scope.coll = res.data;
 					});
-					$scope.item.model !== undefined && $http.get('/' + $routeParams.type + 'model/0').then(function(res) {
+					$scope.item.model !== undefined && $http.get('/' + $scope.type + 'model/0').then(function(res) {
 						$scope.model = res.data;
 					});
-					$scope.item.gamma !== undefined && $http.get('/' + $routeParams.type + 'gamma/0').then(function(res) {
+					$scope.item.gamma !== undefined && $http.get('/' + $scope.type + 'gamma/0').then(function(res) {
 						$scope.gamma = res.data;
 					});
 				}, function(res) {
@@ -151,13 +167,13 @@
 					data = new FormData();
 				if (!file) return;
 				data.append('file', file);
-				$http.put('/image/' + $scope.type, data, {
+				$http.put('/image/' + $scope.img, data, {
 					transformRequest: angular.identity,
 					headers: {
 						'Content-Type': undefined
 					}
 				}).then(function(res) {
-					$scope.item.bg && $scope.item.bg !== res.data && $http.delete('/image/' + $scope.type + '/' + $scope.item.bg).then(function(r) {
+					$scope.item.bg && $scope.item.bg !== res.data && $http.delete('/image/' + $scope.img + '/' + $scope.item.bg).then(function(r) {
 						$scope.item.bg = res.data;
 						$scope.save();
 					}, function(r) {
@@ -173,13 +189,13 @@
 					data = new FormData();
 				if (!file) return;
 				data.append('file', file);
-				$http.put('/image/' + $scope.type, data, {
+				$http.put('/image/' + $scope.img, data, {
 					transformRequest: angular.identity,
 					headers: {
 						'Content-Type': undefined
 					}
 				}).then(function(res) {
-					$scope.item.image && $scope.item.image !== res.data && $http.delete('/image/' + $scope.type + '/' + $scope.item.image).then(function(r) {
+					$scope.item.image && $scope.item.image !== res.data && $http.delete('/image/' + $scope.img + '/' + $scope.item.image).then(function(r) {
 						$scope.item.image = res.data;
 						$scope.save();
 					}, function(r) {

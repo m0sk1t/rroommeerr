@@ -120,7 +120,7 @@ li>div {
 	position: relative;
 }
 .model-item,.model-item>img {
-	width: 100px;
+	width: 50px;
 	display: inline-block;
 }
 .model {
