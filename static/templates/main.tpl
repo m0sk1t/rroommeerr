@@ -21,24 +21,24 @@
 		<div class="models">
 			<div
 				class="model-item"
-				ng-repeat="i in opt.model_items"
-				ng-click="opt.selected_model = i; opt[opt.selected_item] = model_item(i); select_gammas(i); change_bg(opt.selected_item)"
+				ng-repeat="m in opt.model_items"
+				ng-click="opt.selected_model = m; opt[opt.selected_item] = model_item(m); select_gammas(m); opt[opt.selected_item] && change_bg(opt.selected_item);"
 			>
-				<img ng-src="rooms/{{opt.selected_item}}s/{{i.image}}">
+				<img ng-src="rooms/{{opt.selected_item}}s/{{m.image}}">
 				<span>
-					{{i.article}}
+					{{m.article}}
 				</span>
 			</div>
 		</div>
 		<div class="gammas">
 			<div
 				class="model-item"
-				ng-repeat="i in opt.gamma_items"
-				ng-click="select_gamma(i); change_bg(opt.selected_item)"
+				ng-repeat="g in opt.gamma_items"
+				ng-click="select_gamma(g); change_bg(opt.selected_item)"
 			>
-				<img ng-src="rooms/{{opt.selected_item}}s/{{i.image}}">
+				<img ng-src="rooms/{{opt.selected_item}}s/{{g.image}}">
 				<span>
-					{{i.article}}
+					{{g.article}}
 				</span>
 			</div>
 		</div>

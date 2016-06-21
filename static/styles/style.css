@@ -1,3 +1,7 @@
+*{
+	font-family: Arial;
+	font-size: .9rem;
+}
 article, body {
 	top: 0;
 	left: 0;
@@ -21,13 +25,15 @@ nav>ul>li {
 nav>ul>li>img {
 	height: 70px;
 }
+nav>ul>li>span {
+	text-transform: uppercase;
+}
 nav>ul>li>span, .model-item>span {
 	left: 0;
 	bottom: 0;
 	width: 100%;
 	position: absolute;
 	text-align: center;
-	text-transform: uppercase;
 	background-color: rgba(33,33,33,.3);
 }
 nav>ul>li.active {
@@ -51,7 +57,7 @@ nav>ul>li.active {
 	background-color: #222;
 }
 li>div {
-	max-height: 50px;
+	height: 80%;
 	overflow-y: auto;
 }
 .admin-menu {
@@ -64,7 +70,7 @@ li>div {
 }
 .actions {
 	bottom: 0;
-	height: 70px;
+	height: 100px;
 }
 .actions>nav>ul>li {
 	width: 22%;
@@ -74,7 +80,7 @@ li>div {
 	margin-top: 7%;
 }
 .display {
-	top: -70px;
+	top: -50px;
 	width: 100%;
 	height: 100%;
 	position: relative;
@@ -105,10 +111,10 @@ li>div {
 }
 .collection-items {
 	z-index: 9;
-	width: 70%;
+	width: 60%;
 	height: 50%;
 	color: #ddd;
-	bottom: 70px;
+	bottom: 100px;
 	margin: 0 15%;
 	position: absolute;
 	background-color: #222;
@@ -120,7 +126,7 @@ li>div {
 	position: relative;
 }
 .model-item,.model-item>img {
-	width: 50px;
+	width: 80px;
 	display: inline-block;
 }
 .model {

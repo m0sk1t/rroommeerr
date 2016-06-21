@@ -35,19 +35,13 @@
 				});
 			};
 			$scope.model_item = function() {
-				var gamma = $scope[$scope.opt.selected_item + 'gammas'][0];
 				return $scope[$scope.opt.selected_item + 's'].filter(function(el) {
 					return el.model === $scope.opt.selected_model._id;
 				})[0];
 			};
 			$scope.select_gammas = function(model) {
-				$scope.opt.gamma_items = $scope[$scope.opt.selected_item + 's'].map(function(el) {
-					if (el.model === model._id) {
-						return $scope[$scope.opt.selected_item + 'gammas'].filter(function(gamma) {
-							return el.gamma === gamma._id
-						})[0];
-					}
-				});
+				$scope.opt.gamma_items = [];
+				$scope.opt.gamma_items = $scope[$scope.opt.selected_item + 'gammas'];
 			};
 			$scope.select_gamma = function(gamma) {
 				$scope.opt[$scope.opt.selected_item] = $scope[$scope.opt.selected_item + 's'].filter(function(el) {
