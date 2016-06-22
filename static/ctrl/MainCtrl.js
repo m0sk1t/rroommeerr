@@ -54,7 +54,7 @@
 			};
 			$scope.select_gamma = function(gamma) {
 				$scope.opt[$scope.opt.selected_item] = $scope[$scope.opt.selected_item + 's'].filter(function(el) {
-					return (el.gamma === gamma._id && el._id === $scope.opt[$scope.opt.selected_item]._id && el.coll === $scope.opt[$scope.opt.selected_item].coll && el.model === $scope.opt[$scope.opt.selected_item].model);
+					return (el.gamma === gamma._id && el.coll === $scope.opt[$scope.opt.selected_item].coll && el.model === $scope.opt.selected_model._id);
 				})[0];
 			};
 			$http.get('/color/0').then(function(res) {

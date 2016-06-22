@@ -22,6 +22,7 @@
 			<div
 				class="model-item"
 				ng-repeat="m in opt.model_items"
+				ng-class="{'active': opt.selected_model._id === m._id}"
 				ng-click="opt.selected_model = m; opt[opt.selected_item] = model_item(m); select_gammas(m); opt[opt.selected_item] && change_bg(opt.selected_item);"
 			>
 				<img ng-src="rooms/{{opt.selected_item}}s/{{m.image}}">
@@ -34,6 +35,7 @@
 			<div
 				class="model-item"
 				ng-repeat="g in opt.gamma_items"
+				ng-class="{'active': opt.selected_item.gamma === g._id}"
 				ng-click="select_gamma(g); change_bg(opt.selected_item)"
 			>
 				<img ng-src="rooms/{{opt.selected_item}}s/{{g.image}}">
