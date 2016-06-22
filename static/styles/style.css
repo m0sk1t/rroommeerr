@@ -58,6 +58,8 @@ nav>ul>li.active {
 }
 li>div {
 	height: 80%;
+	display: flex;
+	flex-wrap: wrap;
 	overflow-y: auto;
 }
 .admin-menu {
@@ -123,6 +125,7 @@ li>div {
 	text-align: right;
 }
 .model-item {
+	margin-right: 1%;
 	position: relative;
 }
 .model-item,.model-item>img {
@@ -130,6 +133,8 @@ li>div {
 	display: inline-block;
 }
 .model {
+	padding: 3%;
+	height: 1rem;
 	background-color: #444;
 }
 .color {
