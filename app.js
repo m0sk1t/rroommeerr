@@ -9,7 +9,7 @@ var
 	serveStatic = require('serve-static');
 
 app.use(morgan('combined'));
-app.use(cookieParser);
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({
 	limit: '5mb',
 	extended: true
