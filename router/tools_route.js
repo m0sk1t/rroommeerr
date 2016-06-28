@@ -7,7 +7,7 @@ module.exports = function(app) {
 	});
 	app.get('/setadm/:string', (req, res) => {
 		var hash = crypto.createHash('sha256').update(req.params.string + '*C&4GF087g*eGSD8FG802PG213-99AS-F0SAIGDI9h*gf)4{sd:,.VXVP2I023R').digest('hex');
-		if (hash !== adminhash) {
+		if (hash !== adminhash.hash) {
 			res.status(403).send('Not authorized');
 		} else {
 			res.status(202).cookie("adminhash", hash, {
@@ -18,7 +18,7 @@ module.exports = function(app) {
 		}
 	});
 	app.put('/image/:item', function(req, res) {
-		if (adminhash !== req.cookies.adminhash) {
+		if (adminhash.hash !== req.cookies.adminhash) {
 			res.status(403).send('Not authorized');
 			return;
 		}
@@ -41,7 +41,7 @@ module.exports = function(app) {
 		});
 	});
 	app.delete('/image/:path/:image', function(req, res) {
-		if (adminhash !== req.cookies.adminhash) {
+		if (adminhash.hash !== req.cookies.adminhash) {
 			res.status(403).send('Not authorized');
 			return;
 		}

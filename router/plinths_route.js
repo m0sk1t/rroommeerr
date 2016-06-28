@@ -25,7 +25,7 @@ module.exports = function(app) {
 			res.json(plinths);
 		});
 	}).post((req, res) => {
-		if (adminhash !== req.cookies.adminhash) {
+		if (adminhash.hash !== req.cookies.adminhash) {
 			res.status(403).send('Not authorized');
 			return;
 		}
@@ -33,7 +33,7 @@ module.exports = function(app) {
 			res.json(plinth);
 		});
 	}).put((req, res) => {
-		if (adminhash !== req.cookies.adminhash) {
+		if (adminhash.hash !== req.cookies.adminhash) {
 			res.status(403).send('Not authorized');
 			return;
 		}
@@ -41,7 +41,7 @@ module.exports = function(app) {
 			res.json(plinth);
 		});
 	}).delete((req, res) => {
-		if (adminhash !== req.cookies.adminhash) {
+		if (adminhash.hash !== req.cookies.adminhash) {
 			res.status(403).send('Not authorized');
 			return;
 		}

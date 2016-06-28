@@ -35,7 +35,7 @@ module.exports = function(app) {
 			res.json(interiors);
 		});
 	}).post((req, res) => {
-		if (adminhash !== req.cookies.adminhash) {
+		if (adminhash.hash !== req.cookies.adminhash) {
 			res.status(403).send('Not authorized');
 			return;
 		}
@@ -43,7 +43,7 @@ module.exports = function(app) {
 			res.json(interior);
 		});
 	}).put((req, res) => {
-		if (adminhash !== req.cookies.adminhash) {
+		if (adminhash.hash !== req.cookies.adminhash) {
 			res.status(403).send('Not authorized');
 			return;
 		}
@@ -51,7 +51,7 @@ module.exports = function(app) {
 			res.json(interior);
 		});
 	}).delete((req, res) => {
-		if (adminhash !== req.cookies.adminhash) {
+		if (adminhash.hash !== req.cookies.adminhash) {
 			res.status(403).send('Not authorized');
 			return;
 		}
@@ -69,7 +69,7 @@ module.exports = function(app) {
 			res.json(colors);
 		});
 	}).post((req, res) => {
-		if (adminhash !== req.cookies.adminhash) {
+		if (adminhash.hash !== req.cookies.adminhash) {
 			res.status(403).send('Not authorized');
 			return;
 		}
@@ -77,7 +77,7 @@ module.exports = function(app) {
 			res.json(color);
 		});
 	}).put((req, res) => {
-		if (adminhash !== req.cookies.adminhash) {
+		if (adminhash.hash !== req.cookies.adminhash) {
 			res.status(403).send('Not authorized');
 			return;
 		}
@@ -85,7 +85,7 @@ module.exports = function(app) {
 			res.json(color);
 		});
 	}).delete((req, res) => {
-		if (adminhash !== req.cookies.adminhash) {
+		if (adminhash.hash !== req.cookies.adminhash) {
 			res.status(403).send('Not authorized');
 			return;
 		}
