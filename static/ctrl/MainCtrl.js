@@ -54,10 +54,6 @@
 					return (el.gamma === gamma._id && el.coll === $scope.opt[$scope.opt.selected_item].coll && el.model === $scope.opt.selected_model._id);
 				})[0];
 			};
-			$http.get('/color/0').then(function(res) {
-				$scope.colors = res.data;
-				$scope.set_color(res.data[0]);
-			});
 			$http.get('/interior/0').then(function(res) {
 				$scope.interiors = res.data;
 				$scope.opt.interior = res.data[0];

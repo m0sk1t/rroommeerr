@@ -2,10 +2,10 @@ module.exports = function(app) {
 	var crypto = require('crypto'),
 		adminhash = require('./pwd.js');
 	app.get('/check', (req, res) => {
-		if (req.cookies.adminhash !== adminhash.hash) {
-			res.status(403).send('Not authorized');
-		} else {
+		if (req.cookies.adminhash === adminhash.hash) {
 			res.send('OK!');
+		} else {
+			res.status(403).send('Not authorized');
 		}
 	});
 	app.get('/genid/:string', (req, res) => {
@@ -14,14 +14,14 @@ module.exports = function(app) {
 	});
 	app.get('/setadm/:string', (req, res) => {
 		var hash = crypto.createHash('sha256').update(req.params.string + '*C&4GF087g*eGSD8FG802PG213-99AS-F0SAIGDI9h*gf)4{sd:,.VXVP2I023R').digest('hex');
-		if (hash !== adminhash.hash) {
-			res.status(403).send('Not authorized');
-		} else {
+		if (hash === adminhash.hash) {
 			res.status(202).cookie("adminhash", hash, {
 				expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365 * 77),
 				httpOnly: true,
 				path: '/'
 			}).send('OK!');
+		} else {
+			res.status(403).send('Not authorized');
 		}
 	});
 	app.put('/image/:item', function(req, res) {
