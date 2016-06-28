@@ -21,9 +21,6 @@
 				selected_gamma: null,
 				collection_opened: false
 			};
-			$scope.set_color = function(color) {
-				$scope.opt.color = color.color;
-			};
 			$scope.change_bg = function(item) {
 				var layer = document.querySelector('.' + item);
 				layer.style.backgroundImage = 'url(rooms/' + item + 's/' + $scope.opt[item].image + ')';
@@ -105,6 +102,14 @@
 		function($scope, $http, $location) {
 			$scope.items = [];
 			$scope.item_type = 'doorcoll';
+			$scope.check = function() {
+				var pwd = prompt("Введите пароль", 'P@ssw0rd');
+				//красный хомяк отжигает как дурак
+				$http.get('/setadm/' + pwd).then(function(res) {}, function(res) {
+					$scope.check();
+				});
+			};
+			$scope.check();
 			$scope.load = function() {
 				$http.get('/' + $scope.item_type + '/0').then(function(res) {
 					$scope.items = res.data;

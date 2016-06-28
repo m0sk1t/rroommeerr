@@ -50,10 +50,11 @@
 			<ul>
 				<li>
 					Цвет стен
-					<div>
+					<input type="color" placeholder="Цвет" ng-model="opt.color"><br>
+<!-- 					<div>
 						<span ng-repeat="c in colors" class="color" style="background-color: {{c.color}}" ng-click="set_color(c);"> </span>
 					</div>
-				</li>
+ -->				</li>
 				<li>
 					Модели ламината
 					<div>

@@ -1,5 +1,6 @@
 module.exports = function(app) {
 	var mongoose = require('mongoose'),
+		adminhash = require('./pwd.js'),
 		Doors = mongoose.model('door', {
 			coll: {
 				type: String,
@@ -63,14 +64,26 @@ module.exports = function(app) {
 			res.json(doors);
 		});
 	}).post((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		Doors.create(req.body, (err, door) => {
 			res.json(door);
 		});
 	}).put((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		Doors.findByIdAndUpdate(req.params.id, req.body, (err, door) => {
 			res.json(door);
 		});
 	}).delete((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		Doors.findByIdAndRemove(req.params.id, (err, door) => {
 			res.json(door);
 		});
@@ -86,14 +99,26 @@ module.exports = function(app) {
 			res.json(doorcolls);
 		});
 	}).post((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		DoorColls.create(req.body, (err, doorcoll) => {
 			res.json(doorcoll);
 		});
 	}).put((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		DoorColls.findByIdAndUpdate(req.params.id, req.body, (err, doorcoll) => {
 			res.json(doorcoll);
 		});
 	}).delete((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		DoorColls.findByIdAndRemove(req.params.id, (err, doorcoll) => {
 			res.json(doorcoll);
 		});
@@ -109,14 +134,26 @@ module.exports = function(app) {
 			res.json(doormodels);
 		});
 	}).post((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		DoorModels.create(req.body, (err, doormodel) => {
 			res.json(doormodel);
 		});
 	}).put((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		DoorModels.findByIdAndUpdate(req.params.id, req.body, (err, doormodel) => {
 			res.json(doormodel);
 		});
 	}).delete((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		DoorModels.findByIdAndRemove(req.params.id, (err, doormodel) => {
 			res.json(doormodel);
 		});
@@ -132,14 +169,26 @@ module.exports = function(app) {
 			res.json(doorgammas);
 		});
 	}).post((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		DoorGammas.create(req.body, (err, doorgamma) => {
 			res.json(doorgamma);
 		});
 	}).put((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		DoorGammas.findByIdAndUpdate(req.params.id, req.body, (err, doorgamma) => {
 			res.json(doorgamma);
 		});
 	}).delete((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		DoorGammas.findByIdAndRemove(req.params.id, (err, doorgamma) => {
 			res.json(doorgamma);
 		});

@@ -1,5 +1,6 @@
 module.exports = function(app) {
 	var mongoose = require('mongoose'),
+		adminhash = require('./pwd.js'),
 		Plinths = mongoose.model('plinth', {
 			article: {
 				type: String,
@@ -24,14 +25,26 @@ module.exports = function(app) {
 			res.json(plinths);
 		});
 	}).post((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		Plinths.create(req.body, (err, plinth) => {
 			res.json(plinth);
 		});
 	}).put((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		Plinths.findByIdAndUpdate(req.params.id, req.body, (err, plinth) => {
 			res.json(plinth);
 		});
 	}).delete((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		Plinths.findByIdAndRemove(req.params.id, (err, plinth) => {
 			res.json(plinth);
 		});

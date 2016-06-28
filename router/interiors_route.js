@@ -1,5 +1,6 @@
 module.exports = function(app) {
 	var mongoose = require('mongoose'),
+		adminhash = require('./pwd.js'),
 		Interiors = require('mongoose').model('interior', {
 			bg: {
 				type: String,
@@ -34,14 +35,26 @@ module.exports = function(app) {
 			res.json(interiors);
 		});
 	}).post((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		Interiors.create(req.body, (err, interior) => {
 			res.json(interior);
 		});
 	}).put((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		Interiors.findByIdAndUpdate(req.params.id, req.body, (err, interior) => {
 			res.json(interior);
 		});
 	}).delete((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		Interiors.findByIdAndRemove(req.params.id, (err, interior) => {
 			res.json(interior);
 		});
@@ -56,14 +69,26 @@ module.exports = function(app) {
 			res.json(colors);
 		});
 	}).post((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		Colors.create(req.body, (err, color) => {
 			res.json(color);
 		});
 	}).put((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		Colors.findByIdAndUpdate(req.params.id, req.body, (err, color) => {
 			res.json(color);
 		});
 	}).delete((req, res) => {
+		if (adminhash !== req.cookies.adminhash) {
+			res.status(403).send('Not authorized');
+			return;
+		}
 		Colors.findByIdAndRemove(req.params.id, (err, color) => {
 			res.json(color);
 		});
