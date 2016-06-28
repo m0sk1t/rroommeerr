@@ -18,10 +18,6 @@
 				<option ng-repeat="g in gamma" value="{{g._id}}">{{g.article}}</option>
 			</select><br>
 		</label>
-		<label ng-show="item.color !== undefined">
-			Цвет
-			<input type="color" placeholder="Цвет" ng-model="item.color"><br>
-		</label>
 		<label ng-show="item.alias !== undefined">
 			Псевдоним
 			<input type="text" placeholder="alias" ng-model="item.alias"><br>

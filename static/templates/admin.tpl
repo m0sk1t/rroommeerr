@@ -33,9 +33,6 @@
 				<li class="admin-menu" ng-class="{active: item_type === 'interior'}" ng-click="item_type = 'interior'; load();">
 				Интерьер
 				</li>
-				<li class="admin-menu" ng-class="{active: item_type === 'color'}" ng-click="item_type = 'color'; load();">
-				Цвета стен
-				</li>
 			</ul>
 		</nav>
 	</section>
