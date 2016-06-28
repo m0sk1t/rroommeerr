@@ -1,3 +1,3 @@
 module.exports = {
-	hash: '92d4f996fe5b9e63ac496c6e141a24dc5663506ca0d4ae0fb44bf8d5c35d78d8'
+	hash: '1c13151cddea135706cc3bed0c3e36f8afd37724c1b2aa2b791dea90e44bec6e'
 }
