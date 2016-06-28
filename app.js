@@ -5,9 +5,11 @@ var
 	mongoose = require('mongoose'),
 	multipart = require('connect-multiparty'),
 	bodyParser = require('body-parser'),
+	cookieParser = require('cookie-parser'),
 	serveStatic = require('serve-static');
 
 app.use(morgan('combined'));
+app.use(cookieParser);
 app.use(bodyParser.urlencoded({
 	limit: '5mb',
 	extended: true
