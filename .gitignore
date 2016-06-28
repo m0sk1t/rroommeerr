@@ -5,4 +5,7 @@ node_modules
 .npm
 
 # Pictures
-static/rooms
+static/rooms/doors/*.*
+static/rooms/floors/*.*
+static/rooms/plinths/*.*
+static/rooms/interiors/*.*
