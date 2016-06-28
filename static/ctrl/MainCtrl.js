@@ -102,11 +102,16 @@
 		function($scope, $http, $location) {
 			$scope.items = [];
 			$scope.item_type = 'doorcoll';
-			$scope.check = function() {
+			$scope.auth = function() {
 				var pwd = prompt("Введите пароль", 'P@ssw0rd');
 				//красный хомяк отжигает как дурак
 				$http.get('/setadm/' + pwd).then(function(res) {}, function(res) {
-					$scope.check();
+					$scope.auth();
+				});
+			};
+			$scope.check = function() {
+				$http.get('/check').then(function(res) {}, function(res) {
+					$scope.auth();
 				});
 			};
 			$scope.check();

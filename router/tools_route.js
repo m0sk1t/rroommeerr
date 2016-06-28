@@ -1,6 +1,13 @@
 module.exports = function(app) {
 	var crypto = require('crypto'),
 		adminhash = require('./pwd.js');
+	app.get('/check', (req, res) => {
+		if (req.cookies.adminhash !== adminhash.hash) {
+			res.status(403).send('Not authorized');
+		} else {
+			res.send('OK!');
+		}
+	});
 	app.get('/genid/:string', (req, res) => {
 		var id = crypto.createHash('sha256').update(req.params.string + '*C&4GF087g*eGSD8FG802PG213-99AS-F0SAIGDI9h*gf)4{sd:,.VXVP2I023R').digest('hex');
 		res.send(id);
