@@ -28,11 +28,11 @@
 		</label>
 		<label ng-show="item.bg !== undefined">
 			Фон
-			<input type="file" id="bg" accept="jpg" onchange="angular.element(this).scope().bg()"><br>
+			<input type="file" id="bg" accept="image/jpeg,image/jpg" onchange="angular.element(this).scope().bg()"><br>
 		</label>
 		<label ng-show="item.image !== undefined">
 			Картинка
-			<input type="file" id="image" accept="png" onchange="angular.element(this).scope().image()"><br>
+			<input type="file" id="image" accept="image/png" onchange="angular.element(this).scope().image()"><br>
 		</label>
 		<input type="submit" value="Save">
 	</form>
