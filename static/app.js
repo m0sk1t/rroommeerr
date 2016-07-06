@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('RROOMMEERR', ['ngRoute']);
+	var app = angular.module('RROOMMEERR', ['ngRoute', 'color.picker']);
 	app.config(['$routeProvider',
 		function($routeProvider) {
 			$routeProvider.when('/', {

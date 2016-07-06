@@ -50,8 +50,16 @@
 			<ul>
 				<li>
 					Цвет стен
-					<input type="color" placeholder="Цвет" ng-model="opt.color"><br>
-				</li>
+					<color-picker
+						ng-model="opt.color"
+						color-picker-alpha="false"
+						color-picker-case="'upper'"
+						color-picker-format="'rgb'"
+						color-picker-pos="'top left'"
+						color-picker-swatch-only="true"
+					></color-picker>
+<!-- 					<input type="color" placeholder="Цвет" ng-model="opt.color"><br>
+ -->				</li>
 				<li>
 					Модели ламината
 					<div>
