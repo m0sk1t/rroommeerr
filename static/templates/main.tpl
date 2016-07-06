@@ -76,7 +76,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+<!-- 				<li>
 					Плинтус
 					<div>
 						<div ng-repeat="p in plinths" class="color" ng-click="opt.plinth = p; change_bg('plinth')">
@@ -84,7 +84,7 @@
 						</div>
 					</div>
 				</li>
-			</ul>
+ -->			</ul>
 		</nav>
 	</section>
 </article>

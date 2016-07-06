@@ -2,7 +2,7 @@
 	<section class="menu">
 		<nav>
 			<ul style="padding-left: 0;">
-				<li class="admin-menu"><a href="/#/" style="color: #fff;">&lt;НАЗАД</a></li>
+				<li class="admin-menu"><a href="/#/" style="color: #fff;">&lt;НА САЙТ</a></li>
 				<li class="admin-menu" ng-class="{active: item_type === 'doorcoll'}" ng-click="item_type = 'doorcoll'; load();">
 				Коллекции дверей
 				</li>

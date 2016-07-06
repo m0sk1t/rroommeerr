@@ -62,10 +62,12 @@
 			$http.get('/door/0').then(function(res) {
 				$scope.doors = res.data;
 				$scope.opt.door = res.data[0];
+				$scope.change_bg('door');
 			});
 			$http.get('/floor/0').then(function(res) {
 				$scope.floors = res.data;
 				$scope.opt.floor = res.data[0];
+				$scope.change_bg('floor');
 			});
 			$http.get('/doormodel/0').then(function(res) {
 				$scope.doormodels = res.data;
@@ -86,6 +88,7 @@
 			$http.get('/plinth/0').then(function(res) {
 				$scope.plinths = res.data;
 				$scope.opt.plinth = res.data[0];
+				$scope.change_bg('plinth');
 			});
 			$http.get('/doorcoll/0').then(function(res) {
 				$scope.doorcolls = res.data;
@@ -219,6 +222,7 @@
 				var id = $scope.item._id;
 				delete $scope.item._id;
 				$http.put('/' + $scope.type + '/' + $routeParams.id, $scope.item).then(function(res) {
+					$location.path('/admin');
 					console.log(res.data);
 				}, function(res) {
 					console.error(res.data);
