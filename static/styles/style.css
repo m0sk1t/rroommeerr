@@ -24,6 +24,7 @@ nav>ul>li {
 }
 nav>ul>li>img {
 	height: 70px;
+	cursor: pointer;
 }
 nav>ul>li>span {
 	text-transform: uppercase;
@@ -59,6 +60,7 @@ nav>ul>li.active {
 li>div {
 	height: 100%;
 	display: flex;
+	cursor: pointer;
 	flex-wrap: wrap;
 	overflow-y: auto;
 }
@@ -128,27 +130,33 @@ li>div {
 	padding: 1%;
 }
 .models, .gammas {
+	cursor: pointer;
 	max-width: 100%;
 	overflow-x: auto;
 }
 .model-item {
+	cursor: pointer;
 	margin-left: 1%;
 	position: relative;
 }
 .model-item.active  {
+	cursor: pointer;
 	border: 1px solid #ccc;
 }
 .model-item,.model-item>img {
 	width: 80px;
+	cursor: pointer;
 	display: inline-block;
 }
 .model {
 	padding: 1%;
 	height: 1rem;
+	cursor: pointer;
 	background-color: #444;
 }
 .color {
 	width: 40px;
 	height: 40px;
+	cursor: pointer;
 	border: 1px solid #999;
 }
