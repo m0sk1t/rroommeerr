@@ -1,6 +1,10 @@
+@font-face {
+	font-family: Calibri;
+	src: url('../Calibri.ttf');
+}
 * {
-	font-family: Arial;
 	font-size: .9rem;
+	font-family: Calibri, Arial, sans-serif;
 }
 article, body {
 	top: 0;
@@ -16,14 +20,14 @@ nav>ul{
 	padding-left: 0;
 }
 nav>ul>li {
-	height: 70px;
+	height: 50px;
 	margin-right: 1%;
 	position: relative;
 	display: inline-block;
 	list-style-type: none;
 }
 nav>ul>li>img {
-	height: 70px;
+	height: 50px;
 	cursor: pointer;
 }
 nav>ul>li>span {
@@ -41,6 +45,10 @@ nav>ul>li.active {
 	color: #fff;
 	background-color: #369;
 }
+nav>ul>li.active>span {
+	color: #fff;
+	background-color: #18a28a;
+}
 .color {
 	float: left;
 	display: inline-block;
@@ -55,7 +63,7 @@ nav>ul>li.active {
 	color: #ddd;
 	width: 100%;
 	position: absolute;
-	background-color: #333;
+	background-color: rgba(22,22,22,.5);
 }
 li>div {
 	height: 100%;
@@ -121,7 +129,7 @@ li>div {
 	margin: 0 20%;
 	position: absolute;
 	border-radius: 3px 3px 0 0;
-	background-color: rgba(22,22,22,.3);
+	background-color: rgba(22,22,22,.5);
 }
 .collection-items>div:first-child {
 	text-align: right;
