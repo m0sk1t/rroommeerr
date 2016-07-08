@@ -25,7 +25,7 @@ app.use(bodyParser.json({
 
 app.use(serveStatic(__dirname + '/static'));
 
-app.listen('8080', function() {
+app.listen('80', function() {
 	require('./router/router.js')(app);
 	mongoose.connect('mongodb://localhost:27017/rroommeerr');
 });
