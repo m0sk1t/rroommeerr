@@ -60,12 +60,26 @@
 					></color-picker>
 <!-- 					<input type="color" placeholder="Цвет" ng-model="opt.color"><br>
  -->				</li>
+ 				<li>
+ 					Бренды
+					<div>
+						<div
+							class="model"
+							ng-repeat="br in brands"
+							ng-click="opt.brand = br._id;"
+							ng-class="{'selected': opt.brand === br._id}"
+						>
+							{{br.article}}
+						</div>
+					</div>
+ 				</li>
 				<li>
-					Модели ламината
+					Ламинат
 					<div>
 						<div
 							class="model"
 							ng-repeat="fc in floorcolls"
+							ng-class="{'selected': opt.floorcoll === fc._id}"
 							ng-click="opt.floorcoll = fc._id; opt.selected_item = 'floor'; select_models(); opt.collection_opened = true;"
 						>
 							{{fc.article}}
@@ -73,11 +87,12 @@
 					</div>
 				</li>
 				<li>
-					Модели дверей
+					Двери
 					<div>
 						<div
 							class="model"
 							ng-repeat="dc in doorcolls"
+							ng-class="{'selected': opt.doorcoll === dc._id}"
 							ng-click="opt.doorcoll = dc._id; opt.selected_item = 'door'; select_models(); opt.collection_opened = true;"
 						>
 							{{dc.article}}

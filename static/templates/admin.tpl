@@ -3,6 +3,9 @@
 		<nav>
 			<ul style="padding-left: 0;">
 				<li class="admin-menu"><a href="/#/" style="color: #fff;">&lt;НА САЙТ</a></li>
+				<li class="admin-menu" ng-class="{active: item_type === 'brand'}" ng-click="item_type = 'brand'; load();">
+				Бренды
+				</li>
 				<li class="admin-menu" ng-class="{active: item_type === 'doorcoll'}" ng-click="item_type = 'doorcoll'; load();">
 				Коллекции дверей
 				</li>
@@ -10,7 +13,7 @@
 				Модели дверей
 				</li>
 				<li class="admin-menu" ng-class="{active: item_type === 'doorgamma'}" ng-click="item_type = 'doorgamma'; load();">
-				Гаммы дверей
+				Декоры дверей
 				</li>
 				<li class="admin-menu" ng-class="{active: item_type === 'floorcoll'}" ng-click="item_type = 'floorcoll'; load();">
 				Коллекции ламината
@@ -19,7 +22,7 @@
 				Модели ламината
 				</li>
 				<li class="admin-menu" ng-class="{active: item_type === 'floorgamma'}" ng-click="item_type = 'floorgamma'; load();">
-				Гаммы ламината
+				Декоры ламината
 				</li>
 				<li class="admin-menu" ng-class="{active: item_type === 'door'}" ng-click="item_type = 'door'; load();">
 				Двери
@@ -27,9 +30,11 @@
 				<li class="admin-menu" ng-class="{active: item_type === 'floor'}" ng-click="item_type = 'floor'; load();">
 				Ламинат
 				</li>
-				<li class="admin-menu" ng-class="{active: item_type === 'plinth'}" ng-click="item_type = 'plinth'; load();">
+
+<!-- 				<li class="admin-menu" ng-class="{active: item_type === 'plinth'}" ng-click="item_type = 'plinth'; load();">
 				Плинтус
 				</li>
+ -->
 				<li class="admin-menu" ng-class="{active: item_type === 'interior'}" ng-click="item_type = 'interior'; load();">
 				Интерьер
 				</li>

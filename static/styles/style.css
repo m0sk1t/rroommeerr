@@ -45,6 +45,9 @@ nav>ul>li.active {
 	color: #fff;
 	background-color: #369;
 }
+.selected {
+	border: 1px solid #eee;
+}
 nav>ul>li.active>span {
 	color: #fff;
 	background-color: #18a28a;
@@ -84,7 +87,7 @@ li>div {
 	bottom: 0;
 }
 .actions>nav>ul>li {
-	width: 30%;
+	width: 24%;
 	float: left;
 }
 .create {

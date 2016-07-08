@@ -1,5 +1,11 @@
 <article>
 	<form ng-submit="save();">
+		<label ng-show="item.brand !== undefined">
+			Бренд
+			<select ng-model="item.brand">
+				<option ng-repeat="b in brands" value="{{b._id}}">{{b.article}}</option>
+			</select><br>
+		</label>
 		<label ng-show="item.coll !== undefined">
 			Коллекция
 			<select ng-model="item.coll">

@@ -5,14 +5,15 @@
 			$scope.opt = {
 				interior: 'bedroom',
 				door: null,
+				brand: null,
 				color: null,
 				floor: null,
 				plinth: null,
 				doorcoll: null,
 				floorcoll: null,
 				doormodel: null,
-				floormodel: null,
 				doorcolor: null,
+				floormodel: null,
 				floorcolor: null,
 				gamma_items: [],
 				model_items: [],
@@ -28,7 +29,7 @@
 			$scope.select_models = function() {
 				$scope.opt.gamma_items = [];
 				$scope.opt.model_items = $scope[$scope.opt.selected_item + 'models'].filter(function(el) {
-					return el.coll === $scope.opt[$scope.opt.selected_item + 'coll'];
+					return ((el.coll === $scope.opt[$scope.opt.selected_item + 'coll']) && (el.brand === $scope.opt.brand));
 				});
 			};
 			$scope.model_item = function() {
@@ -54,6 +55,10 @@
 					return (el.gamma === gamma._id && el.coll === $scope.opt[$scope.opt.selected_item].coll && el.model === $scope.opt.selected_model._id);
 				})[0];
 			};
+			$http.get('/brand/0').then(function(res) {
+				$scope.brands = res.data;
+				$scope.opt.brand = res.data[0]._id;
+			});
 			$http.get('/interior/0').then(function(res) {
 				$scope.interiors = res.data;
 				$scope.opt.interior = res.data[0];
@@ -100,7 +105,7 @@
 	]).controller('AdminCtrl', ['$scope', '$http', '$location',
 		function($scope, $http, $location) {
 			$scope.items = [];
-			$scope.item_type = 'doorcoll';
+			$scope.item_type = 'brand';
 			$scope.auth = function() {
 				var pwd = prompt("Введите пароль", 'P@ssw0rd');
 				//красный хомяк отжигает как дурак
@@ -161,6 +166,9 @@
 			$scope.load = function() {
 				$http.get('/' + $scope.type + '/' + $routeParams.id).then(function(res) {
 					$scope.item = res.data[0];
+					$scope.item.brand !== undefined && $http.get('/brand/0').then(function(res) {
+						$scope.brands = res.data;
+					});
 					$scope.item.coll !== undefined && $http.get('/' + $scope.img + 'coll/0').then(function(res) {
 						$scope.coll = res.data;
 					});
