@@ -26,10 +26,14 @@
 				var layer = document.querySelector('.' + item);
 				layer.style.backgroundImage = 'url(rooms/' + item + 's/' + $scope.opt[item].image + ')';
 			};
+			$scope.select_brand = function() {
+				$scope.opt.gamma_items = [];
+				$scope.opt.model_items = [];
+			};
 			$scope.select_models = function() {
 				$scope.opt.gamma_items = [];
 				$scope.opt.model_items = $scope[$scope.opt.selected_item + 'models'].filter(function(el) {
-					return ((el.coll === $scope.opt[$scope.opt.selected_item + 'coll']) && (el.brand === $scope.opt.brand));
+					return (el.coll === $scope.opt[$scope.opt.selected_item + 'coll']);
 				});
 			};
 			$scope.model_item = function() {
@@ -52,12 +56,18 @@
 			};
 			$scope.select_gamma = function(gamma) {
 				$scope.opt[$scope.opt.selected_item] = $scope[$scope.opt.selected_item + 's'].filter(function(el) {
-					return (el.gamma === gamma._id && el.coll === $scope.opt[$scope.opt.selected_item].coll && el.model === $scope.opt.selected_model._id);
+					return (el.brand === $scope.opt.brand && el.gamma === gamma._id && el.coll === $scope.opt[$scope.opt.selected_item].coll && el.model === $scope.opt.selected_model._id);
 				})[0];
 			};
 			$http.get('/brand/0').then(function(res) {
 				$scope.brands = res.data;
 				$scope.opt.brand = res.data[0]._id;
+				$http.get('/doorcoll_brand/' + $scope.opt.brand).then(function(res) {
+					$scope.doorcolls = res.data;
+				});
+				$http.get('/floorcoll_brand/' + $scope.opt.brand).then(function(res) {
+					$scope.floorcolls = res.data;
+				});
 			});
 			$http.get('/interior/0').then(function(res) {
 				$scope.interiors = res.data;
@@ -94,12 +104,6 @@
 				$scope.plinths = res.data;
 				$scope.opt.plinth = res.data[0];
 				$scope.change_bg('plinth');
-			});
-			$http.get('/doorcoll/0').then(function(res) {
-				$scope.doorcolls = res.data;
-			});
-			$http.get('/floorcoll/0').then(function(res) {
-				$scope.floorcolls = res.data;
 			});
 		}
 	]).controller('AdminCtrl', ['$scope', '$http', '$location',

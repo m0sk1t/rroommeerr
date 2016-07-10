@@ -28,6 +28,10 @@ module.exports = function(app) {
 			}
 		}),
 		FloorColls = mongoose.model('floorcoll', {
+			brand: {
+				type: String,
+				default: ''
+			},
 			article: {
 				type: String,
 				default: ''
@@ -89,6 +93,16 @@ module.exports = function(app) {
 		}
 		Floors.findByIdAndRemove(req.params.id, (err, floor) => {
 			res.json(floor);
+		});
+	});
+
+	app.get('/floorcoll_brand/:brandid', (req, res) => {
+		FloorColls.find({
+			brand: req.params.brandid
+		}, {
+			__v: 0
+		}, (err, floors) => {
+			res.json(floors);
 		});
 	});
 

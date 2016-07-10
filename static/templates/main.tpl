@@ -66,7 +66,7 @@
 						<div
 							class="model"
 							ng-repeat="br in brands"
-							ng-click="opt.brand = br._id;"
+							ng-click="opt.brand = br._id; select_brand();"
 							ng-class="{'selected': opt.brand === br._id}"
 						>
 							{{br.article}}

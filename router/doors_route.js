@@ -28,6 +28,10 @@ module.exports = function(app) {
 			}
 		}),
 		DoorColls = mongoose.model('doorcoll', {
+			brand: {
+				type: String,
+				default: ''
+			},
 			article: {
 				type: String,
 				default: ''
@@ -90,6 +94,16 @@ module.exports = function(app) {
 		}
 		Doors.findByIdAndRemove(req.params.id, (err, door) => {
 			res.json(door);
+		});
+	});
+
+	app.get('/doorcoll_brand/:brandid', (req, res) => {
+		DoorColls.find({
+			brand: req.params.brandid
+		}, {
+			__v: 0
+		}, (err, doorcolls) => {
+			res.json(doorcolls);
 		});
 	});
 
