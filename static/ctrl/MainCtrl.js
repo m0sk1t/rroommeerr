@@ -6,7 +6,6 @@
 				interior: 'bedroom',
 				door: null,
 				brand: null,
-				color: null,
 				floor: null,
 				plinth: null,
 
@@ -16,6 +15,8 @@
 
 				choose_door: false,
 				choose_floor: false,
+
+				color: 'rgb(150,150,150)',
 			};
 			$scope.change_bg = function(item) {
 				var layer = document.querySelector('.' + item);
