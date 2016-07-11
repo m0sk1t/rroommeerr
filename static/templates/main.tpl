@@ -21,7 +21,7 @@
 						color-picker-pos="'bottom left'"
 						color-picker-swatch-only="true"
 					></color-picker>
-					ЦВЕТ СТЕН
+					<span>ЦВЕТ СТЕН</span>
 				</li>
 <!--
  				<li>
