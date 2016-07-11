@@ -20,8 +20,6 @@ nav>ul{
 	padding-left: 0;
 }
 nav>ul>li {
-	height: 50px;
-	margin-right: 1%;
 	position: relative;
 	display: inline-block;
 	list-style-type: none;
@@ -52,10 +50,6 @@ nav>ul>li.active>span {
 	color: #fff;
 	background-color: #18a28a;
 }
-.color {
-	float: left;
-	display: inline-block;
-}
 .menu>nav,.menu>nav>ul,.menu>nav>ul>li {
 	height: 100%;
 	margin: 0 1% 0 0;
@@ -67,12 +61,9 @@ nav>ul>li.active>span {
 	position: absolute;
 	background-color: rgba(22,22,22,.5);
 }
-li>div {
-	height: 100%;
-	display: flex;
+.action {
+	width: 5%;
 	cursor: pointer;
-	flex-wrap: wrap;
-	overflow-y: auto;
 }
 .admin-menu {
 	width: 7%;
@@ -96,9 +87,12 @@ li>div {
 	height: 100%;
 	position: absolute;
 	background-size: cover;
+	transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-webkit-transition: all .3s ease;
 	background-repeat: no-repeat;
 	background-blend-mode: multiply;
-	transition: all .3s ease;
 }
 .wall {
 	z-index: 1;
@@ -126,14 +120,9 @@ li>div {
 	border-radius: 0 0 3px 3px;
 	background-color: rgba(22,22,22,.5);
 	transition: all .3s ease;
+	-ms-transition: all .3s ease;
 	-moz-transition: all .3s ease;
 	-webkit-transition: all .3s ease;
-}
-.choose_button {
-	margin: 0 1%;
-	padding: 0 15%;
-	text-align: center;
-	background-color: #18a28a;
 }
 .collection-items.active {
 	top: 50px;

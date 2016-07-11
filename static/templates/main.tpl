@@ -6,17 +6,13 @@
 					<img ng-src="rooms/interiors/{{i.bg}}">
 					<span>{{i.article}}</span>
 				</li>
-				<li>
-					<div class="choose_button" ng-click="opt.choose_floor = !opt.choose_floor; opt.choose_door = false; select_floor_collections();">
-						ВЫБРАТЬ<br>ЛАМИНАТ
-					</div>
+				<li class="action" ng-click="opt.choose_floor = !opt.choose_floor; opt.choose_door = false; select_floor_collections();">
+					<span>ЛАМИНАТ</span>
 				</li>
-				<li>
-					<div class="choose_button" ng-click="opt.choose_door = !opt.choose_door; opt.choose_floor = false; select_door_collections();">
-						ВЫБРАТЬ<br>ДВЕРИ
-					</div>
+				<li class="action" ng-click="opt.choose_door = !opt.choose_door; opt.choose_floor = false; select_door_collections();">
+					<span>ДВЕРИ</span>
 				</li>
-				<li>
+				<li class="action">
 					<color-picker
 						ng-model="opt.color"
 						color-picker-alpha="false"
