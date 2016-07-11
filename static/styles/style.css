@@ -114,7 +114,7 @@ nav>ul>li.active>span {
 .collection-items {
 	z-index: 9;
 	width: 70%;
-	height: 50%;
+	height: auto;
 	color: #ddd;
 	top: -100%;
 	margin: 0 15%;

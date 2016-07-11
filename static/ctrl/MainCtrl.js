@@ -16,7 +16,7 @@
 				choose_door: false,
 				choose_floor: false,
 
-				color: 'rgb(150,150,150)',
+				color: 'rgb(200,200,200)',
 			};
 			$scope.change_bg = function(item) {
 				var layer = document.querySelector('.' + item);
