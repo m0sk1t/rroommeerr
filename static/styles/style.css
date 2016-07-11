@@ -63,6 +63,7 @@ nav>ul>li.active>span {
 }
 .action {
 	width: 5%;
+	right: -75%;
 	cursor: pointer;
 }
 .admin-menu {
