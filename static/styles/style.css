@@ -56,12 +56,11 @@ nav>ul>li.active>span {
 	float: left;
 	display: inline-block;
 }
-.menu>nav,.menu>nav>ul,.menu>nav>ul>li,.actions>nav,.actions>nav>ul,.actions>nav>ul>li {
+.menu>nav,.menu>nav>ul,.menu>nav>ul>li {
 	height: 100%;
 	margin: 0 1% 0 0;
 }
-.menu,
-.actions {
+.menu {
 	z-index: 10;
 	color: #ddd;
 	width: 100%;
@@ -82,13 +81,6 @@ li>div {
 .menu {
 	top: 0;
 	height: 50px;
-}
-.actions {
-	bottom: 0;
-}
-.actions>nav>ul>li {
-	width: 24%;
-	float: left;
 }
 .create {
 	margin-top: 7%;
@@ -125,14 +117,26 @@ li>div {
 }
 .collection-items {
 	z-index: 9;
-	width: 60%;
+	width: 70%;
 	height: 50%;
 	color: #ddd;
-	bottom: 50px;
-	margin: 0 20%;
+	top: -100%;
+	margin: 0 15%;
 	position: absolute;
-	border-radius: 3px 3px 0 0;
+	border-radius: 0 0 3px 3px;
 	background-color: rgba(22,22,22,.5);
+	transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-webkit-transition: all .3s ease;
+}
+.choose_button {
+	margin: 0 1%;
+	padding: 0 15%;
+	text-align: center;
+	background-color: #18a28a;
+}
+.collection-items.active {
+	top: 50px;
 }
 .collection-items>div:first-child {
 	text-align: right;
@@ -140,7 +144,7 @@ li>div {
 .collection-items>div:first-child>span {
 	padding: 1%;
 }
-.models, .gammas {
+.models {
 	cursor: pointer;
 	max-width: 100%;
 	overflow-x: auto;
@@ -151,23 +155,18 @@ li>div {
 	position: relative;
 }
 .model-item.active  {
-	cursor: pointer;
 	border: 1px solid #ccc;
 }
-.model-item,.model-item>img {
+.model-item, .model-item>img {
 	width: 80px;
 	cursor: pointer;
 	display: inline-block;
 }
 .model {
-	padding: 1%;
-	height: 1rem;
 	cursor: pointer;
+	display: inline-block;
 	background-color: #444;
 }
-.color {
-	width: 40px;
-	height: 40px;
-	cursor: pointer;
-	border: 1px solid #999;
+.model>img {
+	float: left;
 }

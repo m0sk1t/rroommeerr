@@ -6,6 +6,37 @@
 					<img ng-src="rooms/interiors/{{i.bg}}">
 					<span>{{i.article}}</span>
 				</li>
+				<li>
+					<div class="choose_button" ng-click="opt.choose_floor = !opt.choose_floor; opt.choose_door = false; select_floor_collections();">
+						ВЫБРАТЬ<br>ЛАМИНАТ
+					</div>
+				</li>
+				<li>
+					<div class="choose_button" ng-click="opt.choose_door = !opt.choose_door; opt.choose_floor = false; select_door_collections();">
+						ВЫБРАТЬ<br>ДВЕРИ
+					</div>
+				</li>
+				<li>
+					<color-picker
+						ng-model="opt.color"
+						color-picker-alpha="false"
+						color-picker-case="'upper'"
+						color-picker-format="'rgb'"
+						color-picker-pos="'bottom left'"
+						color-picker-swatch-only="true"
+					></color-picker>
+					ЦВЕТ СТЕН
+				</li>
+<!--
+ 				<li>
+					ВЫБРАТЬ ПЛИНТУС
+					<div>
+						<div ng-repeat="p in plinths" class="color" ng-click="opt.plinth = p; change_bg('plinth')">
+							<img class="color" ng-src="rooms/plinths/{{p.bg}}" alt="{{p.article}}">
+						</div>
+					</div>
+				</li>
+ -->
 			</ul>
 		</nav>
 	</section>
@@ -16,98 +47,95 @@
 		<div class="section-layer door"></div>
 		<div class="section-layer interior"></div>
 	</section>
-	<section class="collection-items" ng-show="opt.collection_opened">
-		<div><span ng-click="opt.collection_opened = false;">Close (x)</span></div>
+	<section class="collection-items" ng-class="{'active': opt.choose_floor}">
+		<div><span ng-click="opt.choose_floor = 0;">Close (x)</span></div>
+		<div>
+			Бренды: 
+			<span
+				class="model"
+				ng-repeat="br in brands"
+				ng-class="{'selected': opt.floor_brand === br._id}"
+				ng-click="opt.floor_brand = br._id; select_floor_collections();"
+			>
+				<img ng-src="rooms/brands/{{br.bg}}" style="width:30px;">
+				{{br.article}}
+			</span>
+		</div>
+		<div>
+			Коллекции ламината: 
+			<span
+				class="model"
+				ng-repeat="fc in opt.floor_collections"
+				ng-class="{'selected': opt.floorcoll === fc._id}"
+				ng-click="opt.floorcoll = fc._id; select_floors();"
+			>
+				{{fc.article}}
+			</span>
+		</div>
 		<div class="models">
 			<div
 				class="model-item"
-				ng-repeat="m in opt.model_items"
-				ng-class="{'active': opt.selected_model._id === m._id}"
-				ng-click="opt.selected_model = m; opt[opt.selected_item] = model_item(m); select_gammas(m); opt[opt.selected_item] && change_bg(opt.selected_item);"
+				ng-repeat="f in opt.floors"
+				ng-class="{'selected': opt.floor._id === f._id}"
+				ng-click="opt.floor = f; change_bg('floor');"
 			>
-				<img ng-src="rooms/{{opt.selected_item}}s/{{m.image}}">
+				<img ng-src="rooms/floors/{{f.bg}}">
 				<span>
-					{{m.article}}
-				</span>
-			</div>
-		</div>
-		<div class="gammas">
-			<div
-				class="model-item"
-				ng-repeat="g in opt.gamma_items"
-				ng-class="{'active': opt.selected_item.gamma === g._id}"
-				ng-click="select_gamma(g); change_bg(opt.selected_item)"
-			>
-				<img ng-src="rooms/{{opt.selected_item}}s/{{g.image}}">
-				<span>
-					{{g.article}}
+					{{f.article}}
 				</span>
 			</div>
 		</div>
 	</section>
-	<section class="actions">
-		<nav>
-			<ul>
-				<li>
-					Цвет стен
-					<color-picker
-						ng-model="opt.color"
-						color-picker-alpha="false"
-						color-picker-case="'upper'"
-						color-picker-format="'rgb'"
-						color-picker-pos="'top left'"
-						color-picker-swatch-only="true"
-					></color-picker>
-<!-- 					<input type="color" placeholder="Цвет" ng-model="opt.color"><br>
- -->				</li>
- 				<li>
- 					Бренды
-					<div>
-						<div
-							class="model"
-							ng-repeat="br in brands"
-							ng-click="opt.brand = br._id; select_brand();"
-							ng-class="{'selected': opt.brand === br._id}"
-						>
-							{{br.article}}
-						</div>
-					</div>
- 				</li>
-				<li>
-					Ламинат
-					<div>
-						<div
-							class="model"
-							ng-repeat="fc in floorcolls"
-							ng-class="{'selected': opt.floorcoll === fc._id}"
-							ng-click="opt.floorcoll = fc._id; opt.selected_item = 'floor'; select_models(); opt.collection_opened = true;"
-						>
-							{{fc.article}}
-						</div>
-					</div>
-				</li>
-				<li>
-					Двери
-					<div>
-						<div
-							class="model"
-							ng-repeat="dc in doorcolls"
-							ng-class="{'selected': opt.doorcoll === dc._id}"
-							ng-click="opt.doorcoll = dc._id; opt.selected_item = 'door'; select_models(); opt.collection_opened = true;"
-						>
-							{{dc.article}}
-						</div>
-					</div>
-				</li>
-<!-- 				<li>
-					Плинтус
-					<div>
-						<div ng-repeat="p in plinths" class="color" ng-click="opt.plinth = p; change_bg('plinth')">
-							<img class="color" ng-src="rooms/plinths/{{p.bg}}" alt="{{p.article}}">
-						</div>
-					</div>
-				</li>
- -->			</ul>
-		</nav>
+	<section class="collection-items" ng-class="{'active': opt.choose_door}">
+		<div><span ng-click="opt.choose_door = 0;">Close (x)</span></div>
+		<div>
+			Бренды: 
+			<span
+				class="model"
+				ng-repeat="br in brands"
+				ng-class="{'selected': opt.door_brand === br._id}"
+				ng-click="opt.door_brand = br._id; select_door_collections();"
+			>
+				<img ng-src="rooms/brands/{{br.bg}}" style="width:30px;">
+				{{br.article}}
+			</span>
+		</div>
+		<div>
+			Коллекции Дверей: 
+			<span
+				class="model"
+				ng-repeat="dc in opt.door_collections"
+				ng-class="{'selected': opt.doorcoll === dc._id}"
+				ng-click="opt.doorcoll = dc._id; select_door_models();"
+			>
+				{{dc.article}}
+			</span>
+		</div>
+		<div class="models">
+			<div
+				class="model-item"
+				ng-repeat="d in opt.door_models"
+				ng-class="{'selected': opt.doormodel._id === d._id}"
+				ng-click="opt.doormodel = d._id; select_doors();"
+			>
+				<img ng-src="rooms/doors/{{d.image}}">
+				<span>
+					{{d.article}}
+				</span>
+			</div>
+		</div>
+		<div class="models">
+			<div
+				class="model-item"
+				ng-repeat="d in opt.doors"
+				ng-class="{'selected': opt.door._id === d._id}"
+				ng-click="opt.door = d; change_bg('door');"
+			>
+				<img ng-src="rooms/floors/{{d.bg}}">
+				<span>
+					{{d.article}}
+				</span>
+			</div>
+		</div>
 	</section>
 </article>

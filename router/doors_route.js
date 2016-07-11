@@ -2,6 +2,10 @@ module.exports = function(app) {
 	var mongoose = require('mongoose'),
 		adminhash = require('./pwd.js'),
 		Doors = mongoose.model('door', {
+			bg: {
+				type: String,
+				default: ''
+			},
 			coll: {
 				type: String,
 				default: ''
@@ -11,10 +15,6 @@ module.exports = function(app) {
 				default: ''
 			},
 			model: {
-				type: String,
-				default: ''
-			},
-			gamma: {
 				type: String,
 				default: ''
 			},
@@ -47,16 +47,6 @@ module.exports = function(app) {
 				default: ''
 			},
 			coll: {
-				type: String,
-				default: ''
-			}
-		}),
-		DoorGammas = mongoose.model('doorgamma', {
-			article: {
-				type: String,
-				default: ''
-			},
-			image: {
 				type: String,
 				default: ''
 			}
@@ -174,41 +164,6 @@ module.exports = function(app) {
 		}
 		DoorModels.findByIdAndRemove(req.params.id, (err, doormodel) => {
 			res.json(doormodel);
-		});
-	});
-
-	app.route('/doorgamma/:id').get((req, res) => {
-		var find = isNaN(req.params.id) ? {
-			_id: req.params.id
-		} : {};
-		DoorGammas.find(find, {
-			__v: 0
-		}, (err, doorgammas) => {
-			res.json(doorgammas);
-		});
-	}).post((req, res) => {
-		if (adminhash.hash !== req.cookies.adminhash) {
-			res.status(403).send('Not authorized');
-			return;
-		}
-		DoorGammas.create(req.body, (err, doorgamma) => {
-			res.json(doorgamma);
-		});
-	}).put((req, res) => {
-		if (adminhash.hash !== req.cookies.adminhash) {
-			res.status(403).send('Not authorized');
-			return;
-		}
-		DoorGammas.findByIdAndUpdate(req.params.id, req.body, (err, doorgamma) => {
-			res.json(doorgamma);
-		});
-	}).delete((req, res) => {
-		if (adminhash.hash !== req.cookies.adminhash) {
-			res.status(403).send('Not authorized');
-			return;
-		}
-		DoorGammas.findByIdAndRemove(req.params.id, (err, doorgamma) => {
-			res.json(doorgamma);
 		});
 	});
 };

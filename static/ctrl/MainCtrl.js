@@ -9,101 +9,87 @@
 				color: null,
 				floor: null,
 				plinth: null,
+
 				doorcoll: null,
-				floorcoll: null,
 				doormodel: null,
-				doorcolor: null,
-				floormodel: null,
-				floorcolor: null,
-				gamma_items: [],
-				model_items: [],
-				selected_item: null,
-				selected_model: null,
-				selected_gamma: null,
-				collection_opened: false
+				floorcoll: null,
+
+				choose_door: false,
+				choose_floor: false,
 			};
 			$scope.change_bg = function(item) {
 				var layer = document.querySelector('.' + item);
 				layer.style.backgroundImage = 'url(rooms/' + item + 's/' + $scope.opt[item].image + ')';
 			};
-			$scope.select_brand = function() {
-				$scope.opt.gamma_items = [];
-				$scope.opt.model_items = [];
-			};
-			$scope.select_models = function() {
-				$scope.opt.gamma_items = [];
-				$scope.opt.model_items = $scope[$scope.opt.selected_item + 'models'].filter(function(el) {
-					return (el.coll === $scope.opt[$scope.opt.selected_item + 'coll']);
+			$scope.select_floor_collections = function() {
+				$scope.opt.floors = [];
+				$scope.opt.floor_collections = [];
+				$scope.floorcolls.map(function(el) {
+					el.brand === $scope.opt.floor_brand && $scope.opt.floor_collections.push(el);
 				});
 			};
-			$scope.model_item = function() {
-				return $scope[$scope.opt.selected_item + 's'].filter(function(el) {
-					return el.model === $scope.opt.selected_model._id;
-				})[0];
-			};
-			$scope.select_gammas = function(model) {
-				$scope.opt.gamma_items = [];
-				var models = $scope[$scope.opt.selected_item + 's'].filter(function(el) {
-					return el.model === $scope.opt.selected_model._id;
-				}).map(function(el) {
-					return el.gamma;
-				});
-				models.map(function(el) {
-					$scope.opt.gamma_items.push($scope[$scope.opt.selected_item + 'gammas'].filter(function(gamma) {
-						return el === gamma._id;
-					})[0]);
+			$scope.select_floors = function() {
+				$scope.opt.floors = [];
+				$scope.floors.map(function(el) {
+					(el.coll === $scope.opt.floorcoll) && $scope.opt.floors.push(el);
 				});
 			};
-			$scope.select_gamma = function(gamma) {
-				$scope.opt[$scope.opt.selected_item] = $scope[$scope.opt.selected_item + 's'].filter(function(el) {
-					return (el.brand === $scope.opt.brand && el.gamma === gamma._id && el.coll === $scope.opt[$scope.opt.selected_item].coll && el.model === $scope.opt.selected_model._id);
-				})[0];
+
+			$scope.select_door_collections = function() {
+				$scope.opt.doors = [];
+				$scope.opt.door_models = [];
+				$scope.opt.door_collections = [];
+				$scope.doorcolls.map(function(el) {
+					el.brand === $scope.opt.door_brand && $scope.opt.door_collections.push(el);
+				});
+			};
+			$scope.select_door_models = function() {
+				$scope.opt.doors = [];
+				$scope.opt.door_models = [];
+				$scope.doormodels.map(function(el) {
+					(el.coll === $scope.opt.doorcoll) && $scope.opt.door_models.push(el);
+				});
+			};
+			$scope.select_doors = function() {
+				$scope.opt.doors = [];
+				$scope.doors.map(function(el) {
+					((el.brand === $scope.opt.door_brand) && (el.coll === $scope.opt.doorcoll) && (el.model === $scope.opt.doormodel)) && $scope.opt.doors.push(el);
+				});
 			};
 			$http.get('/brand/0').then(function(res) {
 				$scope.brands = res.data;
-				$scope.opt.brand = res.data[0]._id;
-				$http.get('/doorcoll_brand/' + $scope.opt.brand).then(function(res) {
+				$scope.opt.door_brand = res.data[0]._id;
+				$scope.opt.floor_brand = res.data[0]._id;
+
+				$http.get('/doorcoll/0').then(function(res) {
 					$scope.doorcolls = res.data;
 				});
-				$http.get('/floorcoll_brand/' + $scope.opt.brand).then(function(res) {
+				$http.get('/floorcoll/0').then(function(res) {
 					$scope.floorcolls = res.data;
 				});
-			});
-			$http.get('/interior/0').then(function(res) {
-				$scope.interiors = res.data;
-				$scope.opt.interior = res.data[0];
-				$scope.change_bg('interior');
-			});
-			$http.get('/door/0').then(function(res) {
-				$scope.doors = res.data;
-				$scope.opt.door = res.data[0];
-				$scope.change_bg('door');
-			});
-			$http.get('/floor/0').then(function(res) {
-				$scope.floors = res.data;
-				$scope.opt.floor = res.data[0];
-				$scope.change_bg('floor');
-			});
-			$http.get('/doormodel/0').then(function(res) {
-				$scope.doormodels = res.data;
-				$scope.opt.doormodel = res.data[0];
-			});
-			$http.get('/floormodel/0').then(function(res) {
-				$scope.floormodels = res.data;
-				$scope.opt.floormodel = res.data[0];
-			});
-			$http.get('/doorgamma/0').then(function(res) {
-				$scope.doorgammas = res.data;
-				$scope.opt.doorgamma = res.data[0];
-			});
-			$http.get('/floorgamma/0').then(function(res) {
-				$scope.floorgammas = res.data;
-				$scope.opt.floorgamma = res.data[0];
-			});
-			$http.get('/plinth/0').then(function(res) {
-				$scope.plinths = res.data;
-				$scope.opt.plinth = res.data[0];
-				$scope.change_bg('plinth');
+				$http.get('/interior/0').then(function(res) {
+					$scope.interiors = res.data;
+					$scope.opt.interior = res.data[0];
+					$scope.change_bg('interior');
+				});
+				$http.get('/door/0').then(function(res) {
+					$scope.doors = res.data;
+					$scope.opt.door = res.data[0];
+					$scope.change_bg('door');
+				});
+				$http.get('/floor/0').then(function(res) {
+					$scope.floors = res.data;
+					$scope.opt.floor = res.data[0];
+					$scope.change_bg('floor');
+				});
+				$http.get('/doormodel/0').then(function(res) {
+					$scope.doormodels = res.data;
+				});
+				$http.get('/plinth/0').then(function(res) {
+					$scope.plinths = res.data;
+					$scope.opt.plinth = res.data[0];
+					$scope.change_bg('plinth');
+				});
 			});
 		}
 	]).controller('AdminCtrl', ['$scope', '$http', '$location',
@@ -153,14 +139,11 @@
 			$scope.item = {};
 			$scope.type = $routeParams.type;
 			switch (true) {
-				case $scope.type.split('coll').length === 2:
-					$scope.img = $scope.type.split('coll')[0];
+				case $scope.type.indexOf('door') != -1:
+					$scope.img = 'door';
 					break;
-				case $scope.type.split('model').length === 2:
-					$scope.img = $scope.type.split('model')[0];
-					break;
-				case $scope.type.split('gamma').length === 2:
-					$scope.img = $scope.type.split('gamma')[0];
+				case $scope.type.indexOf('floor') != -1:
+					$scope.img = 'floor';
 					break;
 				default:
 					$scope.img = $scope.type;
@@ -176,11 +159,8 @@
 					$scope.item.coll !== undefined && $http.get('/' + $scope.img + 'coll/0').then(function(res) {
 						$scope.coll = res.data;
 					});
-					$scope.item.model !== undefined && $http.get('/' + $scope.type + 'model/0').then(function(res) {
+					$scope.item.model !== undefined && $http.get('/' + $scope.img + 'model/0').then(function(res) {
 						$scope.model = res.data;
-					});
-					$scope.item.gamma !== undefined && $http.get('/' + $scope.type + 'gamma/0').then(function(res) {
-						$scope.gamma = res.data;
 					});
 				}, function(res) {
 					console.error(res.data);
@@ -199,7 +179,7 @@
 				}).then(function(res) {
 					$scope.item.bg && $scope.item.bg !== res.data && $http.delete('/image/' + $scope.img + '/' + $scope.item.bg).then(function(r) {
 						$scope.item.bg = res.data;
-						$scope.save();
+						$scope.save(0);
 					}, function(r) {
 						console.error(r.data);
 					});
@@ -221,7 +201,7 @@
 				}).then(function(res) {
 					$scope.item.image && $scope.item.image !== res.data && $http.delete('/image/' + $scope.img + '/' + $scope.item.image).then(function(r) {
 						$scope.item.image = res.data;
-						$scope.save();
+						$scope.save(0);
 					}, function(r) {
 						console.error(res.data);
 					});
@@ -230,11 +210,11 @@
 					console.error(res.data.msg);
 				});
 			};
-			$scope.save = function() {
+			$scope.save = function(redirect) {
 				var id = $scope.item._id;
 				delete $scope.item._id;
 				$http.put('/' + $scope.type + '/' + $routeParams.id, $scope.item).then(function(res) {
-					$location.path('/admin');
+					redirect && $location.path('/admin');
 					console.log(res.data);
 				}, function(res) {
 					console.error(res.data);

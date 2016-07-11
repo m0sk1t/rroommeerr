@@ -12,17 +12,8 @@
 				<li class="admin-menu" ng-class="{active: item_type === 'doormodel'}" ng-click="item_type = 'doormodel'; load();">
 				Модели дверей
 				</li>
-				<li class="admin-menu" ng-class="{active: item_type === 'doorgamma'}" ng-click="item_type = 'doorgamma'; load();">
-				Декоры дверей
-				</li>
 				<li class="admin-menu" ng-class="{active: item_type === 'floorcoll'}" ng-click="item_type = 'floorcoll'; load();">
 				Коллекции ламината
-				</li>
-				<li class="admin-menu" ng-class="{active: item_type === 'floormodel'}" ng-click="item_type = 'floormodel'; load();">
-				Модели ламината
-				</li>
-				<li class="admin-menu" ng-class="{active: item_type === 'floorgamma'}" ng-click="item_type = 'floorgamma'; load();">
-				Декоры ламината
 				</li>
 				<li class="admin-menu" ng-class="{active: item_type === 'door'}" ng-click="item_type = 'door'; load();">
 				Двери
@@ -31,7 +22,8 @@
 				Ламинат
 				</li>
 
-<!-- 				<li class="admin-menu" ng-class="{active: item_type === 'plinth'}" ng-click="item_type = 'plinth'; load();">
+<!--
+ 				<li class="admin-menu" ng-class="{active: item_type === 'plinth'}" ng-click="item_type = 'plinth'; load();">
 				Плинтус
 				</li>
  -->

@@ -1,5 +1,5 @@
 <article>
-	<form ng-submit="save();">
+	<form ng-submit="save(1);">
 		<label ng-show="item.brand !== undefined">
 			Бренд
 			<select ng-model="item.brand">
@@ -18,12 +18,6 @@
 				<option ng-repeat="m in model" value="{{m._id}}">{{m.article}}</option>
 			</select><br>
 		</label>
-		<label ng-show="item.gamma !== undefined">
-			Гамма
-			<select ng-model="item.gamma">
-				<option ng-repeat="g in gamma" value="{{g._id}}">{{g.article}}</option>
-			</select><br>
-		</label>
 		<label ng-show="item.alias !== undefined">
 			Псевдоним
 			<input type="text" placeholder="alias" ng-model="item.alias"><br>
@@ -40,8 +34,8 @@
 			Картинка
 			<input type="file" id="image" accept="image/png" onchange="angular.element(this).scope().image()"><br>
 		</label>
-		<input type="submit" value="Save">
+		<input type="submit" value="СОХРАНИТЬ">
 	</form>
-	<img ng-show="item.bg" ng-src="rooms/{{img}}s/{{item.bg}}" width="320px">
-	<img ng-show="item.image" ng-src="rooms/{{img}}s/{{item.image}}" width="320px">
+	<span ng-show="item.bg">ФОН:<img ng-src="rooms/{{img}}s/{{item.bg}}" width="320px"></span>
+	<span ng-show="item.image">КАРТИНКА:<img ng-src="rooms/{{img}}s/{{item.image}}" width="320px"></span>
 </article>
