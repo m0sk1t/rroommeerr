@@ -154,10 +154,13 @@ nav>ul>li.active>span {
 	display: inline-block;
 }
 .model {
+	padding: 2px;
 	cursor: pointer;
+	margin-right: 2px;
 	display: inline-block;
 	background-color: #444;
 }
 .model>img {
+	width: 30px;
 	float: left;
 }

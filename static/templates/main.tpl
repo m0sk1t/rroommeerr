@@ -53,7 +53,7 @@
 				ng-class="{'selected': opt.floor_brand === br._id}"
 				ng-click="opt.floor_brand = br._id; select_floor_collections();"
 			>
-				<img ng-src="rooms/brands/{{br.bg}}" style="width:30px;">
+				<img ng-src="rooms/brands/{{br.bg}}">
 				{{br.article}}
 			</span>
 		</div>
@@ -92,7 +92,7 @@
 				ng-class="{'selected': opt.door_brand === br._id}"
 				ng-click="opt.door_brand = br._id; select_door_collections();"
 			>
-				<img ng-src="rooms/brands/{{br.bg}}" style="width:30px;">
+				<img ng-src="rooms/brands/{{br.bg}}">
 				{{br.article}}
 			</span>
 		</div>
