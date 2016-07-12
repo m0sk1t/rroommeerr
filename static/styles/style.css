@@ -154,7 +154,7 @@ nav>ul>li.active>span {
 	display: inline-block;
 }
 .model {
-	padding: 2px;
+	padding: 4px;
 	cursor: pointer;
 	margin-right: 2px;
 	display: inline-block;
