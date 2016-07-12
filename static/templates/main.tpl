@@ -111,7 +111,7 @@
 			<div
 				class="model-item"
 				ng-repeat="d in opt.door_models"
-				ng-class="{'selected': opt.doormodel._id === d._id}"
+				ng-class="{'selected': opt.doormodel === d._id}"
 				ng-click="opt.doormodel = d._id; select_doors();"
 			>
 				<img ng-src="rooms/doors/{{d.image}}">
