@@ -46,10 +46,10 @@
 	<section class="collection-items" ng-class="{'active': opt.choose_floor}">
 		<div><span ng-click="opt.choose_floor = 0;">Close (x)</span></div>
 		<div>
-			Бренды: 
 			<span
 				class="model"
 				ng-repeat="br in brands"
+				ng-show="br.target === 'floor'"
 				ng-class="{'selected': opt.floor_brand === br._id}"
 				ng-click="opt.floor_brand = br._id; select_floor_collections();"
 			>
@@ -85,10 +85,10 @@
 	<section class="collection-items" ng-class="{'active': opt.choose_door}">
 		<div><span ng-click="opt.choose_door = 0;">Close (x)</span></div>
 		<div>
-			Бренды: 
 			<span
 				class="model"
 				ng-repeat="br in brands"
+				ng-show="br.target === 'door'"
 				ng-class="{'selected': opt.door_brand === br._id}"
 				ng-click="opt.door_brand = br._id; select_door_collections();"
 			>

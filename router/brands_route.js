@@ -6,6 +6,10 @@ module.exports = function(app) {
 				type: String,
 				default: ''
 			},
+			target: {
+				type: String,
+				default: ''
+			},
 			article: {
 				type: String,
 				default: ''
