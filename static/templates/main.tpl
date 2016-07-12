@@ -127,7 +127,7 @@
 				ng-class="{'selected': opt.door._id === d._id}"
 				ng-click="opt.door = d;"
 			>
-				<img ng-src="rooms/floors/{{d.bg}}">
+				<img ng-src="rooms/doors/{{d.bg}}">
 				<span>
 					{{d.article}}
 				</span>

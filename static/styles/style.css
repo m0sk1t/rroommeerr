@@ -120,11 +120,11 @@ nav>ul>li.active>span {
 	margin: 0 15%;
 	position: absolute;
 	border-radius: 0 0 3px 3px;
-	background-color: rgba(22,22,22,.5);
 	transition: all .3s ease;
 	-ms-transition: all .3s ease;
 	-moz-transition: all .3s ease;
 	-webkit-transition: all .3s ease;
+	background-color: rgba(22,22,22,.5);
 }
 .collection-items.active {
 	top: 50px;
