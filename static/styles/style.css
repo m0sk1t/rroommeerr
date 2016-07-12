@@ -46,11 +46,6 @@ nav>ul>li.active {
 .selected {
 	border: 1px solid #eee;
 }
-.close {
-	cursor: pointer;
-	border: 1px solid #ccc;
-	background-color: rgba(250, 100, 100, .7);
-}
 nav>ul>li.active>span {
 	color: #fff;
 	background-color: #18a28a;
@@ -137,8 +132,13 @@ nav>ul>li.active>span {
 .collection-items>div:first-child {
 	text-align: right;
 }
-.collection-items>div:first-child>span {
-	padding: 1%;
+.close {
+	height: 20px;
+	padding: 0 1%;
+	cursor: pointer;
+	line-height: 20px;
+	border: 1px solid #ccc;
+	background-color: rgba(250, 100, 100, .7);
 }
 .models {
 	cursor: pointer;
