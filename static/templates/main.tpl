@@ -54,7 +54,7 @@
 				ng-click="opt.floor_brand = br._id; select_floor_collections();"
 			>
 				<img ng-src="rooms/brands/{{br.bg}}">
-				{{br.article}}
+				 {{br.article}}
 			</span>
 		</div>
 		<div>
@@ -93,7 +93,7 @@
 				ng-click="opt.door_brand = br._id; select_door_collections();"
 			>
 				<img ng-src="rooms/brands/{{br.bg}}">
-				{{br.article}}
+				 {{br.article}}
 			</span>
 		</div>
 		<div>
