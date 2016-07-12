@@ -18,10 +18,6 @@
 
 				color: 'rgb(200,200,200)',
 			};
-			$scope.change_bg = function(item) {
-				var layer = document.querySelector('.' + item);
-				layer.style.backgroundImage = 'url(rooms/' + item + 's/' + $scope.opt[item].image + ')';
-			};
 			$scope.select_floor_collections = function() {
 				$scope.opt.floors = [];
 				$scope.opt.floor_collections = [];
@@ -71,17 +67,14 @@
 				$http.get('/interior/0').then(function(res) {
 					$scope.interiors = res.data;
 					$scope.opt.interior = res.data[0];
-					$scope.change_bg('interior');
 				});
 				$http.get('/door/0').then(function(res) {
 					$scope.doors = res.data;
 					$scope.opt.door = res.data[0];
-					$scope.change_bg('door');
 				});
 				$http.get('/floor/0').then(function(res) {
 					$scope.floors = res.data;
 					$scope.opt.floor = res.data[0];
-					$scope.change_bg('floor');
 				});
 				$http.get('/doormodel/0').then(function(res) {
 					$scope.doormodels = res.data;
@@ -89,7 +82,6 @@
 				$http.get('/plinth/0').then(function(res) {
 					$scope.plinths = res.data;
 					$scope.opt.plinth = res.data[0];
-					$scope.change_bg('plinth');
 				});
 			});
 		}

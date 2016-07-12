@@ -2,7 +2,7 @@
 	<section class="menu">
 		<nav>
 			<ul>
-				<li ng-repeat="i in interiors" ng-class="{active: opt.interior.alias === i.alias}" ng-click="opt.interior = i; change_bg('interior');">
+				<li ng-repeat="i in interiors" ng-class="{active: opt.interior.alias === i.alias}" ng-click="opt.interior = i;">
 					<img ng-src="rooms/interiors/{{i.bg}}">
 					<span>{{i.article}}</span>
 				</li>
@@ -27,7 +27,7 @@
  				<li>
 					ВЫБРАТЬ ПЛИНТУС
 					<div>
-						<div ng-repeat="p in plinths" class="color" ng-click="opt.plinth = p; change_bg('plinth')">
+						<div ng-repeat="p in plinths" class="color" ng-click="opt.plinth = p;>
 							<img class="color" ng-src="rooms/plinths/{{p.bg}}" alt="{{p.article}}">
 						</div>
 					</div>
@@ -38,10 +38,10 @@
 	</section>
 	<section class="display">
 		<div class="section-layer wall" style="background-color: {{opt.color}}; background-image: url(/rooms/wall.png);"></div>
-		<div class="section-layer floor"></div>
-		<div class="section-layer plinth"></div>
-		<div class="section-layer door"></div>
-		<div class="section-layer interior"></div>
+		<div class="section-layer floor" style="background-image: url(/rooms/floors/{{opt.floor.image}});"></div>
+		<div class="section-layer plinth" style="background-image: url(/rooms/plinths/{{opt.plinth.image}});"></div>
+		<div class="section-layer door" style="background-image: url(/rooms/doors/{{opt.door.image}});"></div>
+		<div class="section-layer interior" style="background-image: url(/rooms/interiors/{{opt.interior.image}});"></div>
 	</section>
 	<section class="collection-items" ng-class="{'active': opt.choose_floor}">
 		<div><span ng-click="opt.choose_floor = 0;">Close (x)</span></div>
@@ -73,7 +73,7 @@
 				class="model-item"
 				ng-repeat="f in opt.floors"
 				ng-class="{'selected': opt.floor._id === f._id}"
-				ng-click="opt.floor = f; change_bg('floor');"
+				ng-click="opt.floor = f;"
 			>
 				<img ng-src="rooms/floors/{{f.bg}}">
 				<span>
@@ -125,7 +125,7 @@
 				class="model-item"
 				ng-repeat="d in opt.doors"
 				ng-class="{'selected': opt.door._id === d._id}"
-				ng-click="opt.door = d; change_bg('door');"
+				ng-click="opt.door = d;"
 			>
 				<img ng-src="rooms/floors/{{d.bg}}">
 				<span>
