@@ -46,6 +46,11 @@ nav>ul>li.active {
 .selected {
 	border: 1px solid #eee;
 }
+.close {
+	cursor: pointer;
+	border: 1px solid #ccc;
+	background-color: rgba(250, 100, 100, .7);
+}
 nav>ul>li.active>span {
 	color: #fff;
 	background-color: #18a28a;
@@ -144,9 +149,6 @@ nav>ul>li.active>span {
 	cursor: pointer;
 	margin-left: 1%;
 	position: relative;
-}
-.model-item.active  {
-	border: 1px solid #ccc;
 }
 .model-item, .model-item>img {
 	width: 80px;

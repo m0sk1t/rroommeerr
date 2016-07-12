@@ -44,7 +44,7 @@
 		<div class="section-layer interior" style="background-image: url(/rooms/interiors/{{opt.interior.image}});"></div>
 	</section>
 	<section class="collection-items" ng-class="{'active': opt.choose_floor}">
-		<div><span ng-click="opt.choose_floor = 0;">Close (x)</span></div>
+		<div><span class="close" ng-click="opt.choose_floor = 0;">Close (x)</span></div>
 		<div>
 			<span
 				class="model"
@@ -83,7 +83,7 @@
 		</div>
 	</section>
 	<section class="collection-items" ng-class="{'active': opt.choose_door}">
-		<div><span ng-click="opt.choose_door = 0;">Close (x)</span></div>
+		<div><span class="close" ng-click="opt.choose_door = 0;">Close (x)</span></div>
 		<div>
 			<span
 				class="model"
