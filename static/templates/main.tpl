@@ -112,7 +112,7 @@
 				class="model-item"
 				ng-repeat="d in opt.door_models"
 				ng-class="{'selected': opt.doormodel._id === d._id}"
-				ng-click="opt.doormodel = d._id; select_doors();"
+				ng-click="opt.doormodel = d._id; select_doors(); opt.door = opt.doors[0]"
 			>
 				<img ng-src="rooms/doors/{{d.image}}">
 				<span>
@@ -121,6 +121,7 @@
 			</div>
 		</div>
 		<div class="models">
+			Выбор декора: 
 			<div
 				class="model-item"
 				ng-repeat="d in opt.doors"
