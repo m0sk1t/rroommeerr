@@ -96,7 +96,7 @@
 			</span>
 		</div>
 		<div>
-			Коллекции Дверей: 
+			<div ng-show="opt.door_collections.length">Выбор коллекции: </div>
 			<span
 				class="model"
 				ng-repeat="dc in opt.door_collections"
@@ -107,6 +107,7 @@
 			</span>
 		</div>
 		<div class="models">
+			<div ng-show="opt.door_models.length">Выбор модели: </div>
 			<div
 				class="model-item"
 				ng-repeat="d in opt.door_models"
@@ -120,7 +121,7 @@
 			</div>
 		</div>
 		<div class="models">
-			Выбор декора: 
+			<div ng-show="opt.doors.length">Выбор декора: </div>
 			<div
 				class="model-item"
 				ng-repeat="d in opt.doors"
