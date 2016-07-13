@@ -44,7 +44,7 @@
 		<div class="section-layer interior" style="background-image: url(/rooms/interiors/{{opt.interior.image}});"></div>
 	</section>
 	<section class="collection-items" ng-class="{'active': opt.choose_floor}">
-		<div><span ng-click="opt.choose_floor = 0;">Close (x)</span></div>
+		<div><span class="close" ng-click="opt.choose_floor = 0;">Close (x)</span></div>
 		<div>
 			<span
 				class="model"
@@ -83,7 +83,7 @@
 		</div>
 	</section>
 	<section class="collection-items" ng-class="{'active': opt.choose_door}">
-		<div><span ng-click="opt.choose_door = 0;">Close (x)</span></div>
+		<div><span class="close" ng-click="opt.choose_door = 0;">Close (x)</span></div>
 		<div>
 			<span
 				class="model"
@@ -92,8 +92,7 @@
 				ng-class="{'selected': opt.door_brand === br._id}"
 				ng-click="opt.door_brand = br._id; select_door_collections();"
 			>
-<!-- 				<img ng-src="rooms/brands/{{br.bg}}">
-				 -->				{{br.article}}
+				{{br.article}}
 			</span>
 		</div>
 		<div>
@@ -111,7 +110,7 @@
 			<div
 				class="model-item"
 				ng-repeat="d in opt.door_models"
-				ng-class="{'selected': opt.doormodel._id === d._id}"
+				ng-class="{'selected': opt.doormodel === d._id}"
 				ng-click="opt.doormodel = d._id; select_doors(); opt.door = opt.doors[0]"
 			>
 				<img ng-src="rooms/doors/{{d.image}}">
