@@ -3,9 +3,3 @@ node_modules
 
 # Optional npm cache directory
 .npm
-
-# Pictures
-static/rooms/doors/*.*
-static/rooms/floors/*.*
-static/rooms/plinths/*.*
-static/rooms/interiors/*.*
