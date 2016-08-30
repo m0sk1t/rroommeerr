@@ -217,7 +217,7 @@
 									file: files[ind]
 								}
 							}).then(function(res) {
-								$scope.item.images[$scope.room.index].image && $scope.item.images[$scope.room.index].image !== res.data && $http.delete('/image/' + $scope.img + '/' + $scope.item.images[$scope.room.index].image).then(function(r) {
+								$scope.item.images[$scope.room.index] && $scope.item.images[$scope.room.index].image && $scope.item.images[$scope.room.index].image !== res.data && $http.delete('/image/' + $scope.img + '/' + $scope.item.images[$scope.room.index].image).then(function(r) {
 									$scope.item.images.push({
 										room: $scope.room._id,
 										image: res.data
@@ -227,7 +227,11 @@
 								}, function(r) {
 									console.error(res.data);
 								});
-								$scope.item.image = res.data;
+								$scope.item.images.push({
+									room: $scope.room._id,
+									image: res.data
+								});
+								$scope.save(0);
 							});
 						})(i);
 					}

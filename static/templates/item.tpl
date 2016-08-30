@@ -49,13 +49,12 @@
 		<label ng-show="item.images !== undefined">
 			Картинка для
 			<p ng-repeat="r in rooms track by $index">
-				{{r.article}}:
+				<span ng-click="room._id = r._id; room.index = $index;">{{r.article}}:</span>
 				<div
 		 			accept="image/*"
 					ngf-multiple="false"
 					ngf-pattern="'image/*'"
 					ngf-select="room_image($files);"
-					ng-click="room._id = r._id; room.index = $index;"
 				>выбрать</div>
 			</p>
 			<br>
