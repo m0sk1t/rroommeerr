@@ -102,13 +102,10 @@ nav>ul>li.active>span {
 .floor {
 	z-index: 2;
 }
-.plinth {
-	z-index: 3;
-}
-.door {
+.interior {
 	z-index: 4;
 }
-.interior {
+.door {
 	z-index: 5;
 }
 .collection-items {
