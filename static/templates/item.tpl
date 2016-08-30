@@ -39,10 +39,33 @@
 		</label>
 		<label ng-show="item.image !== undefined">
 			Картинка
-			<input type="file" id="image" accept="image/png" onchange="angular.element(this).scope().image()"><br>
+			<div 
+	 			accept="image/*"
+				ngf-multiple="false"
+				ngf-pattern="'image/*'"
+				ngf-select="image($files)"
+			>выбрать</div>><br>
+		</label>
+		<label ng-show="item.images !== undefined">
+			Картинка для
+			<p ng-repeat="r in rooms track by $index">
+				{{r.article}}:
+				<div
+		 			accept="image/*"
+					ngf-multiple="false"
+					ngf-pattern="'image/*'"
+					ngf-select="room_image($files);"
+					ng-click="room._id = r._id; room.index = $index;"
+				>выбрать</div>
+			</p>
+			<br>
 		</label>
 		<input type="submit" value="СОХРАНИТЬ">
 	</form>
 	<span ng-show="item.bg">ФОН:<img ng-src="rooms/{{img}}s/{{item.bg}}" width="320px"></span>
 	<span ng-show="item.image">КАРТИНКА:<img ng-src="rooms/{{img}}s/{{item.image}}" width="320px"></span>
+	<span ng-show="item.images">
+		КАРТИНКИ:
+		<img ng-src="rooms/{{img}}s/{{i.image}}" width="320px" ng-repeat="i in item.images">
+	</span>
 </article>

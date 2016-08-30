@@ -23,16 +23,6 @@
 					></color-picker>
 					<span>ЦВЕТ СТЕН</span>
 				</li>
-<!--
- 				<li>
-					ВЫБРАТЬ ПЛИНТУС
-					<div>
-						<div ng-repeat="p in plinths" class="color" ng-click="opt.plinth = p;>
-							<img class="color" ng-src="rooms/plinths/{{p.bg}}" alt="{{p.article}}">
-						</div>
-					</div>
-				</li>
- -->
 			</ul>
 		</nav>
 	</section>

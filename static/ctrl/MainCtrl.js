@@ -55,9 +55,10 @@
 			};
 			$http.get('/brand/0').then(function(res) {
 				$scope.brands = res.data;
+				/*
 				$scope.opt.door_brand = res.data[0]._id;
 				$scope.opt.floor_brand = res.data[0]._id;
-
+*/
 				$http.get('/doorcoll/0').then(function(res) {
 					$scope.doorcolls = res.data;
 				});
@@ -123,9 +124,13 @@
 			};
 			$scope.load();
 		}
-	]).controller('ItemCtrl', ['$scope', '$http', '$location', '$routeParams',
-		function($scope, $http, $location, $routeParams) {
+	]).controller('ItemCtrl', ['$scope', '$http', '$location', '$routeParams', 'Upload',
+		function($scope, $http, $location, $routeParams, Upload) {
 			$scope.item = {};
+			$scope.room = {
+				_id: null,
+				index: null
+			};
 			$scope.type = $routeParams.type;
 			switch (true) {
 				case $scope.type.indexOf('door') != -1:
@@ -142,6 +147,9 @@
 			$scope.load = function() {
 				$http.get('/' + $scope.type + '/' + $routeParams.id).then(function(res) {
 					$scope.item = res.data[0];
+					$scope.item.images !== undefined && $http.get('/interior/0').then(function(res) {
+						$scope.rooms = res.data;
+					});
 					$scope.item.brand !== undefined && $http.get('/brand/0').then(function(res) {
 						$scope.brands = res.data;
 					});
@@ -177,27 +185,53 @@
 					console.error(res.data.msg);
 				});
 			};
-			$scope.image = function() {
-				var file = document.querySelector('input#image').files[0],
-					data = new FormData();
-				if (!file) return;
-				data.append('file', file);
-				$http.put('/image/' + $scope.img, data, {
-					transformRequest: angular.identity,
-					headers: {
-						'Content-Type': undefined
+			$scope.image = function(files) {
+				if (files && files.length) {
+					for (var i = 0; i < files.length; i++) {
+						(function(index) {
+							Upload.upload({
+								url: '/image/' + $scope.img,
+								data: {
+									file: files[index]
+								}
+							}).then(function(res) {
+								$scope.item.image && $scope.item.image !== res.data && $http.delete('/image/' + $scope.img + '/' + $scope.item.image).then(function(r) {
+									$scope.item.image = res.data;
+									$scope.save(0);
+								}, function(r) {
+									console.error(res.data);
+								});
+								$scope.item.image = res.data;
+							});
+						})(i);
 					}
-				}).then(function(res) {
-					$scope.item.image && $scope.item.image !== res.data && $http.delete('/image/' + $scope.img + '/' + $scope.item.image).then(function(r) {
-						$scope.item.image = res.data;
-						$scope.save(0);
-					}, function(r) {
-						console.error(res.data);
-					});
-					$scope.item.image = res.data;
-				}, function(res) {
-					console.error(res.data.msg);
-				});
+				}
+			};
+			$scope.room_image = function(files) {
+				if (files && files.length) {
+					for (var i = 0; i < files.length; i++) {
+						(function(ind) {
+							Upload.upload({
+								url: '/image/' + $scope.img,
+								data: {
+									file: files[ind]
+								}
+							}).then(function(res) {
+								$scope.item.images[$scope.room.index].image && $scope.item.images[$scope.room.index].image !== res.data && $http.delete('/image/' + $scope.img + '/' + $scope.item.images[$scope.room.index].image).then(function(r) {
+									$scope.item.images.push({
+										room: $scope.room._id,
+										image: res.data
+									});
+									$scope.save(0);
+									$scope.room = {};
+								}, function(r) {
+									console.error(res.data);
+								});
+								$scope.item.image = res.data;
+							});
+						})(i);
+					}
+				}
 			};
 			$scope.save = function(redirect) {
 				var id = $scope.item._id;

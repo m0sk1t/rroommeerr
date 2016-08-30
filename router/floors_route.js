@@ -18,9 +18,9 @@ module.exports = function(app) {
 				type: String,
 				default: ''
 			},
-			image: {
-				type: String,
-				default: ''
+			images: {
+				type: Array,
+				default: []
 			}
 		}),
 		FloorColls = mongoose.model('floorcoll', {

@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('RROOMMEERR', ['ngRoute', 'color.picker']);
+	var app = angular.module('RROOMMEERR', ['ngRoute', 'color.picker', 'ngFileUpload']);
 	app.config(['$routeProvider',
 		function($routeProvider) {
 			$routeProvider.when('/', {

@@ -24,7 +24,7 @@ module.exports = function(app) {
 			res.status(403).send('Not authorized');
 		}
 	});
-	app.put('/image/:item', function(req, res) {
+	app.post('/image/:item', function(req, res) {
 		if (adminhash.hash !== req.cookies.adminhash) {
 			res.status(403).send('Not authorized');
 			return;
