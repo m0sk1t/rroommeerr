@@ -39,9 +39,8 @@
 	<section class="display">
 		<div class="section-layer wall" style="background-color: {{opt.color}}; background-image: url(/rooms/wall.png);"></div>
 		<div class="section-layer floor" style="background-image: url(/rooms/floors/{{opt.floor.image}});"></div>
-		<div class="section-layer plinth" style="background-image: url(/rooms/plinths/{{opt.plinth.image}});"></div>
-		<div class="section-layer door" style="background-image: url(/rooms/doors/{{opt.door.image}});"></div>
 		<div class="section-layer interior" style="background-image: url(/rooms/interiors/{{opt.interior.image}});"></div>
+		<div class="section-layer door" style="background-image: url(/rooms/doors/{{opt.door.image}});"></div>
 	</section>
 	<section class="collection-items" ng-class="{'active': opt.choose_floor}">
 		<div><span class="close" ng-click="opt.choose_floor = 0;">Close (x)</span></div>

@@ -79,10 +79,6 @@
 				$http.get('/doormodel/0').then(function(res) {
 					$scope.doormodels = res.data;
 				});
-				$http.get('/plinth/0').then(function(res) {
-					$scope.plinths = res.data;
-					$scope.opt.plinth = res.data[0];
-				});
 			});
 		}
 	]).controller('AdminCtrl', ['$scope', '$http', '$location',
