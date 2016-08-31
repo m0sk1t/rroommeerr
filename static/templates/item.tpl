@@ -39,28 +39,34 @@
 		</label>
 		<label ng-show="item.image !== undefined">
 			Картинка
-			<div 
+			<span
 	 			accept="image/*"
 				ngf-multiple="false"
+                class="choose-button"
 				ngf-pattern="'image/*'"
 				ngf-select="image($files)"
 			>
 				выбрать
-			</div><br>
+			</span><br>
 		</label>
 		<label ng-show="item.images !== undefined">
-			Картинка для
-			<p ng-repeat="r in rooms track by $index">
-				<span ng-click="room._id = r._id; room.index = $index;">{{r.article}}:</span>
-				<div
+			Выберите интерьер для добавления картинки
+			<p
+               ng-repeat="r in rooms track by $index"
+               ng-class="{active:room._id === r._id}"
+               ng-click="room._id = r._id; room.index = $index;"
+           >
+				{{r.article}}:
+			</p>
+				<span
 		 			accept="image/*"
 					ngf-multiple="false"
+                    class="choose-button"
 					ngf-pattern="'image/*'"
 					ngf-select="room_image($files);"
 				>
 					выбрать
-				</div>
-			</p>
+				</span>
 		</label>
 		<input type="submit" value="СОХРАНИТЬ">
 	</form>

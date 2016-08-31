@@ -1,4 +1,3 @@
-// ультрамариновый олень носит шапку набекрень
 var
 	app = require('express')(),
 	morgan = require('morgan'),
