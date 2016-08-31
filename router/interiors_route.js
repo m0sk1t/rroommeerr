@@ -18,12 +18,6 @@ module.exports = function(app) {
 				type: String,
 				default: ''
 			}
-		}),
-		Colors = require('mongoose').model('color', {
-			color: {
-				type: String,
-				default: "#000000"
-			}
 		});
 	app.route('/interior/:id').get((req, res) => {
 		var find = isNaN(req.params.id) ? {
@@ -57,40 +51,6 @@ module.exports = function(app) {
 		}
 		Interiors.findByIdAndRemove(req.params.id, (err, interior) => {
 			res.json(interior);
-		});
-	});
-	app.route('/color/:id').get((req, res) => {
-		var find = isNaN(req.params.id) ? {
-			_id: req.params.id
-		} : {};
-		Colors.find(find, {
-			__v: 0
-		}, (err, colors) => {
-			res.json(colors);
-		});
-	}).post((req, res) => {
-		if (adminhash.hash !== req.cookies.adminhash) {
-			res.status(403).send('Not authorized');
-			return;
-		}
-		Colors.create(req.body, (err, color) => {
-			res.json(color);
-		});
-	}).put((req, res) => {
-		if (adminhash.hash !== req.cookies.adminhash) {
-			res.status(403).send('Not authorized');
-			return;
-		}
-		Colors.findByIdAndUpdate(req.params.id, req.body, (err, color) => {
-			res.json(color);
-		});
-	}).delete((req, res) => {
-		if (adminhash.hash !== req.cookies.adminhash) {
-			res.status(403).send('Not authorized');
-			return;
-		}
-		Colors.findByIdAndRemove(req.params.id, (err, color) => {
-			res.json(color);
 		});
 	});
 };

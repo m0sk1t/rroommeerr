@@ -21,12 +21,6 @@
 				<li class="admin-menu" ng-class="{active: item_type === 'floor'}" ng-click="item_type = 'floor'; load();">
 				Ламинат
 				</li>
-
-<!--
- 				<li class="admin-menu" ng-class="{active: item_type === 'plinth'}" ng-click="item_type = 'plinth'; load();">
-				Плинтус
-				</li>
- -->
 				<li class="admin-menu" ng-class="{active: item_type === 'interior'}" ng-click="item_type = 'interior'; load();">
 				Интерьер
 				</li>

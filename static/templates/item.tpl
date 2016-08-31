@@ -44,7 +44,9 @@
 				ngf-multiple="false"
 				ngf-pattern="'image/*'"
 				ngf-select="image($files)"
-			>выбрать</div>><br>
+			>
+				выбрать
+			</div><br>
 		</label>
 		<label ng-show="item.images !== undefined">
 			Картинка для
@@ -55,9 +57,10 @@
 					ngf-multiple="false"
 					ngf-pattern="'image/*'"
 					ngf-select="room_image($files);"
-				>выбрать</div>
+				>
+					выбрать
+				</div>
 			</p>
-			<br>
 		</label>
 		<input type="submit" value="СОХРАНИТЬ">
 	</form>

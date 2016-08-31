@@ -54,12 +54,53 @@ nav>ul>li.active>span {
 	height: 100%;
 	margin: 0 1% 0 0;
 }
-.menu {
-	z-index: 10;
+.choice-menu {
+	top: 5%;
+	right: 1%;
 	color: #ddd;
-	width: 100%;
+	z-index: 10;
 	position: absolute;
-	background-color: rgba(22,22,22,.5);
+	width: 25%;
+}
+.choice-menu__menu-item {
+	width: 20%;
+	padding: 2%;
+	margin: 0 .1%;
+	font-size: 1.2rem;
+	display: inline-block;
+	background-color: #666;
+}
+.choice-menu__menu-item.choice-menu__menu-item_active {
+	color: #333;
+	background-color: #eee;
+}
+.choice-menu__items-lists {
+	position: relative;
+	background-color: #eee;
+}
+.choice-menu__item-list {
+	overflow-y: auto;
+	max-height: 600px;
+}
+.choice-menu__item-list ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+.model-item.selected,
+.choice-menu__item-list ul>li.active, .color.active {
+	border: 1px solid rgba(123,123,123,.7);
+}
+.choice-menu__item-list.interior ul,
+.choice-menu__item-list.interior li,
+.choice-menu__item-list.interior img {
+	width: 100%;
+}
+.choice-menu__item-list .color {
+	margin: 2%;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
 }
 .action {
 	width: 5%;
@@ -108,58 +149,23 @@ nav>ul>li.active>span {
 .door {
 	z-index: 5;
 }
-.collection-items {
-	z-index: 9;
-	width: 70%;
-	height: auto;
-	color: #ddd;
-	top: -100%;
-	margin: 0 15%;
-	position: absolute;
-	border-radius: 0 0 3px 3px;
-	transition: all .3s ease;
-	-ms-transition: all .3s ease;
-	-moz-transition: all .3s ease;
-	-webkit-transition: all .3s ease;
-	background-color: rgba(22,22,22,.5);
-}
-.collection-items.active {
-	top: 50px;
-}
-.collection-items>div:first-child {
-	text-align: right;
-}
-.close {
-	height: 20px;
-	padding: 0 1%;
-	cursor: pointer;
-	line-height: 20px;
-	border: 1px solid #ccc;
-	background-color: rgba(250, 100, 100, .7);
-}
 .models {
 	cursor: pointer;
 	max-width: 100%;
-	overflow-x: auto;
+	overflow-y: auto;
 }
 .model-item {
+	width: 50%;
 	cursor: pointer;
 	margin-left: 1%;
 	position: relative;
 }
-.model-item, .model-item>img {
-	width: 80px;
+.model-item>img {
+	width: 100%;
 	cursor: pointer;
 	display: inline-block;
 }
-.model {
-	padding: 4px;
-	cursor: pointer;
-	margin-right: 2px;
-	display: inline-block;
-	background-color: #222;
-}
-.model>img {
-	width: 50px;
-	float: left;
+.items {
+	height: 100%;
+	overflow-y: auto;
 }

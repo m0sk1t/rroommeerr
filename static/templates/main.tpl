@@ -1,127 +1,135 @@
 <article>
-	<section class="menu">
-		<nav>
-			<ul>
-				<li ng-repeat="i in interiors" ng-class="{active: opt.interior.alias === i.alias}" ng-click="opt.interior = i;">
-					<img ng-src="rooms/interiors/{{i.bg}}">
-					<span>{{i.article}}</span>
-				</li>
-				<li class="action" ng-click="opt.choose_floor = !opt.choose_floor; opt.choose_door = false; select_floor_collections();">
-					<span>ЛАМИНАТ</span>
-				</li>
-				<li class="action" ng-click="opt.choose_door = !opt.choose_door; opt.choose_floor = false; select_door_collections();">
-					<span>ДВЕРИ</span>
-				</li>
-				<li class="action">
-					<color-picker
-						ng-model="opt.color"
-						color-picker-alpha="false"
-						color-picker-case="'upper'"
-						color-picker-format="'rgb'"
-						color-picker-pos="'bottom left'"
-						color-picker-swatch-only="true"
-					></color-picker>
-					<span>ЦВЕТ СТЕН</span>
-				</li>
-			</ul>
-		</nav>
+	<section class="choice-menu">
+		<div class="choice-menu__menu-items">
+			<span
+				class="choice-menu__menu-item"
+				ng-click="show_menu_items('choose_interior')"
+				ng-class="{'choice-menu__menu-item_active': opt.choose_interior}"
+			>
+				Интерьер
+			</span>
+			<span
+				class="choice-menu__menu-item"
+				ng-click="show_menu_items('choose_color')"
+				ng-class="{'choice-menu__menu-item_active': opt.choose_color}"
+			>
+				Цвет стен
+			</span>
+			<span
+				class="choice-menu__menu-item"
+				ng-class="{'choice-menu__menu-item_active': opt.choose_floor}"
+				ng-click="show_menu_items('choose_floor'); select_floor_collections();"
+			>
+				Пол
+			</span>
+			<span
+				class="choice-menu__menu-item"
+				ng-class="{'choice-menu__menu-item_active': opt.choose_door}"
+				ng-click="show_menu_items('choose_door'); select_door_collections();"
+			>
+				Двери
+			</span>
+		</div>
+		<div class="choice-menu__items-lists">
+			<div
+				class="choice-menu__item-list interior"
+				ng-show="opt.choose_interior"
+			>
+				<ul>
+					<li
+						ng-repeat="i in interiors"
+						ng-click="opt.interior = i;"
+						ng-class="{active: opt.interior.alias === i.alias}"
+					>
+						<img ng-src="rooms/interiors/{{i.bg}}">
+					</li>
+				</ul>
+			</div>
+			<div
+				class="choice-menu__item-list"
+				ng-show="opt.choose_color"
+			>
+				<div
+					class="color"
+					ng-repeat="c in colors"
+					ng-click="opt.color = c;"
+					style="background-color: {{c}};"
+					ng-class="{active: opt.color === c}"
+				>
+				&nbsp;
+				</div>
+			</div>
+			<div
+				class="choice-menu__item-list"
+				ng-show="opt.choose_floor"
+			>
+				<select ng-model="opt.floor_brand" ng-change="select_floor_collections();">
+					<option value="">Выберите бренд</option>
+					<option value="{{br._id}}" ng-repeat="br in brands" ng-show="br.target === 'floor'">{{br.article}}</option>
+				</select>
+				<select ng-model="opt.floorcoll" ng-change="select_floors();" ng-show="opt.floor_brand">
+					<option value="">Выберите коллекцию</option>
+					<option value="{{fc._id}}" ng-repeat="fc in opt.floor_collections">{{fc.article}}</option>
+				</select>
+				<div class="models">
+					<div
+						class="model-item"
+						ng-repeat="f in opt.floors"
+						ng-class="{'selected': opt.floor._id === f._id}"
+						ng-click="opt.floor = f; opt.floor.image = select_floor_image();"
+					>
+						<img ng-src="rooms/floors/{{f.bg}}">
+						<span>
+							{{f.article}}
+						</span>
+					</div>
+				</div>
+			</div>
+			<div
+				class="choice-menu__item-list"
+				ng-show="opt.choose_door"
+			>
+				<select ng-model="opt.door_brand" ng-change="select_door_collections();">
+					<option value="">Выберите бренд</option>
+					<option value="{{br._id}}" ng-repeat="br in brands" ng-show="br.target === 'door'">{{br.article}}</option>
+				</select>
+				<select ng-model="opt.doorcoll" ng-change="select_door_models();" ng-show="opt.door_brand">
+					<option value="">Выберите коллекцию</option>
+					<option value="{{dc._id}}" ng-repeat="dc in opt.door_collections">{{dc.article}}</option>
+				</select>
+				<div class="models" ng-show="opt.doors.length">
+					<div
+						class="model-item"
+						ng-click="opt.door = d;"
+						ng-repeat="d in opt.doors"
+						ng-class="{'selected': opt.door._id === d._id}"
+					>
+						<img ng-src="rooms/doors/{{d.bg}}">
+						<span>
+							{{d.article}}
+						</span>
+					</div>
+				</div>
+				<div class="models" ng-show="opt.door_models.length">
+					<div
+						class="model-item"
+						ng-repeat="dm in opt.door_models"
+						ng-class="{'selected': opt.door_model._id === dm._id}"
+						ng-click="opt.doormodel = dm._id; select_doors(); opt.door = opt.doors[0]"
+					>
+						<img ng-src="rooms/doors/{{dm.image}}">
+						<span>
+							{{dm.article}}
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
 	</section>
-	<section class="display">
+	<section class="display" ng-click="show_menu_items();">
 		<div class="section-layer wall" style="background-color: {{opt.color}}; background-image: url(/rooms/wall.png);"></div>
 		<div class="section-layer floor" style="background-image: url(/rooms/floors/{{opt.floor.image}});"></div>
 		<div class="section-layer interior" style="background-image: url(/rooms/interiors/{{opt.interior.image}});"></div>
 		<div class="section-layer door" style="background-image: url(/rooms/doors/{{opt.door.image}});"></div>
-	</section>
-	<section class="collection-items" ng-class="{'active': opt.choose_floor}">
-		<div><span class="close" ng-click="opt.choose_floor = 0;">Close (x)</span></div>
-		<div>
-			<span
-				class="model"
-				ng-repeat="br in brands"
-				ng-show="br.target === 'floor'"
-				ng-class="{'selected': opt.floor_brand === br._id}"
-				ng-click="opt.floor_brand = br._id; select_floor_collections();"
-			>
-<!-- 				<img ng-src="rooms/brands/{{br.bg}}">
-				 -->				{{br.article}}
-			</span>
-		</div>
-		<div>
-			Коллекции ламината: 
-			<span
-				class="model"
-				ng-repeat="fc in opt.floor_collections"
-				ng-class="{'selected': opt.floorcoll === fc._id}"
-				ng-click="opt.floorcoll = fc._id; select_floors();"
-			>
-				{{fc.article}}
-			</span>
-		</div>
-		<div class="models">
-			<div
-				class="model-item"
-				ng-repeat="f in opt.floors"
-				ng-class="{'selected': opt.floor._id === f._id}"
-				ng-click="opt.floor = f;"
-			>
-				<img ng-src="rooms/floors/{{f.bg}}">
-				<span>
-					{{f.article}}
-				</span>
-			</div>
-		</div>
-	</section>
-	<section class="collection-items" ng-class="{'active': opt.choose_door}">
-		<div><span class="close" ng-click="opt.choose_door = 0;">Close (x)</span></div>
-		<div>
-			<span
-				class="model"
-				ng-repeat="br in brands"
-				ng-show="br.target === 'door'"
-				ng-class="{'selected': opt.door_brand === br._id}"
-				ng-click="opt.door_brand = br._id; select_door_collections();"
-			>
-				{{br.article}}
-			</span>
-		</div>
-		<div>
-			<div ng-show="opt.door_collections.length">Выбор коллекции: </div>
-			<span
-				class="model"
-				ng-repeat="dc in opt.door_collections"
-				ng-class="{'selected': opt.doorcoll === dc._id}"
-				ng-click="opt.doorcoll = dc._id; select_door_models();"
-			>
-				{{dc.article}}
-			</span>
-		</div>
-		<div class="models">
-			<div ng-show="opt.door_models.length">Выбор модели: </div>
-			<div
-				class="model-item"
-				ng-repeat="d in opt.door_models"
-				ng-class="{'selected': opt.doormodel === d._id}"
-				ng-click="opt.doormodel = d._id; select_doors(); opt.door = opt.doors[0]"
-			>
-				<img ng-src="rooms/doors/{{d.image}}">
-				<span>
-					{{d.article}}
-				</span>
-			</div>
-		</div>
-		<div class="models">
-			<div ng-show="opt.doors.length">Выбор декора: </div>
-			<div
-				class="model-item"
-				ng-repeat="d in opt.doors"
-				ng-class="{'selected': opt.door._id === d._id}"
-				ng-click="opt.door = d;"
-			>
-				<img ng-src="rooms/doors/{{d.bg}}">
-				<span>
-					{{d.article}}
-				</span>
-			</div>
-		</div>
 	</section>
 </article>

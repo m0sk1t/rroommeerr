@@ -1,13 +1,13 @@
 (function() {
 	angular.module('RROOMMEERR').controller('MainCtrl', ['$scope', '$http',
 		function($scope, $http) {
-			$scope.colors = [];
+			$scope.colors = ["#fb0009", "#feff01", "#00ff00", "#00fff8", "#0004ff", "#ff00ff", "#ffffff", "#ebebeb", "#e1e1e1", "#d7d7d7", "#cccccc", "#c5c1c2", "#b7b8bc", "#a0a09e", "#df011a", "#ffee0b", "#059b37", "#05a2e7", "#390687", "#d60386", "#85898a", "#7e7f7a", "#717075", "#645f63", "#4e4848", "#373632", "#111111", "#030002", "#eb9075", "#eaac83", "#f0cc7e", "#f9f499", "#cbe491", "#abdc9a", "#95c999", "#93ccc5", "#8ad0f2", "#90a8d8", "#9491ca", "#937bb7", "#a781b4", "#bd8bbc", "#eb94c7", "#eb93a1", "#e16040", "#e08b4b", "#f9ac50", "#fff366", "#bcd06f", "#8fc361", "#58b765", "#4fb9b5", "#4bb9f4", "#6085cc", "#6585be", "#6769b6", "#654c9f", "#6949ae", "#8b4e9e", "#8d4ba2", "#b14fa2", "#e45ca4", "#db6072", "#d80413", "#da5603", "#ee8d00", "#fdf300", "#95c718", "#5dae35", "#51ad28", "#009e39", "#049e9c", "#02a5e8", "#006ab8", "#233d9e", "#2c0c8b", "#630486", "#910083", "#d50388", "#e10255", "#9a000f", "#973c03", "#a33d0d", "#a06600", "#a1a300", "#67860f", "#317c15", "#006b27", "#036c67", "#0072a3", "#00437e", "#0b2967", "#22005e", "#4a005c", "#68005c", "#97015b", "#a0003b", "#710007", "#782600", "#722707", "#744800", "#817900", "#456208", "#1b5910", "#004f17", "#00504a", "#00527a", "#052b5c", "#011548", "#1a0041", "#37023a", "#72003e", "#71001b", "#c9bda7", "#aa927a", "#7a6256", "#7a615a", "#563f39", "#3d2a24", "#3b2925", "#c9a277", "#b47e50", "#995e3e", "#764920", "#bee", "#bac", "#cab", "#ca4", "ce4"];
 			$scope.opt = {
-				interior: 'bedroom',
 				door: null,
 				brand: null,
 				floor: null,
 				plinth: null,
+				interior: null,
 
 				doorcoll: null,
 				doormodel: null,
@@ -15,8 +15,17 @@
 
 				choose_door: false,
 				choose_floor: false,
+				choose_color: false,
+				choose_interior: false,
 
-				color: 'rgb(200,200,200)',
+				color: 'rgb(150,150,150)',
+			};
+			$scope.show_menu_items = function(item) {
+				$scope.opt.choose_door = !1;
+				$scope.opt.choose_floor = !1;
+				$scope.opt.choose_color = !1;
+				$scope.opt.choose_interior = !1;
+				item && ($scope.opt[item] = !0);
 			};
 			$scope.select_floor_collections = function() {
 				$scope.opt.floors = [];
@@ -30,6 +39,11 @@
 				$scope.floors.map(function(el) {
 					(el.coll === $scope.opt.floorcoll) && $scope.opt.floors.push(el);
 				});
+			};
+			$scope.select_floor_image = function() {
+				return $scope.opt.floor.images.filter(function(el) {
+					return $scope.opt.interior._id === el.room;
+				})[0].image;
 			};
 
 			$scope.select_door_collections = function() {
@@ -71,11 +85,11 @@
 				});
 				$http.get('/door/0').then(function(res) {
 					$scope.doors = res.data;
-					$scope.opt.door = res.data[0];
+					//					$scope.opt.door = res.data[0];
 				});
 				$http.get('/floor/0').then(function(res) {
 					$scope.floors = res.data;
-					$scope.opt.floor = res.data[0];
+					//					$scope.opt.floor = res.data[0];
 				});
 				$http.get('/doormodel/0').then(function(res) {
 					$scope.doormodels = res.data;
@@ -88,17 +102,13 @@
 			$scope.item_type = 'brand';
 			$scope.auth = function() {
 				var pwd = prompt("Введите пароль", 'P@ssw0rd');
-				//красный хомяк отжигает как дурак
 				$http.get('/setadm/' + pwd).then(function(res) {}, function(res) {
 					$scope.auth();
 				});
 			};
-			$scope.check = function() {
-				$http.get('/check').then(function(res) {}, function(res) {
-					$scope.auth();
-				});
-			};
-			$scope.check();
+			$http.get('/check').then(function(res) {}, function(res) {
+				$scope.auth();
+			});
 			$scope.load = function() {
 				$http.get('/' + $scope.item_type + '/0').then(function(res) {
 					$scope.items = res.data;
@@ -115,6 +125,8 @@
 			};
 			$scope.delete = function(id) {
 				$http.delete('/' + $scope.item_type + '/' + id).then(function(res) {
+					$http.delete('/image/' + $scope.item_type + '/' + res.data.bg).then(function(r) {}, function(r) {});
+					$http.delete('/image/' + $scope.item_type + '/' + res.data.image).then(function(r) {}, function(r) {});
 					$scope.items = $scope.items.filter(function(item) {
 						return item._id !== id;
 					});
@@ -168,7 +180,7 @@
 					data = new FormData();
 				if (!file) return;
 				data.append('file', file);
-				$http.put('/image/' + $scope.img, data, {
+				$http.post('/image/' + $scope.img, data, {
 					transformRequest: angular.identity,
 					headers: {
 						'Content-Type': undefined
@@ -218,19 +230,20 @@
 								}
 							}).then(function(res) {
 								$scope.item.images[$scope.room.index] && $scope.item.images[$scope.room.index].image && $scope.item.images[$scope.room.index].image !== res.data && $http.delete('/image/' + $scope.img + '/' + $scope.item.images[$scope.room.index].image).then(function(r) {
-									$scope.item.images.push({
+									$scope.item.images[$scope.room.index] = {
 										room: $scope.room._id,
 										image: res.data
-									});
+									};
 									$scope.save(0);
 									$scope.room = {};
 								}, function(r) {
 									console.error(res.data);
 								});
-								$scope.item.images.push({
+								$scope.item.images[$scope.room.index] = {
 									room: $scope.room._id,
 									image: res.data
-								});
+								};
+								$scope.room = {};
 								$scope.save(0);
 							});
 						})(i);
