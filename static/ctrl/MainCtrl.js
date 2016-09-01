@@ -85,11 +85,12 @@
 				});
 				$http.get('/door/0').then(function(res) {
 					$scope.doors = res.data;
-					//					$scope.opt.door = res.data[0];
+					$scope.opt.door = res.data[0];
 				});
 				$http.get('/floor/0').then(function(res) {
 					$scope.floors = res.data;
-					//					$scope.opt.floor = res.data[0];
+					$scope.opt.floor = res.data[0];
+					$scope.select_floor_image();
 				});
 				$http.get('/doormodel/0').then(function(res) {
 					$scope.doormodels = res.data;
@@ -220,6 +221,10 @@
 				}
 			};
 			$scope.room_image = function(files) {
+				if (!$scope.room._id && !$scope.room.index) {
+					alert('Кликните по комнате для добавления!');
+					return;
+				}
 				if (files && files.length) {
 					for (var i = 0; i < files.length; i++) {
 						(function(ind) {

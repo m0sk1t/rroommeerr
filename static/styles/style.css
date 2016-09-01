@@ -92,7 +92,7 @@ nav>ul>li.active>span {
 	max-height: 600px;
 }
 .choice-menu__item-list ul {
-	margin: 0;
+	margin: 2%;
 	padding: 0;
 	list-style-type: none;
 }
@@ -100,8 +100,12 @@ nav>ul>li.active>span {
 .choice-menu__item-list ul>li.active, .color.active {
 	border: 1px solid rgba(123,123,123,.7);
 }
-.choice-menu__item-list.interior ul,
-.choice-menu__item-list.interior li,
+.choice-menu__item-list {
+	text-align: center;
+}
+.choice-menu__item-list.interior li {
+	margin: 2%;
+}
 .choice-menu__item-list.interior img {
 	width: 100%;
 }
@@ -178,4 +182,13 @@ nav>ul>li.active>span {
 .items {
 	height: 100%;
 	overflow-y: auto;
+}
+.room-item {
+	padding: 5px;
+	margin-right: 5px;
+	display: inline-block;
+	background-color: #aee;
+}
+.room-item.active {
+	background-color: #3ee;
 }

@@ -52,11 +52,12 @@
 		<label ng-show="item.images !== undefined">
 			Выберите интерьер для добавления картинки
 			<p
+               class="room-item"
                ng-repeat="r in rooms track by $index"
                ng-class="{active:room._id === r._id}"
                ng-click="room._id = r._id; room.index = $index;"
            >
-				{{r.article}}:
+				{{r.article}}
 			</p>
 				<span
 		 			accept="image/*"
