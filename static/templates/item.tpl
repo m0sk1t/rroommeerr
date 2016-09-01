@@ -33,6 +33,10 @@
 			Наименование
 			<input type="text" placeholder="Наименование" ng-model="item.article"><br>
 		</label>
+		<label ng-show="item.description !== undefined">
+			Описание
+			<input type="text" placeholder="Описание" ng-model="item.description"><br>
+		</label>
 		<label ng-show="item.bg !== undefined">
 			Фон
 			<input type="file" id="bg" accept="image/jpeg,image/jpg" onchange="angular.element(this).scope().bg()"><br>

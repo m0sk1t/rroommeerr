@@ -18,6 +18,10 @@ module.exports = function(app) {
 				type: String,
 				default: ''
 			},
+			description: {
+				type: String,
+				default: ''
+			},
 			images: {
 				type: Array,
 				default: []
