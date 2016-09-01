@@ -35,7 +35,14 @@
 		</label>
 		<label ng-show="item.description !== undefined">
 			Описание
-			<input type="text" placeholder="Описание" ng-model="item.description"><br>
+			<textarea cols="30" rows="10" ng-model="description"></textarea>
+			<input type="button" ng-click="generate_description()" value="Сформировать описание">
+			<table ng-show="item.description.length">
+                <tr ng-repeat="d in item.description track by $index">
+                    <td>{{d_names[$index]}}</td>
+                    <td>{{d}}</td>
+                </tr>
+			</table>
 		</label>
 		<label ng-show="item.bg !== undefined">
 			Фон

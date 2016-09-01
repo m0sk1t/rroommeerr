@@ -89,6 +89,7 @@
 				class="choice-menu__item-list"
 				ng-show="opt.choose_door"
 			>
+<!--
 				<select ng-model="opt.door_brand" ng-change="select_door_collections();">
 					<option value="">Выберите бренд</option>
 					<option value="{{br._id}}" ng-repeat="br in brands" ng-show="br.target === 'door'">{{br.article}}</option>
@@ -97,6 +98,23 @@
 					<option value="">Выберите коллекцию</option>
 					<option value="{{dc._id}}" ng-repeat="dc in opt.door_collections">{{dc.article}}</option>
 				</select>
+-->
+				<div class="models">
+					<div
+						class="model-item"
+						ng-click="opt.door = d;"
+						ng-repeat="d in doors | orderBy: d.coll"
+						ng-class="{'selected': opt.door._id === d._id}"
+					>
+						<img ng-src="rooms/doors/{{d.bg}}">
+						<span>
+						    <b>{{get_collection_name(d.coll)}}</b>
+						    <div>{{get_model_name(d.model)}}</div>
+							<div>{{d.article}}</div>
+						</span>
+					</div>
+				</div>
+<!--
 				<div class="models" ng-show="opt.doors.length">
 					<div
 						class="model-item"
@@ -123,6 +141,7 @@
 						</span>
 					</div>
 				</div>
+-->
 			</div>
 		</div>
 	</section>
@@ -132,4 +151,16 @@
 		<div class="section-layer interior" style="background-image: url(/rooms/interiors/{{opt.interior.image}});"></div>
 		<div class="section-layer door" style="background-image: url(/rooms/doors/{{opt.door.image}});"></div>
 	</section>
+	<section class="floor-description" ng-show="opt.show_floor_description" ng-click="opt.show_floor_description = !1">
+       <div class="container">
+            <table>
+                <tr ng-repeat="d in opt.floor.description track by $index">
+                    <td>{{d_names[$index]}}</td>
+                    <td>{{d}}</td>
+                </tr>
+            </table>
+            <img ng-src="rooms/floors/{{opt.floor.bg}}">
+       </div>
+	</section>
+	<div class="show-description" ng-click="opt.show_floor_description = !0" ng-show="!opt.show_floor_description">Характеристики этого ламината</div>
 </article>

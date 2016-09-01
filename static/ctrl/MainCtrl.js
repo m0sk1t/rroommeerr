@@ -17,6 +17,7 @@
 				choose_floor: false,
 				choose_color: false,
 				choose_interior: false,
+                show_floor_description: false,
 
 				color: 'rgb(150,150,150)',
 			};
@@ -34,6 +35,16 @@
 					el.brand === $scope.opt.floor_brand && $scope.opt.floor_collections.push(el);
 				});
 			};
+            $scope.get_collection_name = function(id){
+                return $scope.doorcolls.filter(function(el){
+                    return el._id === id;
+                })[0].article;
+            }
+            $scope.get_model_name = function(id){
+                return $scope.doormodels.filter(function(el){
+                    return el._id === id;
+                })[0].article;
+            }
 			$scope.select_floors = function() {
 				$scope.opt.floors = [];
 				$scope.floors.map(function(el) {
@@ -140,11 +151,16 @@
 	]).controller('ItemCtrl', ['$scope', '$http', '$location', '$routeParams', 'Upload',
 		function($scope, $http, $location, $routeParams, Upload) {
 			$scope.item = {};
+			$scope.description = '';
+			$scope.d_names = ['1','2','3','4','5','6','7','8','9','10'];
 			$scope.room = {
 				_id: null,
 				index: null
 			};
 			$scope.type = $routeParams.type;
+            $scope.generate_description = function(){
+                $scope.item.description = $scope.description.split('\n');
+            };
 			switch (true) {
 				case $scope.type.indexOf('door') != -1:
 					$scope.img = 'door';

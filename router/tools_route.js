@@ -53,7 +53,7 @@ module.exports = function(app) {
 			return;
 		}
 		var fs = require('fs');
-		fs.unlink(__dirname + '/../static/rooms/' + req.params.path + 's/' + image, function(err) {
+		fs.unlink(__dirname + '/../static/rooms/' + req.params.path + 's/' + req.params.image, function(err) {
 			if (err) {
 				console.error(err);
 				res.status(500).json(err);

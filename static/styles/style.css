@@ -35,8 +35,8 @@ nav>ul>li>span, .model-item>span {
 	left: 0;
 	bottom: 0;
 	width: 100%;
+    text-align: left;
 	position: absolute;
-	text-align: center;
 	background-color: rgba(33,33,33,.3);
 }
 nav>ul>li.active {
@@ -76,8 +76,8 @@ nav>ul>li.active>span {
     padding: 3px;
     border-radius: 3px;
     display: inline-block;
-    box-shadow: 1px 1px 1px 1px;
     background-color: aqua;
+    box-shadow: 1px 1px 1px 1px;
 }
 .choice-menu__menu-item.choice-menu__menu-item_active {
 	color: #333;
@@ -166,6 +166,43 @@ nav>ul>li.active>span {
 	cursor: pointer;
 	max-width: 100%;
 	overflow-y: auto;
+}
+.show-description,
+.floor-description {
+    z-index: 20;
+    color: #eee;
+    position: absolute;
+    background-color: #666;
+}
+.floor-description {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(22,22,22,.2);
+}
+.container table {
+    width: 30%;
+    float: left;
+}
+.container img {
+    width: 66%;
+    margin: 2%;
+}
+.container {
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    color: #333;
+    margin: 0 auto;
+    position: absolute;
+    background-color: #eee;
+}
+.show-description {
+    left: 3%;
+    bottom: 3%;
+    padding: 1%;
+	font-size: 1.1rem;
 }
 .model-item {
 	width: 48%;
