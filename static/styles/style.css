@@ -66,6 +66,7 @@ nav>ul>li.active>span {
 	width: 20%;
 	padding: 2%;
 	margin: 0 .1%;
+	cursor: pointer;
 	font-size: 1.2rem;
     text-align: center;
 	display: inline-block;
@@ -99,9 +100,6 @@ nav>ul>li.active>span {
 .model-item.selected,
 .choice-menu__item-list ul>li.active, .color.active {
 	border: 1px solid rgba(123,123,123,.7);
-}
-.choice-menu__item-list:first-child {
-	margin-top: 1%;
 }
 .choice-menu__item-list {
 	text-align: center;
