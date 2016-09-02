@@ -38,8 +38,8 @@
 				<ul>
 					<li
 						ng-repeat="i in interiors"
-						ng-click="opt.interior = i; select_floor_image();"
 						ng-class="{active: opt.interior.alias === i.alias}"
+						ng-click="opt.interior = i; opt.floor.image = select_floor_image();"
 					>
 						<img ng-src="rooms/interiors/{{i.bg}}">
 					</li>

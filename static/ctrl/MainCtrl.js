@@ -81,10 +81,6 @@
 			};
 			$http.get('/brand/0').then(function(res) {
 				$scope.brands = res.data;
-				/*
-				$scope.opt.door_brand = res.data[0]._id;
-				$scope.opt.floor_brand = res.data[0]._id;
-*/
 				$http.get('/doorcoll/0').then(function(res) {
 					$scope.doorcolls = res.data;
 				});
