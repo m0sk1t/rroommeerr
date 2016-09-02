@@ -81,7 +81,7 @@
 					>
 						<img ng-src="rooms/floors/{{f.bg}}">
 						<span>
-							{{f.article}}
+							{{f.description[0]}} - {{f.description[1]}} {{f.article}}
 						</span>
 					</div>
 				</div>
@@ -99,9 +99,7 @@
 					>
 						<img ng-src="rooms/doors/{{d.bg}}">
 						<span>
-						    <b>{{get_collection_name(d.coll)}}</b>
-						    <div>{{get_model_name(d.model)}}</div>
-							<div>{{d.article}}</div>
+						    <strong>{{get_collection_name(d.coll)}}</strong><br>{{get_model_name(d.model)}} {{d.article}}
 						</span>
 					</div>
 				</div>
@@ -116,13 +114,15 @@
 	</section>
 	<section class="floor-description" ng-show="opt.show_floor_description" ng-click="opt.show_floor_description = !1">
        <div class="container">
-       		<h3 class="floor-header">{{opt.floor.article}}</h3>
-            <table>
-                <tr class="floor-header" ng-repeat="d in opt.floor.description track by $index">
-                    <td>{{d_names[$index]}}</td>
-                    <td>{{d}}</td>
-                </tr>
-            </table>
+       		<span>
+	       		<div class="floor-header">{{opt.floor.article}}</div>
+	            <table>
+	                <tr class="characteristics" ng-repeat="d in opt.floor.description track by $index">
+	                    <td>{{d_names[$index]}}</td>
+	                    <td>{{d}}</td>
+	                </tr>
+	            </table>
+       		</span>
             <img ng-src="rooms/floors/{{opt.floor.bg}}">
        </div>
 	</section>

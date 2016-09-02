@@ -31,7 +31,7 @@ nav>ul>li>img {
 nav>ul>li>span {
 	text-transform: uppercase;
 }
-nav>ul>li>span, .model-item>span {
+nav>ul>li>span {
 	left: 0;
 	bottom: 0;
 	width: 100%;
@@ -100,10 +100,14 @@ nav>ul>li.active>span {
 .choice-menu__item-list ul>li.active, .color.active {
 	border: 1px solid rgba(123,123,123,.7);
 }
-.choice-menu__item-list {
+.choice-menu__item-list,.floor-header {
 	text-align: center;
 }
 .floor-header {
+	margin-top: 5%;
+	font-size: 1.2rem;
+}
+.floor-header, .characteristics {
 	text-transform: uppercase;
 }
 .choice-menu__item-list.interior li {
@@ -186,7 +190,10 @@ nav>ul>li.active>span {
     height: 100%;
     background-color: rgba(22,22,22,.2);
 }
-.container table {
+.container h2 {
+	text-align: center;
+}
+.container span {
     width: 40%;
     float: left;
 }
@@ -220,6 +227,9 @@ nav>ul>li.active>span {
 	width: 100%;
 	cursor: pointer;
 	display: inline-block;
+}
+.model-item>span {
+	color: #333;
 }
 .items {
 	height: 100%;
