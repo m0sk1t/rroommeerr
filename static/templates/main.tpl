@@ -38,7 +38,7 @@
 				<ul>
 					<li
 						ng-repeat="i in interiors"
-						ng-click="opt.interior = i;"
+						ng-click="opt.interior = i; select_floor_image();"
 						ng-class="{active: opt.interior.alias === i.alias}"
 					>
 						<img ng-src="rooms/interiors/{{i.bg}}">
