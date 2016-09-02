@@ -85,16 +85,15 @@ nav>ul>li.active>span {
 	background-color: #eee;
 }
 .choice-menu__items-lists {
+	width: 99%;
+	height: 95%;
+	overflow-y: auto;
 	position: relative;
 	background-color: #eee;
 }
-.choice-menu__item-list {
-	overflow-y: auto;
-	max-height: 600px;
-}
 .choice-menu__item-list ul {
-	margin: 2%;
 	padding: 0;
+	margin: 0 15%;
 	list-style-type: none;
 }
 .model-item.selected,
