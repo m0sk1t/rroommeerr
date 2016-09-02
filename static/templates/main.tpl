@@ -74,8 +74,9 @@
 				<div class="models">
 					<div
 						class="model-item"
-						ng-repeat="f in floors | sort_by:opt.floor_brand:opt.floorcoll"
+						ng-show="f.brand && f.coll"
 						ng-class="{'selected': opt.floor._id === f._id}"
+						ng-repeat="f in floors | sort_by:opt.floor_brand:opt.floorcoll"
 						ng-click="opt.floor = f; opt.floor.image = select_floor_image();"
 					>
 						<img ng-src="rooms/floors/{{f.bg}}">
@@ -125,5 +126,5 @@
             <img ng-src="rooms/floors/{{opt.floor.bg}}">
        </div>
 	</section>
-	<div class="show-description" ng-click="opt.show_floor_description = !0" ng-show="!opt.show_floor_description">Характеристики этого ламината</div>
+	<div class="show-description" ng-click="opt.show_floor_description = !0" ng-show="!opt.show_floor_description && opt.floor.description.length">Характеристики этого ламината</div>
 </article>

@@ -102,7 +102,7 @@
 				$http.get('/floor/0').then(function(res) {
 					$scope.floors = res.data;
 					$scope.opt.floor = res.data[0];
-					$scope.select_floor_image();
+					opt.floor.image = $scope.select_floor_image();
 				});
 				$http.get('/doormodel/0').then(function(res) {
 					$scope.doormodels = res.data;
