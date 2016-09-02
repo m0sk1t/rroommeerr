@@ -105,7 +105,7 @@ nav>ul>li.active>span {
 }
 .floor-header {
 	padding: 5% 0;
-	font-size: 1.2rem;
+	font-size: 1.2vw;
 }
 .floor-header, .characteristics {
 	text-transform: uppercase;
@@ -196,6 +196,12 @@ nav>ul>li.active>span {
 .container span {
     width: 40%;
     float: left;
+}
+.container>span>table {
+	height: 100%;
+}
+.container td {
+	font-size: 1vw;
 }
 .container img {
     width: 56%;
