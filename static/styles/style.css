@@ -209,11 +209,6 @@ nav>ul>li.active>span {
     bottom: 3%;
     padding: 1%;
 	font-size: 1.1rem;
-	transform: rotateX(30deg) skew(15deg) translateZ(30px);
-	-o-transform: rotateX(30deg) skew(15deg) translateZ(30px);
-	-ms-transform: rotateX(30deg) skew(15deg) translateZ(30px);
-	-moz-transform: rotateX(30deg) skew(15deg) translateZ(30px);
-	-webkit-transform: rotateX(30deg) skew(15deg) translateZ(30px);
 }
 .model-item {
 	width: 48%;
