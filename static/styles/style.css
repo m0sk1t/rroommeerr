@@ -104,7 +104,7 @@ nav>ul>li.active>span {
 	text-align: center;
 }
 .floor-header {
-	margin-top: 5%;
+	padding: 5% 0;
 	font-size: 1.2rem;
 }
 .floor-header, .characteristics {
