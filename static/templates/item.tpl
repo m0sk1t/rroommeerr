@@ -1,16 +1,9 @@
 <article>
 	<form ng-submit="save(1);">
 		<label ng-show="item.brand !== undefined">
-			Бренд
+			Декор
 			<select ng-model="item.brand">
-				<option ng-if="b.target === img" ng-repeat="b in brands" value="{{b._id}}">{{b.article}}</option>
-			</select><br>
-		</label>
-		<label ng-show="item.target !== undefined">
-			Чей бренд
-			<select ng-model="item.target">
-				<option value="door">door</option>
-				<option value="floor">floor</option>
+				<option ng-repeat="b in brands" value="{{b._id}}">{{b.article}}</option>
 			</select><br>
 		</label>
 		<label ng-show="item.coll !== undefined">

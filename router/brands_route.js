@@ -2,10 +2,6 @@ module.exports = function(app) {
 	var mongoose = require('mongoose'),
 		adminhash = require('./pwd.js'),
 		Brands = mongoose.model('brands', {
-			target: {
-				type: String,
-				default: ''
-			},
 			article: {
 				type: String,
 				default: ''

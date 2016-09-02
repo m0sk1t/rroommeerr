@@ -10,10 +10,6 @@ module.exports = function(app) {
 				type: String,
 				default: ''
 			},
-			brand: {
-				type: String,
-				default: ''
-			},
 			model: {
 				type: String,
 				default: ''

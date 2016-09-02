@@ -69,7 +69,7 @@ nav>ul>li.active>span {
 	font-size: 1.2rem;
     text-align: center;
 	display: inline-block;
-	background-color: #666;
+	background-color: #333;
 }
 .choose-button {
     margin: 5px;
@@ -99,6 +99,9 @@ nav>ul>li.active>span {
 .model-item.selected,
 .choice-menu__item-list ul>li.active, .color.active {
 	border: 1px solid rgba(123,123,123,.7);
+}
+.choice-menu__item-list:first-child {
+	margin-top: 1%;
 }
 .choice-menu__item-list {
 	text-align: center;
@@ -175,7 +178,7 @@ nav>ul>li.active>span {
     z-index: 20;
     color: #eee;
     position: absolute;
-    background-color: #666;
+    background-color: #333;
 }
 .floor-description {
     top: 0;

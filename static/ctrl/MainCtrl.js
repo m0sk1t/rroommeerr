@@ -284,5 +284,25 @@
 			};
 			$scope.load();
 		}
-	]);
+	]).filter('sort_by', function() {
+		return function(items, decor, coll) {
+			var result = [];
+			items.map(function(el) {
+				if (decor) {
+					if (el.brand === decor) {
+						if (coll) {
+							if (el.coll === coll) {
+								result.push(el);
+							}
+						} else {
+							result.push(el);
+						}
+					}
+				} else {
+					result.push(el);
+				}
+			});
+			return result;
+		}
+	});
 })();
