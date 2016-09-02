@@ -111,6 +111,7 @@ nav>ul>li.active>span {
 }
 .choice-menu__item-list.interior li {
 	margin: 2%;
+	cursor: pointer;
 }
 .choice-menu__item-list.interior img {
 	width: 100%;
@@ -119,6 +120,7 @@ nav>ul>li.active>span {
 	margin: 2%;
 	width: 30px;
 	height: 30px;
+	cursor: pointer;
 	display: inline-block;
 }
 .action {
