@@ -153,8 +153,9 @@
 	</section>
 	<section class="floor-description" ng-show="opt.show_floor_description" ng-click="opt.show_floor_description = !1">
        <div class="container">
+       		<h3 class="floor-header">{{opt.floor.article}}</h3>
             <table>
-                <tr ng-repeat="d in opt.floor.description track by $index">
+                <tr class="floor-header" ng-repeat="d in opt.floor.description track by $index">
                     <td>{{d_names[$index]}}</td>
                     <td>{{d}}</td>
                 </tr>

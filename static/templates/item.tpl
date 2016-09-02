@@ -38,11 +38,12 @@
 			<textarea cols="30" rows="10" ng-model="description"></textarea>
 			<input type="button" ng-click="generate_description()" value="Сформировать описание">
 			<table ng-show="item.description.length">
-                <tr ng-repeat="d in item.description track by $index">
+                <tr class="floor-header" ng-repeat="d in item.description track by $index">
                     <td>{{d_names[$index]}}</td>
                     <td>{{d}}</td>
                 </tr>
 			</table>
+			<br>
 		</label>
 		<label ng-show="item.bg !== undefined">
 			Фон

@@ -103,6 +103,9 @@ nav>ul>li.active>span {
 .choice-menu__item-list {
 	text-align: center;
 }
+.floor-header {
+	text-transform: uppercase;
+}
 .choice-menu__item-list.interior li {
 	margin: 2%;
 }

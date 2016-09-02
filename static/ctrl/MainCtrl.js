@@ -2,6 +2,7 @@
 	angular.module('RROOMMEERR').controller('MainCtrl', ['$scope', '$http',
 		function($scope, $http) {
 			$scope.colors = ["#fb0009", "#feff01", "#00ff00", "#00fff8", "#0004ff", "#ff00ff", "#ffffff", "#ebebeb", "#e1e1e1", "#d7d7d7", "#cccccc", "#c5c1c2", "#b7b8bc", "#a0a09e", "#df011a", "#ffee0b", "#059b37", "#05a2e7", "#390687", "#d60386", "#85898a", "#7e7f7a", "#717075", "#645f63", "#4e4848", "#373632", "#111111", "#030002", "#eb9075", "#eaac83", "#f0cc7e", "#f9f499", "#cbe491", "#abdc9a", "#95c999", "#93ccc5", "#8ad0f2", "#90a8d8", "#9491ca", "#937bb7", "#a781b4", "#bd8bbc", "#eb94c7", "#eb93a1", "#e16040", "#e08b4b", "#f9ac50", "#fff366", "#bcd06f", "#8fc361", "#58b765", "#4fb9b5", "#4bb9f4", "#6085cc", "#6585be", "#6769b6", "#654c9f", "#6949ae", "#8b4e9e", "#8d4ba2", "#b14fa2", "#e45ca4", "#db6072", "#d80413", "#da5603", "#ee8d00", "#fdf300", "#95c718", "#5dae35", "#51ad28", "#009e39", "#049e9c", "#02a5e8", "#006ab8", "#233d9e", "#2c0c8b", "#630486", "#910083", "#d50388", "#e10255", "#9a000f", "#973c03", "#a33d0d", "#a06600", "#a1a300", "#67860f", "#317c15", "#006b27", "#036c67", "#0072a3", "#00437e", "#0b2967", "#22005e", "#4a005c", "#68005c", "#97015b", "#a0003b", "#710007", "#782600", "#722707", "#744800", "#817900", "#456208", "#1b5910", "#004f17", "#00504a", "#00527a", "#052b5c", "#011548", "#1a0041", "#37023a", "#72003e", "#71001b", "#c9bda7", "#aa927a", "#7a6256", "#7a615a", "#563f39", "#3d2a24", "#3b2925", "#c9a277", "#b47e50", "#995e3e", "#764920", "#bee", "#bac", "#cab", "#ca4", "ce4"];
+			$scope.d_names = ['артикул', 'коллекция', 'длина', 'ширина', 'толщина', 'метраж пачки', 'количество досок в пачке', 'количество пачек в паллете', 'замок', 'структура', 'фаска', 'класс', 'плотность плиты hdf', 'группа цвета'];
 			$scope.opt = {
 				door: null,
 				brand: null,
@@ -17,7 +18,7 @@
 				choose_floor: false,
 				choose_color: false,
 				choose_interior: false,
-                show_floor_description: false,
+				show_floor_description: false,
 
 				color: 'rgb(150,150,150)',
 			};
@@ -35,16 +36,16 @@
 					el.brand === $scope.opt.floor_brand && $scope.opt.floor_collections.push(el);
 				});
 			};
-            $scope.get_collection_name = function(id){
-                return $scope.doorcolls.filter(function(el){
-                    return el._id === id;
-                })[0].article;
-            }
-            $scope.get_model_name = function(id){
-                return $scope.doormodels.filter(function(el){
-                    return el._id === id;
-                })[0].article;
-            }
+			$scope.get_collection_name = function(id) {
+				return $scope.doorcolls.filter(function(el) {
+					return el._id === id;
+				})[0].article;
+			}
+			$scope.get_model_name = function(id) {
+				return $scope.doormodels.filter(function(el) {
+					return el._id === id;
+				})[0].article;
+			}
 			$scope.select_floors = function() {
 				$scope.opt.floors = [];
 				$scope.floors.map(function(el) {
@@ -152,15 +153,15 @@
 		function($scope, $http, $location, $routeParams, Upload) {
 			$scope.item = {};
 			$scope.description = '';
-			$scope.d_names = ['1','2','3','4','5','6','7','8','9','10'];
+			$scope.d_names = ['артикул', 'коллекция', 'длина', 'ширина', 'толщина', 'метраж пачки', 'количество досок в пачке', 'количество пачек в паллете', 'замок', 'структура', 'фаска', 'класс', 'плотность плиты hdf', 'группа цвета'];
 			$scope.room = {
 				_id: null,
 				index: null
 			};
 			$scope.type = $routeParams.type;
-            $scope.generate_description = function(){
-                $scope.item.description = $scope.description.split('\n');
-            };
+			$scope.generate_description = function() {
+				$scope.item.description = $scope.description.split('\n');
+			};
 			switch (true) {
 				case $scope.type.indexOf('door') != -1:
 					$scope.img = 'door';
