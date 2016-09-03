@@ -58,9 +58,9 @@ nav>ul>li.active>span {
 	top: 3%;
 	right: 1%;
 	width: 30%;
-    height: 95%;
 	color: #ddd;
 	z-index: 10;
+    max-height: 95%;
 	position: absolute;
 }
 .choice-menu__menu-item {
