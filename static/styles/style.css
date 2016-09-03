@@ -240,7 +240,7 @@ nav>ul>li.active>span {
 	color: #333;
 }
 .items {
-	height: 100%;
+	height: 90%;
 	overflow-y: auto;
 }
 .room-item {
