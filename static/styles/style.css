@@ -55,12 +55,13 @@ nav>ul>li.active>span {
 	margin: 0 1% 0 0;
 }
 .choice-menu {
-	top: 5%;
+	top: 3%;
 	right: 1%;
+	width: 30%;
+    height: 95%;
 	color: #ddd;
 	z-index: 10;
 	position: absolute;
-	width: 30%;
 }
 .choice-menu__menu-item {
 	width: 20%;
