@@ -6,6 +6,33 @@
 	font-size: .9rem;
 	font-family: Calibri, Arial, sans-serif;
 }
+.dropdown {
+	width: 10rem;
+	height: 1.2rem;
+	font-size: 1.1rem;
+	display: inline-block;
+}
+.dropdown-button {
+	color: #333;
+	width: 10rem;
+	font-size: 1.1rem;
+	text-decoration: underline;
+}
+.dropdown-menu {
+	z-index: 30;
+	width: 10rem;
+	color: #333;
+	position: absolute;
+	text-align: center;
+	background-color: #eee;
+}
+.dropdown-menu>div {
+	padding: 1%;
+	font-size: 1.1rem;
+}
+.dropdown-menu>div:hover {
+	background-color: #ccc;
+}
 article, body {
 	top: 0;
 	left: 0;
@@ -173,8 +200,10 @@ nav>ul>li.active>span {
 	z-index: 5;
 }
 .models {
+	display: flex;
 	cursor: pointer;
 	max-width: 100%;
+	flex-wrap: wrap;
 	overflow-y: auto;
 }
 .show-description,
@@ -222,6 +251,7 @@ nav>ul>li.active>span {
     left: 3%;
     bottom: 3%;
     padding: 1%;
+    cursor: pointer;
 	font-size: 1.1rem;
 }
 .model-item {

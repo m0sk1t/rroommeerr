@@ -14,6 +14,9 @@
 				doormodel: null,
 				floorcoll: null,
 
+				brname: 'Все декоры',
+				collname: 'Все коллекции',
+
 				choose_door: false,
 				choose_floor: false,
 				choose_color: false,

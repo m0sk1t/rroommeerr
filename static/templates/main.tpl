@@ -3,29 +3,29 @@
 		<div class="choice-menu__menu-items">
 			<span
 				class="choice-menu__menu-item"
-				ng-click="show_menu_items('choose_interior')"
 				ng-class="{'choice-menu__menu-item_active': opt.choose_interior}"
+				ng-click="opt.choose_interior? (opt.choose_interior = !1): show_menu_items('choose_interior')"
 			>
 				Интерьер
 			</span>
 			<span
 				class="choice-menu__menu-item"
-				ng-click="show_menu_items('choose_color')"
 				ng-class="{'choice-menu__menu-item_active': opt.choose_color}"
+				ng-click="opt.choose_color? (opt.choose_color = !1): show_menu_items('choose_color')"
 			>
 				Цвет стен
 			</span>
 			<span
 				class="choice-menu__menu-item"
 				ng-class="{'choice-menu__menu-item_active': opt.choose_floor}"
-				ng-click="show_menu_items('choose_floor'); select_floor_collections();"
+				ng-click="opt.choose_floor? (opt.choose_floor = !1): show_menu_items('choose_floor'); select_floor_collections();"
 			>
 				Пол
 			</span>
 			<span
 				class="choice-menu__menu-item"
 				ng-class="{'choice-menu__menu-item_active': opt.choose_door}"
-				ng-click="show_menu_items('choose_door'); select_door_collections();"
+				ng-click="opt.choose_door? (opt.choose_door = !1): show_menu_items('choose_door'); select_door_collections();"
 			>
 				Двери
 			</span>
@@ -63,15 +63,58 @@
 				class="choice-menu__item-list"
 				ng-show="opt.choose_floor"
 			>
-				<select ng-model="opt.floor_brand" ng-change="select_floor_collections();">
-					<option value="">Все декоры</option>
-					<option value="{{br._id}}" ng-repeat="br in brands">{{br.article}}</option>
+				<div class="dropdown">
+					<div
+						class="dropdown-button"
+						ng-click="opt.show_decor_dropdown = !opt.show_decor_dropdown"
+					>
+						{{opt.brname}}
+					</div>
+					<div ng-show="opt.show_decor_dropdown" class="dropdown-menu">
+						<div
+							ng-click="opt.brname = 'Все декоры'; opt.show_decor_dropdown = !opt.show_decor_dropdown; opt.floor_brand = null; select_floor_collections();"
+						>
+							Все декоры
+						</div>
+						<div
+							ng-repeat="br in brands"
+							ng-click="opt.brname = br.article; opt.show_decor_dropdown = !opt.show_decor_dropdown; opt.floor_brand = br._id; select_floor_collections();"
+						>
+							{{br.article}}
+						</div>
+					</div>
+				</div>
+				<div class="dropdown" ng-show="opt.floor_brand">
+					<div
+						class="dropdown-button"
+						ng-click="opt.show_coll_dropdown = !opt.show_coll_dropdown"
+					>
+						{{opt.collname}}
+					</div>
+					<div ng-show="opt.show_coll_dropdown" class="dropdown-menu">
+						<div
+							ng-click="opt.collname = 'Все коллекции'; opt.show_coll_dropdown = !opt.show_coll_dropdown; opt.floorcoll = null; select_floor_collections();"
+						>
+							Все коллекции
+						</div>
+						<div
+							ng-repeat="fc in opt.floor_collections"
+							ng-click="opt.collname = fc.article; opt.show_coll_dropdown = !opt.show_coll_dropdown; opt.floorcoll = fc._id;"
+						>
+							{{fc.article}}
+						</div>
+					</div>
+				</div>
+<!-- 				<select ng-model="opt.floor_brand" ng-change="select_floor_collections();">
+					<option value=""></option>
+					<option value="{{br._id}}" >{{br.article}}</option>
 				</select>
 				<select ng-model="opt.floorcoll" ng-show="opt.floor_brand">
 					<option value="">Выберите коллекцию</option>
 					<option value="{{fc._id}}" ng-repeat="fc in opt.floor_collections">{{fc.article}}</option>
 				</select>
-				<div class="models">
+ -->
+ 				<div class="models">
 					<div
 						class="model-item"
 						ng-show="f.brand && f.coll"
@@ -126,5 +169,5 @@
             <img ng-src="rooms/floors/{{opt.floor.bg}}">
        </div>
 	</section>
-	<div class="show-description" ng-click="opt.show_floor_description = !0" ng-show="!opt.show_floor_description && opt.floor.description.length">Характеристики этого ламината</div>
+	<div class="show-description" ng-click="opt.show_floor_description = !opt.show_floor_description" ng-show="opt.floor.description.length">Характеристики этого ламината</div>
 </article>
